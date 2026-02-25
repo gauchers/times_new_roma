@@ -57,7 +57,7 @@
 
   <text>
     <body>
-      <ab type="orig" xml:id="texte_16">
+      <ab type="orig" xml:id="texte_20">
         <l>Sed mihi quid prodest uestris disiecta lacertis</l>
         <l>Ilios, et murus quod fuit esse solum,</l>
         <l>si maneo qualis Troia durante manebam</l>
@@ -81,7 +81,7 @@
         <l>Vtilius starent etiamnunc moenia Phoebi</l>
         <l>(irascor uotis, heu !, leuis ipsa meis).</l>
         <l>Scirem ubi pugnares et tantum bella timerem,</l>
-        <l>et mea cum multis iuncta querela foret.</l>
+        <l>et mea cum multis iuncta querela foret. // (arrêt possible)</l>
         <l>Quid timeam, ignoro ¬ timeo tamen omnia demens,</l>
         <l>et patet in curas area lata meas.</l>
         <l>Quaecumque aequor habet, quaecumque pericula tellus,</l>
@@ -90,7 +90,7 @@
         <l>esse peregrino captus amore potes.</l>
       </ab>
 
-      <ab type="trad" corresp="#texte_16">
+      <ab type="trad" corresp="#texte_20">
         <l>Mais à quoi me sert qu’Ilion ait été renversée par vos bras et que son ancienne muraille soit au niveau du sol si je demeure telle que je demeurais lorsque Troie perdurait, si l’absence du mari dont je suis privée ne doit point avoir de termes ? Détruite pour les autres, pour moi seule Pergame est encore debout, elle que le vainqueur qui y séjourne laboure avec un bœuf captif. Déjà la moisson se tient où se tint Troie et la terre, engraissée du sang phrygien, offre son abondante récolte au tranchant de la faux ; le soc recourbé heurte les ossements à demi ensevelis des guerriers ; l’herbe couvre les maisons en ruine. Vainqueur, tu es absent et je ne puis savoir ni la cause de ton retard ni en quelle partie du monde tu te caches, insensible ! Quiconque dirige vers ces rivages sa poupe étrangère ne s’en va qu’après que je l’ai pressé de nombreuses questions à ton propos et on lui confie une lettre écrite de mes mains pour qu’il te la remette, si toutefois il t’a rencontré quelque part. Nous avons envoyé un émissaire à Pylos, pays du vieux Nestor, fils de Nélée. Les nouvelles rapportées de Pylos sont incertaines. Nous avons également envoyé un émissaire à Sparte ; Sparte aussi ignore la vérité. Quelles terres habites-tu et en quel lieu t’attardes-tu ? Je gagnerais davantage à ce que les remparts de Phébus se tiennent encore débout (hélas ! inconséquente que je suis, je m’irrite contre mes propres vœux !). Je saurais où tu combats, je ne craindrais que la guerre et ma plainte serait jointe à beaucoup d’autres. Je ne sais ce que je crains. Cependant, dans mon égarement, je crains tout et un vaste champ est ouvert à mes inquiétudes. Tous les périls que recèle la mer, tous ceux que recèle la terre, je les soupçonne d'être la cause de si longs retards. Tandis que pour ma part je ressasse sottement ces craintes, tu es peut-être captif d’un amour étranger (tel est votre désir, à vous les hommes !).</l>
       </ab>
     </body>

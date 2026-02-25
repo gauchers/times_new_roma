@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>La vache, la chèbre, la brebis et le lion</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Pierre Constant</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Phèdre</author>
+            <title type="oeuvre">Fables</title>
+            <title type="fichier">la_phedre_fables_1_5.xml</title>
+            <biblScope>1.5</biblScope>
+
+            <term type="prose/poésie" subtype="poesie"/>
+            <term type="mots" n="44"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_present indicatif_parfait indicatif_futur indicatif_futur_anterieur subjonctif_plus_que_parfait participe_parfait deponent"/>
+            <term type="morphologie" ana="hic"/>
+            <term type="syntaxe" ana="circonstancielle_causale_indicatif cum_subjonctif ablatif_absolu systeme_hypothetique_eventuel"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_10">
+        <l>Numquam est fidelis cum potente societas.</l>
+        <l>Testatur haec fabella propositum meum.</l>
+        <l>Vacca et capella et patiens ouis iniuriae</l>
+        <l>socii fuere cum leone in saltibus.</l>
+        <l>Hi cum cepissent ceruum uasti corporis,</l>
+        <l>sic est locutus partibus factis leo:</l>
+        <l>« Ego primam tollo nomine hoc quia rex cluo;</l>
+        <l>secundam, quia sum consors, tribuetis mihi;</l>
+        <l>tum, quia plus ualeo, me sequetur tertia;</l>
+        <l>malo adficietur si quis quartam tetigerit ».</l>
+        <l>Sic totam praedam sola improbitas abstulit.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_10">
+        <l>Il n'y a jamais de sûreté dans l'association avec le puissant; cette petite fable montre la vérité de ce que j'avance. Une vache, une chèvre et une brebis habituée à l'injustice firent dans les bois société avec un lion. Comme ils avaient pris un cerf de grande taille, les parts faites, le lion parla ainsi : « C'est moi qui prends la première puisqu'on m'appelle roi, elle m'appartient; la seconde, comme je suis vaillant, vous me la donnerez; et parce que je suis le plus fort, la troisième me reviendra. Malheur à qui touchera à la quatrième 1 » Ainsi, grâce à sa mauvaise foi, il emporta pour lui seul la proie tout entière.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>

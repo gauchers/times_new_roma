@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Les deux mulets</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Phèdre</author>
+            <title type="oeuvre">Fables</title>
+            <title type="fichier">la_phedre_fables_2_7.xml</title>
+            <biblScope>2.7</biblScope>
+
+            <term type="prose/poésie" subtype="poesie"/>
+            <term type="mots" n="84"/>
+            <term type="niveau" n="1"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_parfait subjonctif_imparfait participe_present participe_parfait deponent"/>
+            <term type="morphologie" ana="ille hic"/>
+            <term type="syntaxe" ana="proposition_infinitive cum_subjonctif omission_esse"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_3">
+        <l>Muli grauati sarcinis ibant duo :</l>
+        <l>unus ferebat fiscos cum pecunia,</l>
+        <l>alter tumentes multo saccos hordeo.</l>
+        <l>Ille onere diues celsa ceruice eminens,</l>
+        <l>clarumque collo iactans tintinabulum ;</l>
+        <l>comes quieto sequitur et placido gradu.</l>
+        <l>Subito latrones ex insidiis aduolant,</l>
+        <l>interque caedem ferro ditem sauciant :</l>
+        <l>diripiunt nummos, neglegunt uile hordeum.</l>
+        <l>Spoliatus igitur casus cum fleret suos,</l>
+        <l>« Equidem » inquit alter « me contemptum gaudeo ;</l>
+        <l>nam nil amisi, nec sum laesus uulnere. »</l>
+        <l>Hoc argumento tuta est hominum tenuitas,</l>
+        <l>magnae periclo sunt opes obnoxiae.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_3">
+        <l>Deux mulets cheminaient chargés de lourds fardeaux : l’un portait des paniers pleins d’argent, l’autre des sacs gonflés d’une grande quantité d’orge. Le premier, enrichi par la valeur de son fardeau, avance la tête haute et fait balancer à son cou un grelot au son clair ; son compagnon suit d’un pas tranquille et paisible. Soudain, des bandits, sortis de leur cachette, accourent, et, dans la lutte, blessent d’un coup d’épée le riche mulet. Ils se saisissent des écus mais négligent l’orge sans valeur. Après le vol, comme le mulet pleurait ses malheurs, l’autre dit : « En ce qui me concerne, je suis bien content qu’on m’ait méprisé, car je n’ai rien perdu et n’ai point été blessé ». Cet exemple montre que la pauvreté des hommes ne risque rien, tandis que l’opulence est exposée au danger.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>
