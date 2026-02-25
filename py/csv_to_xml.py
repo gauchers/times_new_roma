@@ -296,3 +296,4 @@ with open(CSV_FILE, newline="", encoding="utf-8") as f:
 
         print(f"✔ TEI créé : {filename}")
 
+
