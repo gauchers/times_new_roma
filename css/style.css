@@ -1,4 +1,3 @@
-<style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
@@ -286,4 +285,4 @@
             .choix-langue { flex-direction: column; align-items: center; gap: 18px; }
             .btn-langue { width: 100%; max-width: 320px; padding: 24px 40px; font-size: 1.4em; }
         }
-    </style>
+
