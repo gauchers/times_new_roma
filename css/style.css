@@ -1,307 +1,289 @@
-/* =====================================================
-   BASE GLOBALE
-   ===================================================== */
+<style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-    margin: 0;
-    font-family: "Georgia", serif;
-    background-color: #f5f5f5;
-    color: #222;
-}
+        :root {
+            --ink:    #1a1208;
+            --parch:  #f7f2e8;
+            --cream:  #ede7d3;
+            --gold:   #b8892a;
+            --gold-lt:#d4a84b;
+            --grec:   #0e6e4a;
+            --grec-lt:#13976a;
+            --latin:  #9e2035;
+            --latin-lt:#c72b44;
+            --blue:   #3a5f72;
+            --blue-lt:#4e7d96;
+            --rule:   rgba(26,18,8,0.18);
+        }
 
-h1 {
-    font-size: 2.8em;
-    margin-bottom: 40px;
-    text-align: center;
-}
+        html { scroll-behavior: smooth; }
 
-h2 {
-    font-size: 2.2em;
-    margin-bottom: 30px;
-    text-align: center;
-}
+        body {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background-color: var(--parch);
+            color: var(--ink);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-/* =====================================================
-   CONTENEURS
-   ===================================================== */
+        /* ── Texture grain ── */
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+            opacity: 0.6;
+        }
 
-.container {
-    max-width: 900px;
-    margin: 80px auto;
-    text-align: center;
-}
+        /* ── Ligne décorative haute ── */
+        .top-rule {
+            position: relative; z-index: 10;
+            width: 100%;
+            border: none;
+            border-top: 3px double var(--gold);
+            margin: 0;
+        }
 
-/* Blocs de contenu blancs (index + contribuer) */
-.presentation,
-#contribuer {
-    background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
+        /* ── Barre de navigation ── */
+        nav {
+            position: relative; z-index: 10;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: transparent;
+        }
 
-/* Spécifique à la page contribuer */
-#contribuer {
-    text-align: left;
-    margin: 0 auto;
-}
+        .nav-btn {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.88em;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease;
+            color: var(--ink);
+        }
 
-/* =====================================================
-   INDEX
-   ===================================================== */
+        .nav-btn.contribuer {
+            background: var(--blue);
+            color: #fff;
+            border-color: var(--blue);
+        }
+        .nav-btn.contribuer:hover {
+            background: var(--blue-lt);
+            border-color: var(--blue-lt);
+        }
 
-.presentation {
-    margin-bottom: 60px;
-    font-size: 1.1em;
-    line-height: 1.6;
-}
+        .nav-btn.equipe {
+            background: transparent;
+            color: var(--ink);
+            border-color: var(--rule);
+        }
+        .nav-btn.equipe:hover {
+            background: var(--cream);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
 
-.choix-langue {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
+        .nav-btn.documentation {
+            background: var(--gold);
+            color: #fff;
+            border-color: var(--gold);
+        }
+        .nav-btn.documentation:hover {
+            background: var(--gold-lt);
+            border-color: var(--gold-lt);
+        }
 
-.btn {
-    display: inline-block;
-    padding: 20px 50px;
-    font-size: 1.4em;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    font-weight: bold;
-}
+        /* ── Main wrapper ── */
+        main {
+            position: relative; z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 30px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.grec {
-    background-color: #11b872;
-    color: white;
-}
+        /* ── Ornement SVG ── */
+        .ornament {
+            display: block;
+            margin: 0 auto 18px;
+            opacity: 0.55;
+            animation: fadeDown 0.8s ease both;
+        }
 
-.latin {
-    background-color: #d63c4f;
-    color: white;
-}
+        /* ── Titre ── */
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3em, 8vw, 5.5em);
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            line-height: 1;
+            text-align: center;
+            color: var(--ink);
+            margin-bottom: 6px;
+            animation: fadeDown 0.9s ease 0.1s both;
+        }
 
-.btn:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
+        .site-subtitle {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 1.15em;
+            color: var(--gold);
+            text-align: center;
+            letter-spacing: 0.04em;
+            margin-bottom: 36px;
+            animation: fadeDown 0.9s ease 0.2s both;
+        }
 
-/* =====================================================
-   BARRE HAUTE / BOUTON CONTRIBUER
-   ===================================================== */
+        /* ── Séparateur ornemental ── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        .divider span {
+            font-size: 1.2em;
+            color: var(--gold);
+            opacity: 0.7;
+        }
 
-.top-bar {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    z-index: 10;
-}
+        /* ── Bloc présentation ── */
+        .presentation {
+            background: white;
+            border: 1px solid var(--cream);
+            border-top: 3px solid var(--gold);
+            border-radius: 2px;
+            padding: 38px 48px;
+            margin-bottom: 52px;
+            box-shadow: 0 6px 30px rgba(26,18,8,0.07), 0 1px 3px rgba(26,18,8,0.05);
+            font-size: 1.18em;
+            line-height: 1.75;
+            text-align: justify;
+            width: 100%;
+            animation: fadeUp 1s ease 0.4s both;
+        }
 
-.btn-contribuer {
-    padding: 12px 25px;
-    font-size: 1em;
-    background-color: #537D8D;
-    color: white;
-}
+        .presentation p {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: #3a2e1e;
+        }
 
-/* =====================================================
-   FILTRES / CORPUS
-   ===================================================== */
+        /* ── Choix de langue ── */
+        .choix-titre {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 1em;
+            letter-spacing: 0.08em;
+            color: #7a6a50;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            animation: fadeUp 1s ease 0.5s both;
+        }
 
-#filtres {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 0 auto 25px auto;
-}
+        .choix-langue {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            animation: fadeUp 1s ease 0.55s both;
+        }
 
-.ligne-filtre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin: 0 auto 12px auto;
-}
+        .btn-langue {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 30px 52px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 3px;
+            border: 2px solid transparent;
+            transition: all 0.28s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-.titre-filtre {
-    min-width: 200px;
-    font-weight: bold;
-    text-align: left;
-    padding-right: 15px;
-    white-space: nowrap;
-}
+        .btn-langue::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: rgba(255,255,255,0.08);
+            opacity: 0;
+            transition: opacity 0.28s;
+        }
 
-/* Selects */
+        .btn-langue:hover::after { opacity: 1; }
+        .btn-langue:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
 
-select {
-    font-size: 1em;
-    font-family: inherit;
-    padding: 6px 8px;
-    border: 1px solid #999;
-    background-color: #fff;
-    border-radius: 4px;
-}
+        .btn-langue small {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.45em;
+            font-weight: 300;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            opacity: 0.75;
+        }
 
-select.ana {
-    min-width: 220px;
-}
+        .grec  { background: var(--grec);  color: #fff; border-color: var(--grec); }
+        .grec:hover  { background: var(--grec-lt); border-color: var(--grec-lt); }
 
-select.op {
-    min-width: 70px;
-    text-align: center;
-    font-weight: bold;
-}
+        .latin { background: var(--latin); color: #fff; border-color: var(--latin); }
+        .latin:hover { background: var(--latin-lt); border-color: var(--latin-lt); }
 
-select:focus {
-    outline: none;
-    border-color: #333;
-}
+        /* ── Footer ornement ── */
+        .footer-rule {
+            margin-top: 80px;
+            text-align: center;
+            animation: fadeIn 1s ease 0.8s both;
+        }
+        .footer-rule p {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 0.85em;
+            color: #a08c6a;
+            margin-top: 10px;
+            letter-spacing: 0.04em;
+        }
 
-/* =====================================================
-   TEXTE / CORPUS
-   ===================================================== */
+        /* ── Animations ── */
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
 
-#compteur {
-    text-align: left;
-    margin-top: 25px;
-    margin-bottom: 40px;
-    font-weight: bold;
-}
-
-#message-vide {
-    font-style: italic;
-    margin-top: 30px;
-}
-
-.texte {
-    margin-bottom: 50px;
-}
-
-.notice {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.texte p {
-    text-align: justify;
-}
-
-hr {
-    margin: 50px 0;
-    border: none;
-    border-top: 1px solid #ccc;
-}
-
-/* =====================================================
-   BADGES
-   ===================================================== */
-
-.badge {
-    padding: 0 5px;
-    border-radius: 10px;
-    color: white;
-    margin: 3px;
-    text-transform: capitalize;
-    float: right;
-}
-
-.badge.type {
-    border: 1px solid darkorchid;
-    background: darkorchid;
-}
-
-.badge.niveau {
-    border: 1px solid lightblue;
-    background: lightblue;
-    color: black;
-}
-
-/* =====================================================
-   PAGE "POUR CONTRIBUER"
-   ===================================================== */
-
-#contribuer p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-/* Sections déroulantes */
-
-details {
-    margin-bottom: 25px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background-color: #fafafa;
-}
-
-summary {
-    cursor: pointer;
-    padding: 18px 20px;
-    font-size: 1.3em;
-    font-weight: bold;
-    background-color: #f0f0f0;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
-}
-
-summary:hover {
-    background-color: #e6e6e6;
-}
-
-details[open] summary {
-    border-bottom: 1px solid #ddd;
-    border-radius: 6px 6px 0 0;
-}
-
-details > *:not(summary) {
-    padding: 20px 25px;
-}
-
-#contribuer ul {
-    padding-left: 20px;
-}
-
-#contribuer li {
-    margin-bottom: 12px;
-    line-height: 1.5;
-}
-
-#contribuer a {
-    color: #11b872;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#contribuer a:hover {
-    text-decoration: underline;
-}
-
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
-
-@media (max-width: 600px) {
-
-    .container {
-        margin: 40px 15px;
-    }
-
-    .presentation,
-    #contribuer {
-        padding: 25px;
-    }
-
-    summary {
-        font-size: 1.15em;
-    }
-
-    .top-bar {
-        position: static;
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: -20px;
-    }
-}
-
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            nav { padding: 14px 18px; flex-wrap: wrap; justify-content: center; gap: 8px; }
+            main { padding: 40px 18px 60px; }
+            .presentation { padding: 26px 24px; font-size: 1.05em; }
+            .choix-langue { flex-direction: column; align-items: center; gap: 18px; }
+            .btn-langue { width: 100%; max-width: 320px; padding: 24px 40px; font-size: 1.4em; }
+        }
+    </style>
