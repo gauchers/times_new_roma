@@ -209,6 +209,10 @@ hr {
     color: #2e2010;
     font-weight: 300;
 }
+
+.texte strong {
+    font-weight: 1000;
+}
  
 .badge {
     display: inline-block;
