@@ -5,8 +5,8 @@
     --parch:    #f7f2e8;
     --cream:    #ede7d3;
     --gold:     #b8892a;
-    --latin:    #9e2035;
-    --latin-lt: #c72b44;
+    --grec:    #289e20;
+    --grec-lt: #c72b44;
 }
  
 html { scroll-behavior: smooth; }
@@ -70,7 +70,7 @@ h1 {
     padding: 20px 24px;
     background: white;
     border: 1px solid var(--cream);
-    border-top: 3px solid var(--latin);
+    border-top: 3px solid var(--grec);
     border-radius: 2px;
     box-shadow: 0 4px 20px rgba(26, 18, 8, 0.06);
     animation: fadeUp 0.9s ease 0.1s both;
@@ -91,7 +91,7 @@ h1 {
     animation: fadeUp 0.9s ease 0.18s both;
 }
  
-.ligne-filtre:hover { border-left-color: var(--latin); }
+.ligne-filtre:hover { border-left-color: var(--grec); }
  
 .ligne-filtre:last-of-type { margin-bottom: 32px; }
  
@@ -120,11 +120,11 @@ select {
     cursor: pointer;
 }
  
-select:hover { border-color: var(--latin); }
+select:hover { border-color: var(--grec); }
  
 select:focus {
     outline: none;
-    border-color: var(--latin);
+    border-color: var(--grec);
     box-shadow: 0 0 0 2px rgba(158, 32, 53, 0.12);
 }
  
@@ -137,7 +137,7 @@ select.op {
     font-size: 0.8em;
     letter-spacing: 0.06em;
     text-align: center;
-    color: var(--latin);
+    color: var(--grec);
     border-color: #ddd;
     background-color: #fdf5f6;
 }
@@ -149,7 +149,7 @@ select.op {
     letter-spacing: 0.03em;
     color: #5a4030;
     margin: 0 0 28px;
-    border-left: 3px solid var(--latin);
+    border-left: 3px solid var(--grec);
     padding-left: 12px;
     animation: fadeIn 0.6s ease 0.3s both;
 }
@@ -175,7 +175,7 @@ hr {
 .texte {
     background: white;
     border: 1px solid var(--cream);
-    border-left: 4px solid var(--latin);
+    border-left: 4px solid var(--grec);
     border-radius: 2px;
     padding: 28px 36px;
     margin-bottom: 28px;
