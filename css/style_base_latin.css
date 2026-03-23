@@ -45,7 +45,7 @@ body::after {
 .container {
     position: relative;
     z-index: 1;
-    max-width: 960px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 50px 36px 100px;
 }
@@ -96,7 +96,7 @@ h1 {
 .ligne-filtre:last-of-type { margin-bottom: 32px; }
  
 .titre-filtre {
-    min-width: 210px;
+    min-width: 250px;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
     font-size: 0.92em;
