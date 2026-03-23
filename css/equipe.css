@@ -1,0 +1,253 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --ink:      #1a1208;
+    --parch:    #f0ece0;
+    --cream:    #e4dcc8;
+    --white:    #fdfaf4;
+    --gold:     #b8892a;
+    --gold-lt:  #d4a84b;
+    --grec:     #0e6e4a;
+    --latin:    #9e2035;
+    --blue:     #3a5f72;
+    --blue-lt:  #4e7d96;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background-color: var(--parch);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Grain */
+body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.7;
+}
+
+/* Liseré doré haut */
+body::after {
+    content: '';
+    position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200;
+    background: repeating-linear-gradient(
+        to right, var(--gold) 0, var(--gold) 6px, transparent 6px, transparent 10px
+    );
+}
+
+/* ── Nav ── */
+nav {
+    position: relative; z-index: 10;
+    display: flex; justify-content: flex-end; align-items: center;
+    gap: 10px; padding: 16px 40px;
+}
+
+.nav-btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88em; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; padding: 8px 20px;
+    border-radius: 2px; border: 1px solid transparent;
+    transition: all 0.25s; color: var(--ink);
+}
+.nav-btn.home { background: var(--blue); color: #fff; border-color: var(--blue); }
+.nav-btn.home:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
+
+/* ── Conteneur ── */
+.container {
+    position: relative; z-index: 1;
+    max-width: 1000px; margin: 0 auto;
+    padding: 40px 36px 100px;
+}
+
+/* ── Header page ── */
+.page-header {
+    text-align: center;
+    margin-bottom: 64px;
+    animation: fadeDown 0.8s ease both;
+}
+
+.page-header svg { display: block; margin: 0 auto 16px; opacity: 0.45; }
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4em, 6vw, 4em);
+    font-weight: 900; color: var(--ink);
+    margin-bottom: 4px; line-height: 1.05;
+}
+
+.page-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 1.15em;
+    color: var(--gold); letter-spacing: 0.05em;
+    margin-bottom: 32px;
+}
+
+.divider {
+    display: flex; align-items: center; gap: 14px;
+    max-width: 400px; margin: 0 auto;
+}
+.divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.divider span { color: var(--gold); font-size: 1.1em; opacity: 0.7; }
+
+/* ── Sections ── */
+.section {
+    margin-bottom: 72px;
+}
+
+.section-label {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 36px;
+    animation: fadeIn 0.8s ease both;
+}
+
+.section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    opacity: 0.5;
+}
+
+.section-label span {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 1.05em;
+    letter-spacing: 0.08em; color: #7a6a50;
+    text-transform: uppercase; white-space: nowrap;
+}
+
+/* ── Grille de cartes ── */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+/* ── Carte membre ── */
+.card {
+    background: var(--white);
+    border: 1px solid var(--cream);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(26, 18, 8, 0.06);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    animation: fadeUp 0.8s ease both;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(26, 18, 8, 0.12);
+}
+
+/* Accent couleur en haut de carte */
+.card.grec  { border-top: 3px solid var(--grec); }
+.card.latin { border-top: 3px solid var(--latin); }
+.card.dev   { border-top: 3px solid var(--blue); }
+.card.gold  { border-top: 3px solid var(--gold); }
+
+/* Photo / Avatar */
+.card-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--cream);
+    position: relative;
+}
+
+.card-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: sepia(15%) contrast(1.05);
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.card:hover .card-photo img {
+    transform: scale(1.04);
+    filter: sepia(0%) contrast(1.08);
+}
+
+/* Avatar SVG de remplacement */
+.avatar-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--cream) 0%, #d8cdb0 100%);
+}
+
+.avatar-initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em; font-weight: 700;
+    color: rgba(26, 18, 8, 0.35);
+    letter-spacing: -0.02em;
+    user-select: none;
+}
+
+/* Corps de la carte */
+.card-body {
+    padding: 22px 24px 24px;
+}
+
+.card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.18em; font-weight: 700;
+    color: var(--ink); margin-bottom: 3px;
+    line-height: 1.2;
+}
+
+.card-role {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 0.88em;
+    color: var(--gold); letter-spacing: 0.04em;
+    margin-bottom: 12px;
+}
+
+.card-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1em; font-weight: 300;
+    line-height: 1.65; color: #4a3820;
+}
+
+/* ── Footer ── */
+.footer-rule {
+    text-align: center; margin-top: 60px;
+    animation: fadeIn 1s ease 0.6s both;
+}
+.footer-rule p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 0.85em;
+    color: #a08c6a; margin-top: 10px; letter-spacing: 0.04em;
+}
+
+/* ── Animations ── */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Délais échelonnés pour les cartes */
+.card:nth-child(1) { animation-delay: 0.10s; }
+.card:nth-child(2) { animation-delay: 0.18s; }
+.card:nth-child(3) { animation-delay: 0.26s; }
+.card:nth-child(4) { animation-delay: 0.34s; }
+.card:nth-child(5) { animation-delay: 0.42s; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    nav { padding: 14px 18px; }
+    .container { padding: 30px 18px 60px; }
+    .grid { grid-template-columns: 1fr; }
+}
