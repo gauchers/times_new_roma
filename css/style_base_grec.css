@@ -1,143 +1,253 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+:root {
+    --ink:      #1a1208;
+    --parch:    #f7f2e8;
+    --cream:    #ede7d3;
+    --gold:     #b8892a;
+    --latin:    #9e2035;
+    --latin-lt: #c72b44;
+}
+ 
+html { scroll-behavior: smooth; }
+ 
 body {
-    margin: 0;
-    font-family: "Georgia", serif;
-    background-color: #f5f5f5;
-    color: #222;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background-color: var(--parch);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
-
+ 
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    opacity: 0.6;
+}
+ 
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: repeating-linear-gradient(
+        to right,
+        var(--gold) 0px, var(--gold) 6px,
+        transparent 6px, transparent 10px
+    );
+    z-index: 100;
+}
+ 
 .container {
-    max-width: 900px;
-    margin: 80px auto;
-    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 50px 36px 100px;
 }
-
+ 
 h1 {
-    font-size: 2.8em;
-    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2em, 5vw, 3.6em);
+    font-weight: 900;
+    text-align: center;
+    color: var(--ink);
+    margin-bottom: 36px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(158, 32, 53, 0.2);
+    animation: fadeDown 0.8s ease both;
 }
-
-
+ 
 #filtres {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin: 0 auto 25px auto;
+    gap: 14px;
+    margin-bottom: 8px;
+    padding: 20px 24px;
+    background: white;
+    border: 1px solid var(--cream);
+    border-top: 3px solid var(--latin);
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(26, 18, 8, 0.06);
+    animation: fadeUp 0.9s ease 0.1s both;
 }
-
+ 
 .ligne-filtre {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 8px;
-    margin: 0 auto 12px auto;
+    padding: 12px 24px;
+    background: white;
+    border: 1px solid var(--cream);
+    border-left: 3px solid var(--cream);
+    border-radius: 2px;
+    margin-bottom: 8px;
+    transition: border-left-color 0.2s;
+    animation: fadeUp 0.9s ease 0.18s both;
 }
-
-
-
+ 
+.ligne-filtre:hover { border-left-color: var(--latin); }
+ 
+.ligne-filtre:last-of-type { margin-bottom: 32px; }
+ 
 .titre-filtre {
-    min-width: 200px;      /* un peu plus large */
-    font-weight: bold;
-    text-align: left;      /* ← changement important */
-    padding-right: 15px;
+    min-width: 250px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.92em;
+    letter-spacing: 0.06em;
+    color: #5a4030;
+    text-align: left;
+    padding-right: 16px;
     white-space: nowrap;
+    text-transform: uppercase;
 }
-
-
-/* =========================
-   SELECTS (TOUS)
-   ========================= */
-
+ 
 select {
-    font-size: 1em;
-    font-family: inherit;
-    padding: 6px 8px;
-    border: 1px solid #999;
-    background-color: #fff;
-    border-radius: 4px;
+    font-size: 0.95em;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    padding: 7px 10px;
+    border: 1px solid #c8b89a;
+    background-color: #fdfaf4;
+    border-radius: 2px;
+    color: var(--ink);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
 }
-
-/* Selects de valeurs linguistiques */
-select.ana {
-    min-width: 220px;
-}
-
-/* Selects opérateurs (OU / ET / SANS) */
-select.op {
-    min-width: 70px;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Hover / focus léger */
+ 
+select:hover { border-color: var(--latin); }
+ 
 select:focus {
     outline: none;
-    border-color: #333;
+    border-color: var(--latin);
+    box-shadow: 0 0 0 2px rgba(158, 32, 53, 0.12);
 }
-
-/* =========================
-   COMPTEUR ET MESSAGES
-   ========================= */
-
+ 
+select.ana { min-width: 200px; 
+           max-width: 200px;}
+ 
+select.op {
+    min-width: 72px;
+    font-weight: 700;
+    font-size: 0.8em;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: var(--latin);
+    border-color: #ddd;
+    background-color: #fdf5f6;
+}
+ 
 #compteur {
-    text-align: left;
-    margin-top: 25px;
-    margin-bottom: 40px;
-    font-weight: bold;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #5a4030;
+    margin: 0 0 28px;
+    border-left: 3px solid var(--latin);
+    padding-left: 12px;
+    animation: fadeIn 0.6s ease 0.3s both;
 }
-
+ 
 #message-vide {
+    font-family: 'IM Fell English', serif;
     font-style: italic;
-    margin-top: 30px;
+    font-size: 1.1em;
+    color: #9a8060;
+    text-align: center;
+    margin-top: 40px;
+    opacity: 0.8;
 }
-
-/* =========================
-   CORPUS
-   ========================= */
-
-.texte {
-    margin-bottom: 50px;
-}
-
-.notice {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.texte p {
-    text-align: justify;
-}
-
-/* =========================
-   LIGNE DE SÉPARATION
-   ========================= */
-
+ 
 hr {
-    margin: 50px 0;
     border: none;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid rgba(184, 137, 42, 0.3);
+    margin: 0 0 36px;
+}
+ 
+#corpus { animation: fadeUp 0.7s ease 0.35s both; }
+ 
+.texte {
+    background: white;
+    border: 1px solid var(--cream);
+    border-left: 4px solid var(--latin);
+    border-radius: 2px;
+    padding: 28px 36px;
+    margin-bottom: 28px;
+    box-shadow: 0 3px 14px rgba(26, 18, 8, 0.05);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+ 
+.texte:hover {
+    box-shadow: 0 6px 24px rgba(158, 32, 53, 0.1);
+    transform: translateY(-2px);
+}
+ 
+.notice {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+ 
+.texte p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12em;
+    line-height: 1.85;
+    text-align: justify;
+    color: #2e2010;
+    font-weight: 300;
 }
 
-/* =========================
-   BADGES
-   ========================= */
-
+.texte strong {
+    font-weight: 1000;
+}
+ 
 .badge {
-  padding: 0 5px;
-  border-radius: 10px;
-  color: white;
-  margin: 3px;
-  text-transform: capitalize;
-  float: right;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78em;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin: 2px 2px;
+    float: right;
 }
-
-.badge.type {
-  border: 1px solid darkorchid;
-  background: darkorchid;
+ 
+.badge.type   { background: #f0e8f8; color: darkorchid; border: 1px solid darkorchid; }
+.badge.niveau { background: #e8f4fb; color: #2a6080;    border: 1px solid #8ab8d0; }
+ 
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
-
-.badge.niveau {
-  border: 1px solid lightblue;
-  background: lightblue;
-  color: black;
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
-
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+ 
+@media (max-width: 820px) {
+    .container { padding: 36px 18px 60px; }
+    #filtres { flex-direction: column; align-items: stretch; padding: 16px 18px; }
+    .ligne-filtre { flex-wrap: wrap; padding: 12px 16px; }
+    .titre-filtre { width: 100%; min-width: unset; margin-bottom: 4px; }
+    select.ana { min-width: 140px; flex: 1; }
+    .texte { padding: 20px 20px; }
+}
