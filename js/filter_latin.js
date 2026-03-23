@@ -4,7 +4,6 @@ const ANA_LABELS = {
         indicatif_imparfait: "Indicatif imparfait",
         indicatif_parfait: "Indicatif parfait",
         indicatif_plus_que_parfait: "Indicatif plus-que-parfait",
-        indicatif_aoriste: "Indicatif aoriste",
         indicatif_futur: "Indicatif futur",
         indicatif_futur_anterieur: "Indicatif futur antérieur",
 
