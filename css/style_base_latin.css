@@ -45,7 +45,7 @@ body::after {
 .container {
     position: relative;
     z-index: 1;
-    max-width: 1300px;
+    max-width: 1150px;
     margin: 0 auto;
     padding: 50px 36px 100px;
 }
@@ -128,7 +128,8 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(158, 32, 53, 0.12);
 }
  
-select.ana { min-width: 200px; }
+select.ana { min-width: 200px; 
+           max-width: 200px;}
  
 select.op {
     min-width: 72px;
