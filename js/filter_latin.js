@@ -182,7 +182,7 @@ for (const file of files.filter(f => f.startsWith("la_"))) {
 
     function appliquerFiltres() {
         const type = document.getElementById("type").value;
-        const type = document.getElementById("genre").value;
+        const genre = document.getElementById("genre").value;
         const niveau = document.getElementById("niveau").value;
 
         let filtresActifs =
