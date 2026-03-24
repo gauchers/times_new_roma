@@ -16,7 +16,25 @@ const ANA_LABELS = {
     syntaxe: {
         "relative": "Proposition relative",
         "infinitive": "Proposition infinitive",
-    }
+    },
+  
+    theme: {
+    agriculture: "Agriculture et vie rustique",
+    amitie: "Amitié",
+    amour: "Amour et érotisme",
+    education: "Éducation et pédagogie",
+    eloge: "Éloge et blâme",
+    famille: "Famille et ancêtres",
+    guerre: "Guerre",
+    litterature: "Littérature",
+    mort: "Mort",
+    nature: "Nature",
+    philosophie: "Philosophie et sagesse",
+    politique: "Politique et pouvoir",
+    religion: "Religion et mythologie",
+    societe: "Société",
+    voyage: "Voyage et exil"
+}
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -80,13 +98,15 @@ for (const file of files.filter(f => f.startsWith("grc_"))) {
 
     function appliquerFiltres() {
         const type = document.getElementById("type").value;
+        const genre = document.getElementById("genre").value;
         const niveau = document.getElementById("niveau").value;
 
         let filtresActifs =
             type || niveau ||
             hasAnaSelection("conjugaison") ||
             hasAnaSelection("morphologie") ||
-            hasAnaSelection("syntaxe");
+            hasAnaSelection("syntaxe") ||
+            hasAnaSelection("theme");
 
         let count = 0;
 
@@ -100,6 +120,7 @@ for (const file of files.filter(f => f.startsWith("grc_"))) {
             if (!testAnaCat("conjugaison", texte)) visible = false;
             if (!testAnaCat("morphologie", texte)) visible = false;
             if (!testAnaCat("syntaxe", texte)) visible = false;
+            if (!testAnaCat("theme", texte)) visible = false;
 
             texte.style.display = visible ? "block" : "none";
             if (visible) count++;
