@@ -70,6 +70,7 @@ h1 {
     font-style: italic; font-size: 1.15em;
     color: var(--gold); letter-spacing: 0.05em;
     margin-bottom: 32px;
+ text-align: center;
 }
 
 .divider {
