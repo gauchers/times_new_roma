@@ -101,7 +101,7 @@ const ANA_LABELS = {
         systeme_hypothetique_irreel_passe: "Système hypothétique (irréel du passé)"
     },
 
-    themes: {
+    theme: {
     agriculture: "Agriculture et vie rustique",
     amitie: "Amitié",
     amour: "Amour et érotisme",
