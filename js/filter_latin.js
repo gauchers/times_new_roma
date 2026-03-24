@@ -108,7 +108,7 @@ const ANA_LABELS = {
     education: "Éducation et pédagogie",
     eloge: "Éloge et blâme",
     famille: "Famille et ancêtres",
-    guerre: "Guerre et conquêtes",
+    guerre: "Guerre",
     litterature: "Littérature",
     mort: "Mort",
     nature: "Nature",
@@ -116,7 +116,6 @@ const ANA_LABELS = {
     politique: "Politique et pouvoir",
     religion: "Religion et mythologie",
     societe: "Société",
-    vertu: "Vertu et morale",
     voyage: "Voyage et exil"
 }
 };
