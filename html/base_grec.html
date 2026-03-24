@@ -19,9 +19,8 @@
         <option value="poesie">Poésie</option>
     </select>
 
-<select id="genre">
+    <select id="genre">
     <option value="">Genre</option>
-    <option value="agronomie">Agronomie (Traités techniques)</option>
     <option value="comedie">Comédie</option>
     <option value="didactique">Didactique</option>
     <option value="discours">Discours</option>
@@ -33,10 +32,9 @@
     <option value="histoire">Histoire</option>
     <option value="philosophie">Philosophie</option>
     <option value="roman">Roman</option>
-    <option value="satire">Satire</option>
     <option value="theatre">Théâtre</option>
     <option value="tragedie">Tragédie</option>
-        <option value="technique">Traités techniques</option>
+    <option value="technique">Traités techniques</option>
 </select>
     
     <select id="niveau">
@@ -100,6 +98,23 @@
     <select class="ana" data-cat="syntaxe"></select>
 </div>
 
+ <div class="ligne-filtre">
+    <label class="titre-filtre">Thématiques</label>
+    <select class="ana" data-cat="theme"></select>
+    <select class="op" data-cat="theme">
+        <option value="or">OU</option>
+        <option value="and">ET</option>
+        <option value="without">SANS</option>
+    </select>
+    <select class="ana" data-cat="theme"></select>
+     <select class="op" data-cat="theme">
+        <option value="or">OU</option>
+        <option value="and">ET</option>
+        <option value="without">SANS</option>
+    </select>
+    <select class="ana" data-cat="theme"></select>
+</div>
+    
 <p id="compteur"></p>
 <p id="message-vide" style="display:none;">Aucun texte correspondant</p>
 
