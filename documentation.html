@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Documentation – Times New Roma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="documentation_files/css2.css" rel="stylesheet">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --ink:      #1a1208;
+    --parch:    #f0ece0;
+    --cream:    #e4dcc8;
+    --white:    #fdfaf4;
+    --gold:     #b8892a;
+    --gold-lt:  #d4a84b;
+    --grec:     #0e6e4a;
+    --grec-lt:  #13976a;
+    --latin:    #9e2035;
+    --latin-lt: #c72b44;
+    --blue:     #3a5f72;
+    --blue-lt:  #4e7d96;
+    --num:      #4a3570;
+    --num-lt:   #6b55a0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background-color: var(--parch);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.7;
+}
+
+body::after {
+    content: '';
+    position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200;
+    background: repeating-linear-gradient(
+        to right, var(--gold) 0, var(--gold) 6px, transparent 6px, transparent 10px
+    );
+}
+
+/* ══════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════ */
+
+nav {
+    position: relative; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 40px;
+}
+
+.nav-left  { display: flex; gap: 10px; }
+.nav-right { display: flex; gap: 10px; }
+
+.nav-btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88em; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; padding: 8px 20px;
+    border-radius: 2px; border: 1px solid transparent;
+    transition: all 0.25s; color: var(--ink);
+}
+.nav-btn.home {
+    background: var(--blue); color: #fff; border-color: var(--blue);
+}
+.nav-btn.home:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
+
+.nav-btn.contribuer {
+    background: transparent; color: var(--ink); border-color: var(--cream);
+}
+.nav-btn.contribuer:hover {
+    background: var(--cream); border-color: var(--gold); color: var(--gold);
+}
+
+/* ══════════════════════════════════════
+   CONTENEUR
+══════════════════════════════════════ */
+
+.container {
+    position: relative; z-index: 1;
+    max-width: 1020px; margin: 0 auto;
+    padding: 36px 36px 100px;
+}
+
+/* ══════════════════════════════════════
+   EN-TÊTE PAGE
+══════════════════════════════════════ */
+
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeDown 0.8s ease both;
+}
+
+.page-header svg { display: block; margin: 0 auto 16px; opacity: 0.45; }
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4em, 6vw, 4em);
+    font-weight: 900; color: var(--ink);
+    margin-bottom: 4px; line-height: 1.05;
+}
+
+.page-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 1.15em;
+    color: var(--gold); letter-spacing: 0.05em;
+    margin-bottom: 28px;
+}
+
+.divider {
+    display: flex; align-items: center; gap: 14px;
+    max-width: 400px; margin: 0 auto;
+}
+.divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.divider span { color: var(--gold); font-size: 1.1em; opacity: 0.7; }
+
+/* ══════════════════════════════════════
+   LAYOUT : SIDEBAR + CONTENU
+══════════════════════════════════════ */
+
+.doc-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* ── Sidebar (sommaire) ── */
+.sidebar {
+    position: sticky;
+    top: 32px;
+    animation: fadeIn 0.9s ease 0.2s both;
+}
+
+.sidebar-inner {
+    background: var(--white);
+    border: 1px solid var(--cream);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 20px 0;
+    box-shadow: 0 4px 18px rgba(26,18,8,0.06);
+}
+
+.sidebar-title {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9a8060;
+    padding: 0 20px 12px;
+    border-bottom: 1px solid var(--cream);
+    margin-bottom: 8px;
+}
+
+.sidebar nav {
+    display: block;
+    padding: 0;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.97em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #5a4030;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.sidebar-link:hover {
+    color: var(--ink);
+    background: rgba(184, 137, 42, 0.06);
+}
+
+.sidebar-link.pedago:hover,
+.sidebar-link.pedago.active { border-left-color: var(--grec); color: var(--grec); }
+.sidebar-link.termino:hover,
+.sidebar-link.termino.active { border-left-color: var(--latin); color: var(--latin); }
+.sidebar-link.num:hover,
+.sidebar-link.num.active { border-left-color: var(--num); color: var(--num); }
+
+.sidebar-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%; flex-shrink: 0;
+}
+.pedago .sidebar-dot { background: var(--grec); }
+.termino .sidebar-dot { background: var(--latin); }
+.num .sidebar-dot { background: var(--num); }
+
+/* ── Zone de contenu ── */
+.doc-content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+/* ══════════════════════════════════════
+   SECTIONS DOCUMENTAIRES
+══════════════════════════════════════ */
+
+.doc-section {
+    animation: fadeUp 0.8s ease both;
+}
+
+.doc-section:nth-child(1) { animation-delay: 0.15s; }
+.doc-section:nth-child(2) { animation-delay: 0.25s; }
+.doc-section:nth-child(3) { animation-delay: 0.35s; }
+
+/* Label de section */
+.section-label {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 24px;
+}
+.section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, currentColor, transparent);
+    opacity: 0.25;
+}
+.section-label span {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 1.05em;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    white-space: nowrap;
+}
+.pedago-label  { color: var(--grec); }
+.termino-label { color: var(--latin); }
+.num-label     { color: var(--num); }
+
+/* ── Entrées documentaires ── */
+.doc-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.doc-entry {
+    background: var(--white);
+    border: 1px solid var(--cream);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(26,18,8,0.04);
+    transition: box-shadow 0.25s, transform 0.25s;
+}
+.doc-entry:hover {
+    box-shadow: 0 6px 22px rgba(26,18,8,0.09);
+    transform: translateY(-2px);
+}
+
+.doc-entry.pedago  { border-left: 4px solid var(--grec); }
+.doc-entry.termino { border-left: 4px solid var(--latin); }
+.doc-entry.num     { border-left: 4px solid var(--num); }
+
+/* Header cliquable de l'entrée */
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    cursor: pointer;
+    user-select: none;
+    gap: 12px;
+}
+
+.entry-header::-webkit-details-marker { display: none; }
+
+.entry-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em; font-weight: 700;
+    color: var(--ink); line-height: 1.2;
+}
+
+.entry-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75em; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 2px;
+    white-space: nowrap; flex-shrink: 0;
+}
+.tag-pedago  { background: #e8f4ee; color: var(--grec);  border: 1px solid rgba(14,110,74,0.25); }
+.tag-termino { background: #faecee; color: var(--latin); border: 1px solid rgba(158,32,53,0.25); }
+.tag-num     { background: #eeeaf6; color: var(--num);   border: 1px solid rgba(74,53,112,0.25); }
+
+/* Corps de l'entrée (details/summary) */
+details.doc-entry summary {
+    list-style: none;
+}
+details.doc-entry summary::-webkit-details-marker { display: none; }
+
+.entry-toggle {
+    font-size: 0.7em;
+    color: #a08c6a;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+}
+details[open] .entry-toggle { transform: rotate(90deg); }
+
+.entry-body {
+    padding: 0 24px 22px;
+    border-top: 1px solid var(--cream);
+}
+
+.entry-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.06em; font-weight: 300;
+    line-height: 1.75; color: #3a2e1e;
+    margin-top: 16px;
+}
+
+.entry-body p + p { margin-top: 10px; }
+
+.entry-body strong { font-weight: 600; color: var(--ink); }
+
+.entry-body ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.entry-body li {
+    position: relative;
+    padding-left: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05em; font-weight: 300;
+    line-height: 1.6; color: #3a2e1e;
+}
+.entry-body li::before {
+    content: '–';
+    position: absolute; left: 2px;
+    color: var(--gold);
+}
+
+/* Tableau terminologique */
+.term-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.02em;
+}
+.term-table th {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.88em; font-weight: 700;
+    letter-spacing: 0.04em; text-align: left;
+    padding: 8px 14px;
+    background: #f5efe0;
+    border-bottom: 2px solid var(--cream);
+    color: #5a4030;
+}
+.term-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid rgba(228,220,200,0.6);
+    font-weight: 300; color: #3a2e1e;
+    vertical-align: top;
+    line-height: 1.55;
+}
+.term-table tr:last-child td { border-bottom: none; }
+.term-table tr:hover td { background: rgba(184,137,42,0.04); }
+
+.term-fr   { font-style: italic; color: var(--latin); font-weight: 400; }
+.term-lat  { color: #5a3020; font-weight: 400; }
+.term-grec { color: var(--grec); font-weight: 400; }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+
+.footer-rule {
+    text-align: center; margin-top: 64px;
+    animation: fadeIn 1s ease 0.6s both;
+}
+.footer-rule p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 0.85em;
+    color: #a08c6a; margin-top: 10px; letter-spacing: 0.04em;
+}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════ */
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+
+@media (max-width: 780px) {
+    nav { padding: 14px 18px; flex-wrap: wrap; gap: 8px; }
+    .container { padding: 28px 18px 60px; }
+    .doc-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .sidebar-inner { display: flex; flex-wrap: wrap; gap: 0; padding: 12px 0; }
+    .sidebar-title { width: 100%; }
+    .sidebar-link { flex: 1 0 auto; }
+    .entry-header { flex-wrap: wrap; }
+}
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-right">
+        <a href="file:///C:/Users/wo_xi/Downloads/contribuer.html" class="nav-btn contribuer">Contribuer</a><a href="file:///C:/Users/wo_xi/index.html" class="nav-btn home">← Accueil</a>
+        
+    </div>
+</nav>
+
+<main class="container">
+
+    <!-- En-tête -->
+    <header class="page-header">
+        
+        <h1>Times New Roma</h1>
+        <p class="page-subtitle">Documentation</p>
+        <div class="divider"><span>✦</span></div>
+    </header>
+
+    <div class="doc-layout">
+
+        <!-- ── Sidebar sommaire ── -->
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+                <p class="sidebar-title">Sommaire</p>
+                <nav>
+                    <a href="#pedagogique" class="sidebar-link pedago">
+                        <span class="sidebar-dot"></span>Informations pédagogiques
+                    </a>
+                    <a href="#terminologie" class="sidebar-link termino">
+                        <span class="sidebar-dot"></span>Terminologie
+                    </a>
+                    <a href="#numerique" class="sidebar-link num">
+                        <span class="sidebar-dot"></span>Développement numérique
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- ── Contenu ── -->
+        <div class="doc-content">
+
+            <!-- ════════════════════════════
+                 1. INFORMATIONS PÉDAGOGIQUES
+            ════════════════════════════ -->
+            <section class="doc-section" id="pedagogique">
+                <div class="section-label pedago-label">
+                    <span>Informations pédagogiques</span>
+                </div>
+
+                <div class="doc-entries">
+
+                    <details class="doc-entry pedago">
+                        <summary class="entry-header">
+                            <span class="entry-title">Niveaux de difficulté</span>
+                            <span class="entry-tag tag-pedago">Niveaux</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <p>Les textes sont classés selon quatre 
+niveaux de difficulté croissante, permettant aux enseignants de cibler 
+les textes adaptés à leur classe.</p>
+                            <ul>
+                                <li><strong>Niveau 1</strong> — Syntaxe simple. Adapté au niveau débutant.</li>
+                                <li><strong>Niveau 2</strong> — Constructions légèrement plus complexes. Quelques tournures idiomatiques. Convient aux continuants.</li>
+                                <li><strong>Niveau 3</strong> — Syntaxe élaborée, vocabulaire soutenu. Adapté aux étudiants confirmés.</li>
+                                <li><strong>Niveau 4</strong> — Textes exigeants et appropriés pour la préparation des concours de l'enseignement.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="doc-entry pedago">
+                        <summary class="entry-header">
+                            <span class="entry-title">Types de textes</span>
+                            <span class="entry-tag tag-pedago">Corpus</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <p>Times New Roma ne comprend à ce jour pas 
+de textes forgés ou adaptés. Les textes peuvent cependant avoir été 
+coupés (auquel cas la coupe est indiquée [...]). Le corpus distingue 
+deux grandes catégories :</p>
+                            <ul>
+                                <li><strong>Prose</strong> — Historiographie, philosophie, rhétorique, épistolaire…</li>
+                                <li><strong>Poésie</strong> — Textes en vers. Les mètres ne sont pas indiqués mais peuvent être renseignés lors de la contribution.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="doc-entry pedago">
+                        <summary class="entry-header">
+                            <span class="entry-title">Utilisation des filtres</span>
+                            <span class="entry-tag tag-pedago">Outil</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <p>Les filtres permettent de cibler des 
+textes selon des critères grammaticaux précis. Chaque ligne (Verbes, 
+Noms/Pronoms/Adjectifs, Syntaxe) dispose de trois selects et de deux 
+opérateurs logiques.</p>
+                            <ul>
+                                <li><strong>OU</strong> — affiche les textes contenant l'un ou l'autre des items sélectionnés.</li>
+                                <li><strong>ET</strong> — n'affiche que les textes contenant les deux items simultanément.</li>
+                                <li><strong>SANS</strong> — exclut les textes contenant l'item suivant.</li>
+                            </ul>
+                            <p>Les filtres peuvent être combinés entre les trois lignes pour affiner la sélection.</p>
+                        </div>
+                    </details>
+
+                </div>
+            </section>
+
+            <!-- ════════════════════════════
+                 2. TERMINOLOGIE
+            ════════════════════════════ -->
+            <section class="doc-section" id="terminologie">
+                <div class="section-label termino-label">
+                    <span>Terminologie</span>
+                </div>
+
+                <div class="doc-entries">
+
+                    <details class="doc-entry termino">
+                        <summary class="entry-header">
+                            <span class="entry-title">Termes grammaticaux — Verbes</span>
+                            <span class="entry-tag tag-termino">Latin · Grec</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <p>Référentiel des termes utilisés dans la base pour les items de conjugaison.</p>
+                            <table class="term-table">
+                                <thead>
+                                    <tr>
+                                        <th>Entrée</th>
+                                        <th>Latin</th>
+                                        <th>Grec</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="term-fr">Indicatif présent</td>
+                                        <td class="term-lat">Oui</td>
+                                        <td class="term-grec">Oui</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="term-fr">Subjonctif imparfait</td>
+                                        <td class="term-lat">Oui</td>
+                                        <td class="term-grec">Oui</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="term-fr">Infinitif présent</td>
+                                        <td class="term-lat">Oui</td>
+                                        <td class="term-grec">Oui</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="term-fr">Participe parfait passif</td>
+                                        <td class="term-lat">Oui</td>
+                                        <td class="term-grec">Non</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="doc-entry termino">
+                        <summary class="entry-header">
+                            <span class="entry-title">Termes grammaticaux — Noms, pronoms, adjectifs</span>
+                            <span class="entry-tag tag-termino">Latin · Grec</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <p>Référentiel des termes utilisés pour les items de morphologie nominale, pronominale et adjectivale.</p>
+                            <table class="term-table">
+                                <thead>
+                                    <tr>
+                                        <th>Terme employé</th>
+                                        <th>Latin</th>
+                                        <th>Grec</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="term-fr">1ère déclinaison</td>
+                                        <td class="term-lat">NON</td>
+                                        <td class="term-grec">NON</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="term-fr">2ème déclinaison</td>
+                                        <td class="term-lat">NON</td>
+                                        <td class="term-grec">NON</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="term-fr">3ème déclinaison</td>
+                                        <td class="term-lat">NON</td>
+                                        <td class="term-grec">OUI</td>
+                                    </tr>
+                                    
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="doc-entry termino">
+                        <summary class="entry-header">
+                            <span class="entry-title">Termes grammaticaux — Syntaxe</span>
+                            <span class="entry-tag tag-termino">Latin · Grec</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <table class="term-table">
+                                <thead>
+                                    <tr>
+                                        <th>Terme employé</th>
+                                        <th>Latin</th>
+                                        <th>Grec</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="term-fr">Proposition infinitive</td>
+                                        <td class="term-lat">OUI</td>
+                                        <td class="term-grec">OUI</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="term-fr">Ablatif absolu</td>
+                                        <td class="term-lat">OUI</td>
+                                        <td class="term-grec">NON</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="term-fr">Génitif absolu</td>
+                                        <td class="term-lat">NON</td>
+                                        <td class="term-grec">OUI</td>
+                                    </tr>
+                                    
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                </div>
+            </section>
+
+            <!-- ════════════════════════════
+                 3. DÉVELOPPEMENT NUMÉRIQUE
+            ════════════════════════════ -->
+            <section class="doc-section" id="numerique">
+                <div class="section-label num-label">
+                    <span>Développement numérique</span>
+                </div>
+
+                <div class="doc-entries">
+
+                    
+
+                    
+
+                    
+
+                    
+
+                <details class="doc-entry num">
+                        <summary class="entry-header">
+                            <span class="entry-title">Grist</span>
+                            <span class="entry-tag tag-num">CSV</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <p>À la croisée des chemins entre un 
+tableur, Grist est un outil open-source de gestion de bases de données, 
+et une application « no-code ». Il est accessible aux agents des 
+ministères et aux membres de la fédération Renater.</p>
+                            <ul>
+                                <li>La contribution au corpus se fait 
+soit directement sur Grist pour les utilisateurs autorisés, soit via un 
+formulaire créé via Grist.</li>
+                                <li>Les contributions via formulaire sont modérées par les responsables du projet avant d'être intégrées dans le tableur principal.</li>
+                                <li>Le tableur principal est exporté au 
+format CSV sur Github pour implémentation sur le site. L'implémentation 
+fonctionne par vagues en chaque début de mois.</li>
+                            </ul>
+                        </div>
+                    </details><details class="doc-entry num">
+                        <summary class="entry-header">
+                            <span class="entry-title">Logique de filtrage</span>
+                            <span class="entry-tag tag-num">JavaScript</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <p>Le script <code>filter_latin.js</code> (resp. <code>filter_grec.js</code>)
+ charge le JSON du corpus, peuple dynamiquement les selects à partir des
+ valeurs présentes, puis filtre l'affichage à chaque changement de 
+valeur.</p>
+                            <ul>
+                                <li>Les opérateurs <strong>OU / ET / SANS</strong> s'appliquent par paire au sein de chaque ligne de filtre.</li>
+                                <li>Les trois lignes (conjugaison, 
+morphologie, syntaxe) sont combinées en intersection : un texte doit 
+satisfaire les trois lignes pour être affiché.</li>
+                                <li>Le compteur <code>#compteur</code> est mis à jour à chaque filtrage.</li>
+                                <li>Pour ajouter un nouvel item, il suffit de l'insérer dans le JSON — les selects se peuplent automatiquement.</li>
+                            </ul>
+                        </div>
+                    </details><details class="doc-entry num">
+                        <summary class="entry-header">
+                            <span class="entry-title">Architecture du projet</span>
+                            <span class="entry-tag tag-num">HTML</span>
+                            <span class="entry-toggle">▸</span>
+                        </summary>
+                        <div class="entry-body">
+                            <p>Le projet repose sur une architecture 
+statique (HTML / CSS / JavaScript). Les données sont stockées dans un 
+tableur Grist et exportées via un format csv. sur Github pour alimenter 
+les corpus.</p>
+                            <ul>
+                                <li><strong>index.html</strong> — Page d'accueil avec choix de langue.</li>
+                                <li><strong>html/base_grec.html</strong> — Corpus grec avec filtres dynamiques.</li>
+                                <li><strong>html/base_latin.html</strong> — Corpus latin avec filtres dynamiques.</li>
+                                <li><strong>html/contribuer.html</strong> — Page de contribution.</li>
+                                <li><strong>html/equipe.html</strong> — Présentation de l'équipe.</li>
+                                <li><strong>html/documentation.html</strong> — Cette page.</li>
+                                <li><strong>css/</strong> — Feuilles de style par page.</li>
+                                <li><strong>js/</strong> — Scripts de filtrage du corpus.</li>
+                            </ul>
+                        </div>
+                    </details></div>
+            </section>
+
+        </div><!-- /doc-content -->
+    </div><!-- /doc-layout -->
+
+    <!-- Footer -->
+    <div class="footer-rule">
+        <svg width="160" height="12" viewBox="0 0 160 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="6" x2="68" y2="6" stroke="#b8892a" stroke-width="0.8" opacity="0.5"></line>
+            <circle cx="80" cy="6" r="3" fill="#b8892a" opacity="0.5"></circle>
+            <line x1="92" y1="6" x2="160" y2="6" stroke="#b8892a" stroke-width="0.8" opacity="0.5"></line>
+        </svg>
+        
+    </div>
+
+</main>
+
+
+</body></html>
