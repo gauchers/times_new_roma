@@ -48,7 +48,7 @@ body::after {
 
 nav {
     position: relative; z-index: 10;
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; justify-content: flex-end; align-items: center;
     padding: 16px 40px;
 }
 
@@ -69,10 +69,13 @@ nav {
 .nav-btn.home:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
 
 .nav-btn.contribuer {
-    background: transparent; color: var(--ink); border-color: var(--cream);
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
 }
 .nav-btn.contribuer:hover {
-    background: var(--cream); border-color: var(--gold); color: var(--gold);
+    background: var(--gold-lt);
+    border-color: var(--gold-lt);
 }
 
 /* ══════════════════════════════════════
