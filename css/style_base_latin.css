@@ -50,24 +50,37 @@ body::after {
     padding: 50px 36px 100px;
 }
  
+.page-header {
+    text-align: center;
+    margin-bottom: 64px;
+    animation: fadeDown 0.8s ease both;
+}
+
+.page-header svg { display: block; margin: 0 auto 16px; opacity: 0.45; }
+
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2em, 5vw, 3.6em);
-    font-weight: 900;
-    text-align: center;
-    color: var(--ink);
-    margin-bottom: 36px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(158, 32, 53, 0.2);
-    animation: fadeDown 0.8s ease both;
+    font-size: clamp(2.4em, 6vw, 4em);
+    font-weight: 900; color: var(--ink);
+    margin-bottom: 4px; line-height: 1.05;
 }
 
 .page-subtitle {
     font-family: 'IM Fell English', serif;
     font-style: italic; font-size: 1.15em;
     color: var(--gold); letter-spacing: 0.05em;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
 }
+
+.divider {
+    display: flex; align-items: center; gap: 14px;
+    max-width: 400px; margin: 0 auto;
+}
+.divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.divider span { color: var(--gold); font-size: 1.1em; opacity: 0.7; }
  
 #filtres {
     display: flex;
