@@ -99,7 +99,26 @@ const ANA_LABELS = {
         systeme_hypothetique_eventuel: "Système hypothétique (éventuel)",
         systeme_hypothetique_irreel_present: "Système hypothétique (irréel du présent)",
         systeme_hypothetique_irreel_passe: "Système hypothétique (irréel du passé)"
-    }
+    },
+
+    themes = {
+    agriculture: "Agriculture et vie rustique",
+    amitie: "Amitié",
+    amour: "Amour et érotisme",
+    education: "Éducation et pédagogie",
+    eloge: "Éloge et blâme",
+    famille: "Famille et ancêtres",
+    guerre: "Guerre et conquêtes",
+    litterature: "Littérature",
+    mort: "Mort",
+    nature: "Nature",
+    philosophie: "Philosophie et sagesse",
+    politique: "Politique et pouvoir",
+    religion: "Religion et mythologie",
+    societe: "Société",
+    vertu: "Vertu et morale",
+    voyage: "Voyage et exil"
+}
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -163,13 +182,15 @@ for (const file of files.filter(f => f.startsWith("la_"))) {
 
     function appliquerFiltres() {
         const type = document.getElementById("type").value;
+        const type = document.getElementById("genre").value;
         const niveau = document.getElementById("niveau").value;
 
         let filtresActifs =
             type || niveau ||
             hasAnaSelection("conjugaison") ||
             hasAnaSelection("morphologie") ||
-            hasAnaSelection("syntaxe");
+            hasAnaSelection("syntaxe") ||
+            hasAnaSelection("theme");
 
         let count = 0;
 
@@ -183,6 +204,7 @@ for (const file of files.filter(f => f.startsWith("la_"))) {
             if (!testAnaCat("conjugaison", texte)) visible = false;
             if (!testAnaCat("morphologie", texte)) visible = false;
             if (!testAnaCat("syntaxe", texte)) visible = false;
+            if (!testAnaCat("theme", texte)) visible = false;
 
             texte.style.display = visible ? "block" : "none";
             if (visible) count++;
