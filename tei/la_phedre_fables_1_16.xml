@@ -40,7 +40,7 @@
             <term type="niveau" n="2"/>
             <term type="coupe" subtype="non"/>
 
-            <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_parfait indicatif_futur indicatif_futur_anterieur participe_present deponent"/>
+            <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_parfait indicatif_futur indicatif_futur_anterieur infinitif_present participe_present deponent"/>
             <term type="morphologie" ana="ille"/>
             <term type="syntaxe" ana="interrogative_directe cum_indicatif"/>
           </bibl>

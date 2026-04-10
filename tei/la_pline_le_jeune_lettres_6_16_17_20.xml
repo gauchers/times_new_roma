@@ -40,7 +40,7 @@
             <term type="niveau" n="2"/>
             <term type="coupe" subtype="non"/>
 
-            <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_parfait indicatif_plus_que_parfait participe_present participe_parfait participe_substantive deponent"/>
+            <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_parfait indicatif_plus_que_parfait infinitif_present participe_present participe_parfait participe_substantive deponent"/>
             <term type="morphologie" ana="comparatif comparatif_adverbe ille"/>
             <term type="syntaxe" ana="relatif_liaison circonstancielle_temps_indicatif comparative_indicatif complement_comparatif"/>
           </bibl>
