@@ -105,19 +105,20 @@ const ANA_LABELS = {
     agriculture: "Agriculture et vie rustique",
     amitie: "Amitié",
     amour: "Amour et érotisme",
+    argent: "Argent et commerce",
     education: "Éducation et pédagogie",
     eloge: "Éloge et blâme",
     famille: "Famille et ancêtres",
     guerre: "Guerre",
-    litterature: "Littérature",
+    litterature: "Langue et littérature",
     mort: "Mort",
-    nature: "Nature",
-    philosophie: "Philosophie et sagesse",
+    nature: "Nature et animaux",
+    philosophie: "Philosophie et morale",
     politique: "Politique et pouvoir",
     religion: "Religion et mythologie",
     societe: "Société",
     voyage: "Voyage et exil"
-}
+    }
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
