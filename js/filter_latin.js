@@ -205,7 +205,67 @@ document.addEventListener("DOMContentLoaded", async () => {
         .forEach(s => s.addEventListener("change", appliquerFiltres));
 
     /* =========================
-       4. Filtres
+       4. Construction de la
+          séquence de tokens
+       ========================= */
+
+    /*
+     * buildSequence() lit le DOM une seule fois et construit
+     * une liste plate de tokens dans l'ordre d'apparition :
+     *
+     *   [
+     *     { type: "ana", cat: "conjugaison", el: <select> },
+     *     { type: "op",                      el: <select> },
+     *     { type: "ana", cat: "morphologie", el: <select> },
+     *     ...
+     *   ]
+     *
+     * La clé est d'utiliser un TreeWalker qui visite TOUS les
+     * éléments du DOM dans l'ordre du document. On retient
+     * uniquement les <select class="ana"> et <select class="op">.
+     * Leur ordre dans le DOM reflète exactement l'ordre visuel,
+     * indépendamment de leur catégorie ou de leur ligne.
+     *
+     * Structure HTML attendue par ligne :
+     *   [ana] [op] [ana] [op] [ana]
+     * Entre deux lignes, pas d'op supplémentaire : l'op qui
+     * relie la dernière ana d'une ligne à la première ana de
+     * la ligne suivante est le dernier op de la première ligne.
+     *
+     * Si ta maquette ne place pas d'op entre lignes, on
+     * considère que le passage d'une ligne à l'autre est un OU
+     * implicite (voir appliquerFiltres). Pour un ET ou SANS
+     * inter-lignes, il suffit d'ajouter un <select class="op">
+     * entre les deux <div class="ligne-filtre"> dans le HTML.
+     */
+    function buildSequence() {
+        const sequence = [];
+        const walker = document.createTreeWalker(
+            document.getElementById("filtres-ana") || document.body,
+            NodeFilter.SHOW_ELEMENT,
+            {
+                acceptNode(node) {
+                    if (node.tagName !== "SELECT") return NodeFilter.FILTER_SKIP;
+                    if (node.classList.contains("ana")) return NodeFilter.FILTER_ACCEPT;
+                    if (node.classList.contains("op"))  return NodeFilter.FILTER_ACCEPT;
+                    return NodeFilter.FILTER_SKIP;
+                }
+            }
+        );
+
+        let node;
+        while ((node = walker.nextNode())) {
+            if (node.classList.contains("ana")) {
+                sequence.push({ type: "ana", cat: node.dataset.cat, el: node });
+            } else {
+                sequence.push({ type: "op", el: node });
+            }
+        }
+        return sequence;
+    }
+
+    /* =========================
+       5. Filtres
        ========================= */
 
     function appliquerFiltres() {
@@ -213,8 +273,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const genre  = document.getElementById("genre").value;
         const niveau = document.getElementById("niveau").value;
 
-        // Y a-t-il au moins un select .ana renseigné ?
-        const anaActive = [...document.querySelectorAll("select.ana")].some(s => s.value);
+        const sequence  = buildSequence();
+        const anaActive = sequence.some(t => t.type === "ana" && t.el.value);
 
         const filtresActifs = type || genre || niveau || anaActive;
 
@@ -223,14 +283,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         textes.forEach(texte => {
             let visible = true;
 
-            if (!filtresActifs)                          visible = false;
-            if (type  && texte.dataset.type   !== type)  visible = false;
-            if (genre && texte.dataset.genre  !== genre) visible = false;
+            if (!filtresActifs)                            visible = false;
+            if (type   && texte.dataset.type   !== type)  visible = false;
+            if (genre  && texte.dataset.genre  !== genre) visible = false;
             if (niveau && texte.dataset.niveau !== niveau) visible = false;
 
-            // Test de tous les selects .ana en séquence,
-            // opérateurs appliqués entre eux sans distinction de catégorie
-            if (anaActive && !testAnaGlobal(texte))      visible = false;
+            if (anaActive && !testAnaGlobal(texte, sequence)) visible = false;
 
             texte.style.display = visible ? "block" : "none";
             if (visible) count++;
@@ -244,80 +302,78 @@ document.addEventListener("DOMContentLoaded", async () => {
             filtresActifs && count === 0 ? "block" : "none";
     }
 
-    /* -------------------------------------------------------
-       testAnaGlobal : parcourt TOUS les selects .ana du DOM
-       dans l'ordre où ils apparaissent, et applique les
-       opérateurs .op qui les séparent — toutes catégories
-       confondues.
+    /* =========================
+       6. testAnaGlobal
+       ========================= */
 
-       Structure attendue dans le HTML (ordre dans le DOM) :
-         [select.ana]  [select.op]  [select.ana]  [select.op]  [select.ana]
-                        ↑ op entre 0 et 1          ↑ op entre 1 et 2
+    /*
+     * Parcourt la séquence plate [ana, op, ana, op, ana, ana, op, ana…]
+     * et évalue si le texte passe le filtre.
+     *
+     * Règle de lecture de la séquence :
+     *
+     *  - Un token "ana" vide est ignoré.
+     *    → son op PRÉCÉDENT (s'il existe) est aussi ignoré.
+     *    → on cherche le prochain op valide en reculant ou avançant.
+     *
+     * Pour simplifier, on commence par extraire uniquement les
+     * tokens "ana" renseignés, et on résout l'opérateur entre
+     * deux tokens actifs consécutifs ainsi :
+     *
+     *   Entre ana[i] et ana[j] (i < j, tous deux actifs) :
+     *   → on regarde s'il existe un token "op" entre eux dans
+     *     la séquence. S'il en existe plusieurs, on prend le
+     *     dernier (le plus proche de ana[j]).
+     *   → s'il n'y en a pas, on utilise "or" par défaut.
+     *
+     * Ce comportement correspond à ce que l'utilisateur voit :
+     * l'op entre deux champs actifs est le dernier op visible
+     * entre eux dans l'interface.
+     */
+    function testAnaGlobal(texte, sequence) {
 
-       Pour connaître la valeur d'un select .ana, on a besoin
-       de savoir dans quel data-* du texte chercher.
-       On utilise dataset[cat] où cat = select.dataset.cat.
-    ------------------------------------------------------- */
-    function testAnaGlobal(texte) {
-
-        // Récupère tous les selects .ana dans l'ordre du DOM
-        const selects = [...document.querySelectorAll("select.ana")];
-
-        // Récupère tous les selects .op dans l'ordre du DOM
-        // Il doit y avoir (selects.length - 1) opérateurs par bloc,
-        // mais comme ils sont entremêlés on les récupère tous à plat.
-        const ops = [...document.querySelectorAll("select.op")];
-
-        // On construit une liste plate de tokens actifs :
-        // [{ value, cat }, op, { value, cat }, op, { value, cat }, ...]
-        // en ignorant les selects vides (on les saute ainsi que leur op associé)
-        //
-        // Stratégie : on itère sur les selects .ana dans l'ordre.
-        // Entre le select i et le select i+1 se trouve ops[i] dans le DOM.
-        // Si le select i est vide, on le saute (et son op suivant).
-
-        let result = null;       // null = aucun token actif rencontré encore
-        let pendingOp = null;    // opérateur à appliquer au prochain token actif
-
-        let opIndex = 0;         // index courant dans ops[]
-
-        for (let i = 0; i < selects.length; i++) {
-            const sel = selects[i];
-            const cat = sel.dataset.cat;
-
-            // L'opérateur qui suit ce select dans le DOM
-            // (undefined s'il n'y en a pas, c'est-à-dire pour le dernier select)
-            const opAfter = ops[opIndex] || null;
-
-            // Si ce select est vide, on avance l'index d'op et on continue
-            if (!sel.value) {
-                if (opAfter) opIndex++;
-                continue;
+        // 1. Repérer les index des tokens "ana" actifs
+        const activeAna = [];
+        sequence.forEach((token, idx) => {
+            if (token.type === "ana" && token.el.value) {
+                activeAna.push(idx);
             }
+        });
 
-            // Le data-* dans lequel chercher (ex. dataset.conjugaison, dataset.themes…)
-            const anaSet = (texte.dataset[cat] || "").split(/\s+/).filter(Boolean);
-            const present = anaSet.includes(sel.value);
+        if (activeAna.length === 0) return true;
+
+        // 2. Évaluer le résultat en chaîne
+        let result = null;
+
+        for (let k = 0; k < activeAna.length; k++) {
+            const idx  = activeAna[k];
+            const token = sequence[idx];
+
+            // Ensemble des valeurs ana du texte pour cette catégorie
+            const anaSet = (texte.dataset[token.cat] || "").split(/\s+/).filter(Boolean);
+            const present = anaSet.includes(token.el.value);
 
             if (result === null) {
-                // Premier token actif : on initialise result
-                result = (pendingOp === "without") ? !present : present;
+                // Premier token actif : pas encore d'opérateur
+                result = present;
             } else {
-                // Tokens suivants : on applique l'opérateur en attente
-                const op = pendingOp || "or";
+                // Trouver l'opérateur entre activeAna[k-1] et activeAna[k]
+                // = dernier token "op" entre ces deux index dans la séquence
+                const prevIdx = activeAna[k - 1];
+                let op = "or"; // valeur par défaut si aucun op trouvé
+
+                for (let j = prevIdx + 1; j < idx; j++) {
+                    if (sequence[j].type === "op") {
+                        op = sequence[j].el.value; // on écrase jusqu'au dernier
+                    }
+                }
+
                 if      (op === "without") result = result && !present;
                 else if (op === "and")     result = result && present;
                 else                       result = result || present;
             }
-
-            // L'opérateur qui suit ce select devient le pendingOp pour le prochain
-            if (opAfter) {
-                pendingOp = opAfter.value;
-                opIndex++;
-            }
         }
 
-        // Si aucun select n'était renseigné, on laisse passer
         return result === null ? true : result;
     }
 
