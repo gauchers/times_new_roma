@@ -101,9 +101,6 @@ const ANA_LABELS = {
         systeme_hypothetique_irreel_passe:    "Système hypothétique (irréel du passé)"
     },
 
-    // Genre : utilisé via le <select id="genre"> statique du HTML,
-    // pas via les selects .ana — pas besoin de le lister ici.
-    // Mais on le garde pour cohérence si on veut l'utiliser en .ana plus tard.
     genre: {
         comedie:               "Comédie",
         didactique:            "Didactique",
@@ -147,9 +144,9 @@ const ANA_LABELS = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const compteur     = document.getElementById("compteur");
-    const messageVide  = document.getElementById("message-vide");
-    const corpus       = document.getElementById("corpus");
+    const compteur    = document.getElementById("compteur");
+    const messageVide = document.getElementById("message-vide");
+    const corpus      = document.getElementById("corpus");
 
     let textes = [];
 
@@ -188,7 +185,6 @@ document.addEventListener("DOMContentLoaded", async () => {
        2. Menus déroulants .ana
        ========================= */
 
-    // Remplit tous les <select class="ana"> à partir d'ANA_LABELS
     document.querySelectorAll("select.ana").forEach(select => {
         const cat = select.dataset.cat;
         if (!ANA_LABELS[cat]) return;
@@ -217,36 +213,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         const genre  = document.getElementById("genre").value;
         const niveau = document.getElementById("niveau").value;
 
-        const filtresActifs =
-            type || genre || niveau ||
-            hasAnaSelection("conjugaison") ||
-            hasAnaSelection("morphologie") ||
-            hasAnaSelection("syntaxe")     ||
-            hasAnaSelection("themes");
+        // Y a-t-il au moins un select .ana renseigné ?
+        const anaActive = [...document.querySelectorAll("select.ana")].some(s => s.value);
+
+        const filtresActifs = type || genre || niveau || anaActive;
 
         let count = 0;
 
         textes.forEach(texte => {
             let visible = true;
 
-            // Sans aucun filtre, on n'affiche rien
-            if (!filtresActifs) visible = false;
-
-            // Filtre type (prose / poésie)
-            if (type && texte.dataset.type !== type) visible = false;
-
-            // Filtre genre : comparaison exacte sur data-genre
-            // data-genre contient une seule valeur (ex. "histoire")
-            if (genre && texte.dataset.genre !== genre) visible = false;
-
-            // Filtre niveau
+            if (!filtresActifs)                          visible = false;
+            if (type  && texte.dataset.type   !== type)  visible = false;
+            if (genre && texte.dataset.genre  !== genre) visible = false;
             if (niveau && texte.dataset.niveau !== niveau) visible = false;
 
-            // Filtres .ana avec opérateurs ET / OU / SANS
-            if (!testAnaCat("conjugaison", texte)) visible = false;
-            if (!testAnaCat("morphologie", texte)) visible = false;
-            if (!testAnaCat("syntaxe",     texte)) visible = false;
-            if (!testAnaCat("themes",      texte)) visible = false;
+            // Test de tous les selects .ana en séquence,
+            // opérateurs appliqués entre eux sans distinction de catégorie
+            if (anaActive && !testAnaGlobal(texte))      visible = false;
 
             texte.style.display = visible ? "block" : "none";
             if (visible) count++;
@@ -260,36 +244,80 @@ document.addEventListener("DOMContentLoaded", async () => {
             filtresActifs && count === 0 ? "block" : "none";
     }
 
-    function hasAnaSelection(cat) {
-        return [...document.querySelectorAll(`.ana[data-cat="${cat}"]`)]
-            .some(s => s.value);
-    }
+    /* -------------------------------------------------------
+       testAnaGlobal : parcourt TOUS les selects .ana du DOM
+       dans l'ordre où ils apparaissent, et applique les
+       opérateurs .op qui les séparent — toutes catégories
+       confondues.
 
-    function testAnaCat(cat, texte) {
-        const selects = [...document.querySelectorAll(`.ana[data-cat="${cat}"]`)];
-        const ops     = [...document.querySelectorAll(`.op[data-cat="${cat}"]`)];
+       Structure attendue dans le HTML (ordre dans le DOM) :
+         [select.ana]  [select.op]  [select.ana]  [select.op]  [select.ana]
+                        ↑ op entre 0 et 1          ↑ op entre 1 et 2
 
-        // data-themes contient "agriculture amour nature" (espace séparé)
-        const anaSet  = (texte.dataset[cat] || "").split(/\s+/).filter(Boolean);
+       Pour connaître la valeur d'un select .ana, on a besoin
+       de savoir dans quel data-* du texte chercher.
+       On utilise dataset[cat] où cat = select.dataset.cat.
+    ------------------------------------------------------- */
+    function testAnaGlobal(texte) {
 
-        let result = null;
+        // Récupère tous les selects .ana dans l'ordre du DOM
+        const selects = [...document.querySelectorAll("select.ana")];
+
+        // Récupère tous les selects .op dans l'ordre du DOM
+        // Il doit y avoir (selects.length - 1) opérateurs par bloc,
+        // mais comme ils sont entremêlés on les récupère tous à plat.
+        const ops = [...document.querySelectorAll("select.op")];
+
+        // On construit une liste plate de tokens actifs :
+        // [{ value, cat }, op, { value, cat }, op, { value, cat }, ...]
+        // en ignorant les selects vides (on les saute ainsi que leur op associé)
+        //
+        // Stratégie : on itère sur les selects .ana dans l'ordre.
+        // Entre le select i et le select i+1 se trouve ops[i] dans le DOM.
+        // Si le select i est vide, on le saute (et son op suivant).
+
+        let result = null;       // null = aucun token actif rencontré encore
+        let pendingOp = null;    // opérateur à appliquer au prochain token actif
+
+        let opIndex = 0;         // index courant dans ops[]
 
         for (let i = 0; i < selects.length; i++) {
-            const value = selects[i].value;
-            if (!value) continue;
+            const sel = selects[i];
+            const cat = sel.dataset.cat;
 
-            const present = anaSet.includes(value);
-            const op = i > 0 ? ops[i - 1].value : "or";
+            // L'opérateur qui suit ce select dans le DOM
+            // (undefined s'il n'y en a pas, c'est-à-dire pour le dernier select)
+            const opAfter = ops[opIndex] || null;
+
+            // Si ce select est vide, on avance l'index d'op et on continue
+            if (!sel.value) {
+                if (opAfter) opIndex++;
+                continue;
+            }
+
+            // Le data-* dans lequel chercher (ex. dataset.conjugaison, dataset.themes…)
+            const anaSet = (texte.dataset[cat] || "").split(/\s+/).filter(Boolean);
+            const present = anaSet.includes(sel.value);
 
             if (result === null) {
-                result = (op === "without") ? !present : present;
+                // Premier token actif : on initialise result
+                result = (pendingOp === "without") ? !present : present;
             } else {
-                if (op === "without") result = result && !present;
-                else if (op === "and") result = result && present;
-                else                  result = result || present;
+                // Tokens suivants : on applique l'opérateur en attente
+                const op = pendingOp || "or";
+                if      (op === "without") result = result && !present;
+                else if (op === "and")     result = result && present;
+                else                       result = result || present;
+            }
+
+            // L'opérateur qui suit ce select devient le pendingOp pour le prochain
+            if (opAfter) {
+                pendingOp = opAfter.value;
+                opIndex++;
             }
         }
 
+        // Si aucun select n'était renseigné, on laisse passer
         return result === null ? true : result;
     }
 
