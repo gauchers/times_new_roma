@@ -44,6 +44,7 @@
             <term type="morphologie" ana="ipse"/>
             <term type="syntaxe" ana="proposition_relative_indicatif circonstancielle_temps_indicatif attribut_cod ablatif_absolu"/>
             <term type="genre" ana="histoire"/>
+            <term type="themes" ana="nature societe"/>
           </bibl>
         </listBibl>
       </sourceDesc>

@@ -44,6 +44,7 @@
             <term type="morphologie" ana="comparatif comparatif_adverbe ille"/>
             <term type="syntaxe" ana="relatif_liaison circonstancielle_temps_indicatif comparative_indicatif complement_comparatif"/>
             <term type="genre" ana="epistolaire"/>
+            <term type="themes" ana="mort nature"/>
           </bibl>
         </listBibl>
       </sourceDesc>
