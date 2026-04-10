@@ -122,49 +122,53 @@ const ANA_LABELS = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-
-    const compteur = document.getElementById("compteur");
-    const messageVide = document.getElementById("message-vide");
-    const corpus = document.getElementById("corpus");
-
+ 
+    const compteur     = document.getElementById("compteur");
+    const messageVide  = document.getElementById("message-vide");
+    const corpus       = document.getElementById("corpus");
+ 
     let textes = [];
-
-    const files = await fetch("../data/index.json")
-    .then(r => {
-        if (!r.ok) throw new Error("index.json introuvable");
-        return r.json();
-    })
-    .catch(e => {
-        console.error(e);
-        return [];
-    });
-
-for (const file of files.filter(f => f.startsWith("la_"))) {
-    const html = await fetch(`../data/${file}`)
-        .then(r => r.ok ? r.text() : null);
-
-    if (!html) continue;
-
-    const temp = document.createElement("div");
-    temp.innerHTML = html;
-
-    const texte = temp.querySelector(".texte");
-    if (!texte) continue;
-
-    texte.style.display = "none";
-    corpus.appendChild(texte);
-    textes.push(texte);
-}
-
-
+ 
     /* =========================
-       3. Menus déroulants
+       1. Chargement des fichiers
        ========================= */
-
+ 
+    const files = await fetch("../data/index.json")
+        .then(r => {
+            if (!r.ok) throw new Error("index.json introuvable");
+            return r.json();
+        })
+        .catch(e => {
+            console.error(e);
+            return [];
+        });
+ 
+    for (const file of files.filter(f => f.startsWith("la_"))) {
+        const html = await fetch(`../data/${file}`)
+            .then(r => r.ok ? r.text() : null);
+ 
+        if (!html) continue;
+ 
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
+ 
+        const texte = temp.querySelector(".texte");
+        if (!texte) continue;
+ 
+        texte.style.display = "none";
+        corpus.appendChild(texte);
+        textes.push(texte);
+    }
+ 
+    /* =========================
+       2. Menus déroulants .ana
+       ========================= */
+ 
+    // Remplit tous les <select class="ana"> à partir d'ANA_LABELS
     document.querySelectorAll("select.ana").forEach(select => {
         const cat = select.dataset.cat;
+        if (!ANA_LABELS[cat]) return;
         select.innerHTML = `<option value="">—</option>`;
-
         Object.entries(ANA_LABELS[cat]).forEach(([value, label]) => {
             const opt = document.createElement("option");
             opt.value = value;
@@ -172,83 +176,97 @@ for (const file of files.filter(f => f.startsWith("la_"))) {
             select.appendChild(opt);
         });
     });
-
+ 
+    /* =========================
+       3. Écouteurs
+       ========================= */
+ 
     document.querySelectorAll("select")
         .forEach(s => s.addEventListener("change", appliquerFiltres));
-
+ 
     /* =========================
        4. Filtres
        ========================= */
-
+ 
     function appliquerFiltres() {
-        const type = document.getElementById("type").value;
-        const genre = document.getElementById("genre").value;
+        const type   = document.getElementById("type").value;
+        const genre  = document.getElementById("genre").value;
         const niveau = document.getElementById("niveau").value;
-
-        let filtresActifs =
-            type || niveau ||
+ 
+        const filtresActifs =
+            type || genre || niveau ||
             hasAnaSelection("conjugaison") ||
             hasAnaSelection("morphologie") ||
-            hasAnaSelection("syntaxe") ||
-            hasAnaSelection("theme");
-
+            hasAnaSelection("syntaxe")     ||
+            hasAnaSelection("themes");
+ 
         let count = 0;
-
+ 
         textes.forEach(texte => {
             let visible = true;
-
+ 
+            // Sans aucun filtre, on n'affiche rien
             if (!filtresActifs) visible = false;
+ 
+            // Filtre type (prose / poésie)
             if (type && texte.dataset.type !== type) visible = false;
+ 
+            // Filtre genre : comparaison exacte sur data-genre
+            // data-genre contient une seule valeur (ex. "histoire")
+            if (genre && texte.dataset.genre !== genre) visible = false;
+ 
+            // Filtre niveau
             if (niveau && texte.dataset.niveau !== niveau) visible = false;
-
+ 
+            // Filtres .ana avec opérateurs ET / OU / SANS
             if (!testAnaCat("conjugaison", texte)) visible = false;
             if (!testAnaCat("morphologie", texte)) visible = false;
-            if (!testAnaCat("syntaxe", texte)) visible = false;
-            if (!testAnaCat("theme", texte)) visible = false;
-
+            if (!testAnaCat("syntaxe",     texte)) visible = false;
+            if (!testAnaCat("themes",      texte)) visible = false;
+ 
             texte.style.display = visible ? "block" : "none";
             if (visible) count++;
         });
-
+ 
         compteur.textContent = filtresActifs
             ? `${count} ${count > 1 ? "résultats trouvés" : "résultat trouvé"}`
             : "";
-
+ 
         messageVide.style.display =
             filtresActifs && count === 0 ? "block" : "none";
     }
-
+ 
     function hasAnaSelection(cat) {
         return [...document.querySelectorAll(`.ana[data-cat="${cat}"]`)]
             .some(s => s.value);
     }
-
+ 
     function testAnaCat(cat, texte) {
         const selects = [...document.querySelectorAll(`.ana[data-cat="${cat}"]`)];
-        const ops = [...document.querySelectorAll(`.op[data-cat="${cat}"]`)];
-        const anaSet = (texte.dataset[cat] || "").split(/\s+/).filter(Boolean);
-
+        const ops     = [...document.querySelectorAll(`.op[data-cat="${cat}"]`)];
+ 
+        // data-themes contient "agriculture amour nature" (espace séparé)
+        const anaSet  = (texte.dataset[cat] || "").split(/\s+/).filter(Boolean);
+ 
         let result = null;
-
+ 
         for (let i = 0; i < selects.length; i++) {
             const value = selects[i].value;
             if (!value) continue;
-
+ 
             const present = anaSet.includes(value);
             const op = i > 0 ? ops[i - 1].value : "or";
-
+ 
             if (result === null) {
                 result = (op === "without") ? !present : present;
             } else {
                 if (op === "without") result = result && !present;
                 else if (op === "and") result = result && present;
-                else result = result || present;
+                else                  result = result || present;
             }
         }
-
+ 
         return result === null ? true : result;
     }
-
+ 
 });
-
-
