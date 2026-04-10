@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Enée découvre le rivage du Latium</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Virgile</author>
+            <title type="oeuvre">Enéide</title>
+            <title type="fichier">la_virgile_eneide_7_5_7_34.xml</title>
+            <biblScope>7.5-7.34</biblScope>
+
+            <term type="prose/poésie" subtype="poesie"/>
+            <term type="mots" n="123"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_parfait participe_present participe_parfait"/>
+            <term type="morphologie" ana="hic"/>
+            <term type="syntaxe" ana="circonstancielle_temps_indicatif circonstancielle_lieu_ubi ablatif_absolu"/>
+            <term type="genre" ana="epopee"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_12">
+        <l>At pius exsequiis Aeneas rite solutis,</l>
+        <l>aggere composito tumuli, postquam alta quierunt</l>
+        <l>aequora, tendit iter uelis portumque relinquit.</l>
+        <l>Adspirant aurae in noctem nec candida cursus</l>
+        <l>luna negat, splendet tremulo sub lumine pontus.</l>
+        <l>Proxima Circaeae raduntur litora terrae,</l>
+        <l>diues inaccessos ubi Solis filia lucos</l>
+        <l>adsiduo resonat cantu tectisque superbis</l>
+        <l>urit odoratam nocturna in lumina cedrum,</l>
+        <l>arguto tenuis percurrens pectine telas.</l>
+        <l>[…] Iamque rubescebat radiis mare et aethere ab alto</l>
+        <l>Aurora in roseis fulgebat lutea bigis :</l>
+        <l>cum uenti posuere omnisque repente resedit</l>
+        <l>flatus et in lento luctantur marmore tonsae.</l>
+        <l>Atque hic Aeneas ingentem ex aequore lucum</l>
+        <l>prospicit. Hunc inter fluuio Tiberinus amoeno</l>
+        <l>uerticibus rapidis et multa flauus arena</l>
+        <l>in mare prorumpit. Variae circumque supraque</l>
+        <l>adsuetae ripis uolucres et fluminis alueo</l>
+        <l>aethera mulcebant cantu lucoque uolabant.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_12">
+        <l>Mais, une fois les funérailles accomplies selon les rites, après avoir élevé le remblai du tombeau, le pieux Enée, toutes voiles dehors, reprend sa route et quitte le port, après qu’au large les flots se sont calmés. Les brises qui soufflent doucement font venir la nuit et la lune blanche ne contrarie pas leur course, alors que, sous sa lumière tremblante, la mer resplendit. L’expédition longe les rivages de la terre de Circé, tout proches, où la riche fille du Soleil fait résonner de son chant continu les bois inaccessibles et dans sa superbe demeure brûle du cèdre odorant pour illuminer la nuit, tout en parcourant de son peigne fin de minces toiles. […] Et déjà, la mer rougissait sous les rayons du soleil et, depuis les hauteurs de l’éther l’Aurore safranée, dans son char couleur de rose, brillait. Lorsque les vents ont cessé et que leur souffle tout entier s’est calmé, les rames luttent encore sur la surface immobile de la mer. Et alors, depuis le flot, Enée aperçoit un immense bois. Au milieu de celui-ci, le Tibre au cours agréable, jauni par des tourbillons rapides et par le sable qu’il charrie en quantité, se précipite dans la mer. A l’entour et dans le ciel, des oiseaux bigarrés, habitués aux rives et au lit du fleuve, adoucissaient l’air de leur chant et volaient dans le bois.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>

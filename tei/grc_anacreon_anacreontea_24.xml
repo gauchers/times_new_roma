@@ -41,6 +41,7 @@
             <term type="coupe" subtype="non"/>
 
             <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_aoriste participe_present participe_substantive"/>
+            <term type="genre" ana="lyrique"/>
           </bibl>
         </listBibl>
       </sourceDesc>

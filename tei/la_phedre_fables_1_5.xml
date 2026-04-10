@@ -43,6 +43,7 @@
             <term type="conjugaison" ana="indicatif_present indicatif_parfait indicatif_futur indicatif_futur_anterieur subjonctif_plus_que_parfait participe_parfait deponent"/>
             <term type="morphologie" ana="hic"/>
             <term type="syntaxe" ana="circonstancielle_causale_indicatif cum_subjonctif ablatif_absolu systeme_hypothetique_eventuel"/>
+            <term type="genre" ana="fable"/>
           </bibl>
         </listBibl>
       </sourceDesc>
@@ -72,7 +73,7 @@
       </ab>
 
       <ab type="trad" corresp="#texte_10">
-        <l>Il n'y a jamais de sûreté dans l'association avec le puissant; cette petite fable montre la vérité de ce que j'avance. Une vache, une chèvre et une brebis habituée à l'injustice firent dans les bois société avec un lion. Comme ils avaient pris un cerf de grande taille, les parts faites, le lion parla ainsi : « C'est moi qui prends la première puisqu'on m'appelle roi, elle m'appartient; la seconde, comme je suis vaillant, vous me la donnerez; et parce que je suis le plus fort, la troisième me reviendra. Malheur à qui touchera à la quatrième 1 » Ainsi, grâce à sa mauvaise foi, il emporta pour lui seul la proie tout entière.</l>
+        <l>Il n'y a jamais de sûreté dans l'association avec le puissant; cette petite fable montre la vérité de ce que j'avance. Une vache, une chèvre et une brebis habituée à l'injustice firent dans les bois société avec un lion. Comme ils avaient pris un cerf de grande taille, les parts faites, le lion parla ainsi : « C'est moi qui prends la première puisqu'on m'appelle roi, elle m'appartient; la seconde, comme je suis vaillant, vous me la donnerez; et parce que je suis le plus fort, la troisième me reviendra. Malheur à qui touchera à la quatrième » Ainsi, grâce à sa mauvaise foi, il emporta pour lui seul la proie tout entière.</l>
       </ab>
     </body>
   </text>

@@ -43,6 +43,7 @@
             <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_parfait indicatif_futur indicatif_futur_anterieur infinitif_present participe_present deponent"/>
             <term type="morphologie" ana="ille"/>
             <term type="syntaxe" ana="interrogative_directe cum_indicatif"/>
+            <term type="genre" ana="fable"/>
           </bibl>
         </listBibl>
       </sourceDesc>
@@ -68,7 +69,7 @@
       </ab>
 
       <ab type="trad" corresp="#texte_11">
-        <l>Un fripon qui fait appel à la garantie de malhonnêtes gens, songe moins à s'acquitter de sa dette qu'à faire une dupe. Un cerf demandait à emprunter à une brebis un bois- seau de blé; le loup devait être sa caution. Mais la brebis, appréhendant une fourberie : « Prendre et se sauver a été de tout temps l'habitude du loup; la tienne est de fuir hors de la vue grâce à la rapidité de ta course. Où irai-je vous chercher le jour de l'échéance ? »</l>
+        <l>Un fripon qui fait appel à la garantie de malhonnêtes gens, songe moins à s'acquitter de sa dette qu'à faire une dupe. Un cerf demandait à emprunter à une brebis un boisseau de blé; le loup devait être sa caution. Mais la brebis, appréhendant une fourberie : « Prendre et se sauver a été de tout temps l'habitude du loup; la tienne est de fuir hors de la vue grâce à la rapidité de ta course. Où irai-je vous chercher le jour de l'échéance ? »</l>
       </ab>
     </body>
   </text>
