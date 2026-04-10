@@ -44,6 +44,7 @@
             <term type="morphologie" ana="comparatif comparatif_adverbe superlatif is ille hic qui"/>
             <term type="syntaxe" ana="proposition_infinitive proposition_relative_subjonctif interrogative_directe interrogative_indirecte exclamative circonstancielle_causale_indicatif circonstancielle_finale_subjonctif circonstancielle_causale_subjonctif comparative_indicatif complement_comparatif cum_subjonctif accusatif_exclamatif ablatif_absolu adjectif_verbal_epithete adjectif_verbal_attribut subjonctif_principale systeme_hypothetique_irreel_passe"/>
             <term type="genre" ana="philosophie"/>
+            <term type="themes" ana="mort"/>
           </bibl>
         </listBibl>
       </sourceDesc>

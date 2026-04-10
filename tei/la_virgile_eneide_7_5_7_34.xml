@@ -44,6 +44,7 @@
             <term type="morphologie" ana="hic"/>
             <term type="syntaxe" ana="circonstancielle_temps_indicatif circonstancielle_lieu_ubi ablatif_absolu"/>
             <term type="genre" ana="epopee"/>
+            <term type="themes" ana="nature voyage"/>
           </bibl>
         </listBibl>
       </sourceDesc>
