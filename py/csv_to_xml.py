@@ -165,6 +165,7 @@ ANA_LABELS = {
         "societe":     "Société",
         "voyage":      "Voyage",
         "argent":      "Argent",
+        "violence":     "Violence",
     },
 }
 
