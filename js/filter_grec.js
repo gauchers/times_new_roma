@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return [];
         });
 
-    for (const file of files.filter(f => f.startsWith("la_"))) {
+    for (const file of files.filter(f => f.startsWith("grc_"))) {
         const html = await fetch(`../data/${file}`)
             .then(r => r.ok ? r.text() : null);
 
