@@ -255,7 +255,7 @@
                             </p>
                             
                             <p class="keywords grammaire">
-                                <strong>Grammaire : </strong>
+                                <strong>Mots-clés : </strong>
                                 <xsl:for-each select=".//tei:term[@ana]">
                                     <xsl:variable name="type" select="@type"/>
                                     <xsl:variable name="tokens" select="tokenize(@ana, '\s+')"/>
