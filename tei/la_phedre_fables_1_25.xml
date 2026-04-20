@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Les chiens et les crocodiles</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Pierre Constant</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Phèdre</author>
+            <title type="oeuvre">Fables</title>
+            <title type="fichier">la_phedre_fables_1_25.xml</title>
+            <biblScope>1.25</biblScope>
+
+            <term type="prose/poésie" subtype="poesie"/>
+            <term type="mots" n="48"/>
+            <term type="niveau" n="3"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_present indicatif_parfait subjonctif_present subjonctif_imparfait subjonctif_plus_que_parfait infinitif_present participe_present deponent"/>
+            <term type="morphologie" ana="ille qui"/>
+            <term type="syntaxe" ana="proposition_infinitive proposition_relative_indicatif cum_subjonctif subjonctif_principale systeme_hypothetique_irreel_present"/>
+            <term type="genre" ana="fable"/>
+            <term type="themes" ana="nature philosophie"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_30">
+        <l>Consilia qui dant praua cautis hominibus</l>
+        <l>et perdunt operam et deridentur turpiter.</l>
+        <l>Canes currentes bibere in Nilo flumine,</l>
+        <l>a corcodillis ne rapiantur, traditum est.</l>
+        <l>Igitur cum currens bibere coepisset canis,</l>
+        <l>sic corcodillus 'Quamlibet lambe otio,</l>
+        <l>noli uereri'. At ille 'Facerem mehercules,</l>
+        <l>nisi esse scirem carnis te cupidum meae'.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_30">
+        <l>Ceux qui donnent de mauvais conseils aux gens circonspects perdent leur peine et se couvrent de ridicule. Les chiens ne boivent l'eau du Nil qu'en courant, pour ne pas se laisser saisir par les crocodiles, d'après ce qu'on raconte. Un chien donc s'était mis à boire tout en courant., lorsqu'un crocodile lui dit : « Lape tant que tu voudras à ton aise; ne crains rien. » -- « Je le ferais certes, si je ne te savais friand de ma chair. »</l>
+      </ab>
+    </body>
+  </text>
+</TEI>

@@ -3,7 +3,7 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>La vache, la chèbre, la brebis et le lion</title>
+        <title>La vache, la chèvre, la brebis et le lion</title>
 
         <respStmt>
           <resp>Contributeur</resp>
@@ -36,13 +36,13 @@
             <biblScope>1.5</biblScope>
 
             <term type="prose/poésie" subtype="poesie"/>
-            <term type="mots" n="44"/>
+            <term type="mots" n="69"/>
             <term type="niveau" n="2"/>
             <term type="coupe" subtype="non"/>
 
-            <term type="conjugaison" ana="indicatif_present indicatif_parfait indicatif_futur indicatif_futur_anterieur subjonctif_plus_que_parfait participe_parfait deponent"/>
+            <term type="conjugaison" ana="indicatif_present indicatif_parfait indicatif_futur subjonctif_plus_que_parfait deponent"/>
             <term type="morphologie" ana="hic"/>
-            <term type="syntaxe" ana="circonstancielle_causale_indicatif cum_subjonctif ablatif_absolu systeme_hypothetique_eventuel"/>
+            <term type="syntaxe" ana="circonstancielle_causale_indicatif ablatif_absolu systeme_hypothetique_eventuel"/>
             <term type="genre" ana="fable"/>
             <term type="themes" ana="nature politique"/>
           </bibl>
@@ -59,22 +59,22 @@
 
   <text>
     <body>
-      <ab type="orig" xml:id="texte_19">
+      <ab type="orig" xml:id="texte_29">
         <l>Numquam est fidelis cum potente societas.</l>
         <l>Testatur haec fabella propositum meum.</l>
         <l>Vacca et capella et patiens ouis iniuriae</l>
         <l>socii fuere cum leone in saltibus.</l>
         <l>Hi cum cepissent ceruum uasti corporis,</l>
         <l>sic est locutus partibus factis leo:</l>
-        <l>« Ego primam tollo nomine hoc quia rex cluo;</l>
+        <l>'Ego primam tollo nomine hoc quia rex cluo;</l>
         <l>secundam, quia sum consors, tribuetis mihi;</l>
         <l>tum, quia plus ualeo, me sequetur tertia;</l>
-        <l>malo adficietur si quis quartam tetigerit ».</l>
+        <l>malo adficietur si quis quartam tetigerit'.</l>
         <l>Sic totam praedam sola improbitas abstulit.</l>
       </ab>
 
-      <ab type="trad" corresp="#texte_19">
-        <l>Il n'y a jamais de sûreté dans l'association avec le puissant; cette petite fable montre la vérité de ce que j'avance. Une vache, une chèvre et une brebis habituée à l'injustice firent dans les bois société avec un lion. Comme ils avaient pris un cerf de grande taille, les parts faites, le lion parla ainsi : « C'est moi qui prends la première puisqu'on m'appelle roi, elle m'appartient; la seconde, comme je suis vaillant, vous me la donnerez; et parce que je suis le plus fort, la troisième me reviendra. Malheur à qui touchera à la quatrième » Ainsi, grâce à sa mauvaise foi, il emporta pour lui seul la proie tout entière.</l>
+      <ab type="trad" corresp="#texte_29">
+        <l>Il n'y a jamais de sûreté dans l'association avec le puissant; cette petite fable montre la vérité de ce que j'avance. Une vache, une chèvre et une brebis habituée à l'injustice firent dans les bois société avec un lion. Comme ils avaient pris un cerf de grande taille, les parts faites, le lion parla ainsi : « C'est moi qui prends la première puisqu'on m'appelle roi, elle m'appartient; la seconde, comme je suis vaillant, vous me la donnerez; et parce que je suis le plus fort, la troisième me reviendra. Malheur à qui touchera à la quatrième ! » Ainsi, grâce à sa mauvaise foi, il emporta pour lui seul la proie tout entière.</l>
       </ab>
     </body>
   </text>

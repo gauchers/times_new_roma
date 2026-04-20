@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Le chien qui porte un morceau de viande en traversant une rivière</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Pierre Constant</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Phèdre</author>
+            <title type="oeuvre">Fables</title>
+            <title type="fichier">la_phedre_fables_1_7.xml</title>
+            <biblScope>1.7</biblScope>
+
+            <term type="prose/poésie" subtype="poesie"/>
+            <term type="mots" n="42"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_present indicatif_parfait infinitif_present participe_present"/>
+            <term type="morphologie" ana="qui"/>
+            <term type="syntaxe" ana="proposition_relative_indicatif cum_subjonctif"/>
+            <term type="genre" ana="fable"/>
+            <term type="themes" ana="nature argent"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_28">
+        <l>Amittit merito proprium qui alienum adpetit.</l>
+        <l>Canis, per fluuium carnem cum ferret, natans</l>
+        <l>lympharum in speculo uidit simulacrum suum,</l>
+        <l>aliamque praedam ab altero ferri putans</l>
+        <l>eripere uoluit ; uerum decepta auiditas</l>
+        <l>et quem tenebat ore dimisit cibum,</l>
+        <l>nec quem petebat adeo potuit tangere.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_28">
+        <l>On perd justement son bien quand on cherche à prendre celui d'autrui. Un chien portait un morceau de viande en traversant une rivière à la nage, quand il vit dans le miroir des eaux son image. Croyant voir une autre proie portée par un autre chien, il voulut la lui arracher; mais son avidité fut déçue. Il lâcha la nourriture qu'il tenait dans sa gueule; d'ailleurs il ne put atteindre celle qu'il voulait prendre.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>
