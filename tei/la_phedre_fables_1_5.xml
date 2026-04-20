@@ -59,7 +59,7 @@
 
   <text>
     <body>
-      <ab type="orig" xml:id="texte_10">
+      <ab type="orig" xml:id="texte_19">
         <l>Numquam est fidelis cum potente societas.</l>
         <l>Testatur haec fabella propositum meum.</l>
         <l>Vacca et capella et patiens ouis iniuriae</l>
@@ -73,7 +73,7 @@
         <l>Sic totam praedam sola improbitas abstulit.</l>
       </ab>
 
-      <ab type="trad" corresp="#texte_10">
+      <ab type="trad" corresp="#texte_19">
         <l>Il n'y a jamais de sûreté dans l'association avec le puissant; cette petite fable montre la vérité de ce que j'avance. Une vache, une chèvre et une brebis habituée à l'injustice firent dans les bois société avec un lion. Comme ils avaient pris un cerf de grande taille, les parts faites, le lion parla ainsi : « C'est moi qui prends la première puisqu'on m'appelle roi, elle m'appartient; la seconde, comme je suis vaillant, vous me la donnerez; et parce que je suis le plus fort, la troisième me reviendra. Malheur à qui touchera à la quatrième » Ainsi, grâce à sa mauvaise foi, il emporta pour lui seul la proie tout entière.</l>
       </ab>
     </body>

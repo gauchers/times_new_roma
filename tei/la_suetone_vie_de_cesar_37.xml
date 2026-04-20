@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Triomphes de César</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Suétone</author>
+            <title type="oeuvre">Vie de César</title>
+            <title type="fichier">la_suetone_vie_de_cesar_37.xml</title>
+            <biblScope>37</biblScope>
+
+            <term type="prose/poésie" subtype="prose"/>
+            <term type="mots" n="86"/>
+            <term type="niveau" n="1"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_parfait participe_present participe_parfait"/>
+            <term type="morphologie" ana="superlatif hic idem"/>
+            <term type="syntaxe" ana="ablatif_absolu"/>
+            <term type="genre" ana="histoire"/>
+            <term type="themes" ana="guerre"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_25">
+        <l>Confectis bellis quinquiens triumphauit, post deuictum Scipionem quater eodem mense, sed interiectis diebus et rursus semel post superatos Pompei liberos. Primum et excellentissimum triumphum egit Gallicum, sequentem Alexandrinum, deinde Ponticum, huic proximum Africanum, nouissimum Hispaniensem, diuerso quemque apparatu et instrumento. Gallici triumphi die Velabrum praeteruehens paene curru excussus est, axe diffracto ascenditque Capitolium ad lumina, quadraginta elephantis dextra atque sinistra lychnuchos gestantibus. Pontico triumpho inter pompae fercula trium uerborum praetulit titulum VENI - VIDI - VICI non acta belli significantem sicut ceteris, sed celeriter confecti notam.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_25">
+        <l>Les guerres terminées, il triompha cinq fois, dont quatre le même mois après sa victoire sur Scipion mais à quelques jours d’intervalle et de nouveau une fois après la défaite des fils de Pompée. Il triompha de la Gaule (le premier triomphe et le plus beau), juste après d’Alexandrie, puis du Pont, puis directement après de l’Afrique et en tout dernier lieu de l’Espagne, chacun des triomphes étant fait avec une pompe et un appareil différents. Le jour où il triompha de la Gaule, alors qu’il traversait le Vélabre, il fut presque jeté hors de son char, dont l’essieu s’était cassé. Il monta au Capitole à la lueur des flambeaux, quarante éléphants, à sa droite et à sa gauche portant des candélabres. Dans son triomphe du Pont, il porta, au milieu des ornements de la pompe, un tableau où étaient inscrits trois mots : « Je suis venu, j’ai vu, j’ai vaincu », qui ne rappelait pas, comme les autres tableaux, les évènements de la guerre, mais qui était le rappel de sa rapidité.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>

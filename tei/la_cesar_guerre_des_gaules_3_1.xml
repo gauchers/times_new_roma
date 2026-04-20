@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Galba est envoyé par César pour sécuriser une route commerciale</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>César</author>
+            <title type="oeuvre">Guerre des Gaules</title>
+            <title type="fichier">la_cesar_guerre_des_gaules_3_1.xml</title>
+            <biblScope>3.1</biblScope>
+
+            <term type="prose/poésie" subtype="prose"/>
+            <term type="mots" n="130"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_present indicatif_imparfait indicatif_parfait subjonctif_imparfait infinitif_present infinitif_present_actif infinitif_present_passif participe_parfait deponent"/>
+            <term type="morphologie" ana="ipse is qui"/>
+            <term type="syntaxe" ana="proposition_relative_indicatif relatif_liaison circonstancielle_causale_indicatif cum_subjonctif attribut_cod ablatif_absolu"/>
+            <term type="genre" ana="histoire"/>
+            <term type="themes" ana="guerre argent"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_24">
+        <l>Cum in Italiam proficisceretur Caesar, Seruium Galbam cum legione duodecima et  parte  equitatus  in  Nantuates,  Veragros  Sedunosque  misit,  qui  a  finibus Allobrogum et lacu Lemanno et flumine Rhodano ad summas Alpes pertinent. Causa mittendi fuit quod iter per Alpes, quo magno cum periculo magnisque cum portoriis mercatores ire consuerant, patefieri uolebat […]. Galba secundis aliquot proeliis factis castellisque compluribus eorum expugnatis, missis ad eum undique legatis obsidibusque datis et pace facta, constituit cohortes duas in Nantuatibus conlocare et ipse cum reliquis eius legionis cohortibus in uico Veragrorum, qui appellatur Octodurus, hiemare. Qui uicus positus in ualle, non magna adiecta planitie, altissimis montibus undique continetur. Cum hic in duas partes  flumine  diuideretur,  alteram  partem  eius  uici  Gallis  ad  hiemandum concessit, alteram uacuam ab his relictam cohortibus attribuit. Eum locum uallo fossaque muniuit.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_24">
+        <l>Alors que César se mettait en route pour l’Italie, il envoya Servius Galba, avec la douzième légion et une partie de la cavalerie, chez les Nantuates, les Véragres et les Sédunes, dont le territoire s’étend des frontières de celui des Allobroges, du lac Léman et du fleuve du Rhône jusqu’aux sommets des Alpes. La raison de l’expédition était qu’il voulait ouvrir un chemin à travers les Alpes, où les marchands avaient l’habitude d’aller en courant un grand danger et en payant d’importants droits de péages. Galba, qui avait mené quelques combats victorieux, avait pris de nombreuses forteresses, avait reçu des légats et des otages qu’on lui avait envoyé de toutes parts, et avait conclu la paix, décida de placer deux cohortes chez les Nantuates, et, avec les cohortes restantes de cette légion, de passer pour sa part l’hiver dans un bourg des Véragres appelé Octoduros. Ce bourg, situé au fond d’un vallon, dans une petite plaine, est environné de toutes parts par de très hautes montagnes. Puisque ce village était divisé en deux parties par un fleuve, il accorda une des parties de ce bourg au Gaulois pour passer l’hiver, l’autre, qu’ils avaient laissé inoccupée, il l’attribua à ses cohortes. Il fortifia ce lieu par un retranchement et un fossé.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>

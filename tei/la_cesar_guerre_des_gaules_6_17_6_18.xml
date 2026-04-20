@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Les divinités gauloises</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Sarah Gaucher</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>César</author>
+            <title type="oeuvre">Guerre des Gaules</title>
+            <title type="fichier">la_cesar_guerre_des_gaules_6_17_6_18.xml</title>
+            <biblScope>6.17-6.18</biblScope>
+
+            <term type="prose/poésie" subtype="prose"/>
+            <term type="mots" n="132"/>
+            <term type="niveau" n="3"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_present indicatif_parfait indicatif_futur indicatif_futur_anterieur subjonctif_present subjonctif_imparfait infinitif_present infinitif_present_actif infinitif_present_passif participe_parfait"/>
+            <term type="morphologie" ana="superlatif is hic idem qui"/>
+            <term type="syntaxe" ana="proposition_infinitive proposition_relative_indicatif completive_ut_subjonctif circonstancielle_temps_indicatif circonstancielle_consecutive_subjonctif cum_indicatif"/>
+            <term type="genre" ana="histoire"/>
+            <term type="themes" ana="guerre religion societe"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_23">
+        <l>Post hunc Apollinem et Martem et Iouem et Mineruam [colunt]. De his eamdem fere quam reliquae gentes habent opinionem : Apollinem morbos depellere, Mineruam operum atque artificiorum initia tradere, Iouem imperium caelestium tenere, Martem bella regere. Huic, cum proelio dimicare constituerunt, ea quae bello ceperint plerumque deuouent : cum superauerunt, animalia capta immolant reliquasque res in unum locum conferunt. Multis in ciuitatibus harum rerum exstructos tumulos locis consecratis conspicari licet neque saepe accidit ut neglecta quispiam religione aut capta apud se occultare aut posita tollere auderet, grauissimumque ei rei supplicium cum cruciatu constitutum est. Galli se omnes ab Dite Patre prognatos praedicant idque ab druidibus proditum dicunt. Ob eam causam spatia omnis temporis non numero dierum sed noctium finiunt ; dies natales et mensum et annorum initia sic obseruant ut noctem dies subsequatur.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_23">
+        <l>Après lui, ils honorent Apollon, Mars, Jupiter et Minerve. A propos de ces derniers ils ont presque la même opinion que les autres nations : Apollon repousse les maladies, Minerve enseigne les débuts du travail et des arts, Jupiter détient le pouvoir des affaires célestes, Mars gouverne les guerres. Lorsqu’ils ont décidé de s’engager dans un combat, ils lui consacrent souvent les choses qu’ils auront prises à la guerre. Lorsqu’ils ont gagné, ils immolent les animaux qu’ils ont pris et ils transportent le reste du butin dans un seul lieu. Dans de nombreuses cités, il est possible d’apercevoir des tas de ces objets, qui ont été amassés une fois les lieux consacrés, et il n’arrive pas souvent que quelqu’un, ayant mis de côté le scrupule religieux, ose cacher chez lui ce qu’il a pris ou emporter ce qui a été déposé, et le plus lourd supplice, accompagné de torture, a été fixé pour ce crime. Les Gaulois proclament qu’ils sont tous issus de Dis Pater et ils disent que cette tradition a été transmise par les druides. Pour cette raison, ils mesurent les intervalles de chaque période non pas par le nombre des jours, mais par celui des nuits. Ils calculent les anniversaires et les débuts des mois et des années de telle sorte que le jour suive la nuit.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>

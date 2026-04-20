@@ -59,7 +59,7 @@
 
   <text>
     <body>
-      <ab type="orig" xml:id="texte_11">
+      <ab type="orig" xml:id="texte_20">
         <l>Fraudator homines cum aduocat sponsum improbos,</l>
         <l>non rem expedire, sed malum ordiri expetit.</l>
         <l>Ouem rogabat ceruus modium tritici,</l>
@@ -69,7 +69,7 @@
         <l>Vbi uos requiram, cum dies aduenerit? »</l>
       </ab>
 
-      <ab type="trad" corresp="#texte_11">
+      <ab type="trad" corresp="#texte_20">
         <l>Un fripon qui fait appel à la garantie de malhonnêtes gens, songe moins à s'acquitter de sa dette qu'à faire une dupe. Un cerf demandait à emprunter à une brebis un boisseau de blé; le loup devait être sa caution. Mais la brebis, appréhendant une fourberie : « Prendre et se sauver a été de tout temps l'habitude du loup; la tienne est de fuir hors de la vue grâce à la rapidité de ta course. Où irai-je vous chercher le jour de l'échéance ? »</l>
       </ab>
     </body>

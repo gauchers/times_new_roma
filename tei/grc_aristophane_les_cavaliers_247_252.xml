@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Le chœur contre le Paphlagonien</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Emmanuelle Jégo</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Emmanuelle Jégo</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Aristophane</author>
+            <title type="oeuvre">Les Cavaliers</title>
+            <title type="fichier">grc_aristophane_les_cavaliers_247_252.xml</title>
+            <biblScope>247-252</biblScope>
+
+            <term type="prose/poésie" subtype="poesie"/>
+            <term type="mots" n="45"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="imperatif_present"/>
+            <term type="genre" ana="comedie"/>
+            <term type="themes" ana="violence"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="grc"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_26">
+        <l>ΧΟΡΟΣ παῖε παῖε τὸν πανοῦργον καὶ ταραξιππόστρατον</l>
+        <l>καὶ τελώνην καὶ φάραγγα καὶ Χάρυβδιν ἁρπαγῆς,</l>
+        <l>καὶ πανοῦργον καὶ πανοῦργον· πολλάκις γὰρ αὔτ’ ἐρῶ·</l>
+        <l>καὶ γὰρ οὗτος ἦν πανοῦργος πολλάκις τῆς ἡμέρας.</l>
+        <l>ἀλλὰ παῖε καὶ δίωκε καὶ τάραττε καὶ κύκα</l>
+        <l>καὶ βδελύττου, καὶ γὰρ ἡμεῖς, κἀπικείμενος βόα·</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_26">
+        <l>Le chœur : Frappe, frappe cette canaille, ce pagailleur de cavaliers,</l>
+        <l>percepteur d’impôts, cette abîme, cette Charybde de pillage,</l>
+        <l>canaille, supercanaille, je le redis,</l>
+        <l>parce qu’il passe sa journée en canailleries !</l>
+        <l>Mais frappe, et poursuis-le, et secoue-le et retourne-le</l>
+        <l>et abhorre-le, parce que nous, on l’abhorre, et serre-le de près !</l>
+      </ab>
+    </body>
+  </text>
+</TEI>
