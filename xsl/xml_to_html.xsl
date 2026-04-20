@@ -170,6 +170,7 @@
                     <xsl:when test="$value = 'societe'">société</xsl:when>
                     <xsl:when test="$value = 'voyage'">voyage</xsl:when>
                     <xsl:when test="$value = 'argent'">argent</xsl:when>
+                    <xsl:when test="$value = 'violence'">violence</xsl:when>
                 </xsl:choose>
             </xsl:when>
 
