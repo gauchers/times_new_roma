@@ -138,7 +138,8 @@ const ANA_LABELS = {
         religion:    "Religion et mythologie",
         societe:     "Société",
         voyage:      "Voyage et exil",
-        argent:      "Argent et commerce"
+        argent:      "Argent et commerce",
+        violence:      "Violence et luttes"
     }
 };
 
