@@ -61,48 +61,51 @@ const ANA_LABELS = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const compteur = document.getElementById("compteur");
+    const compteur    = document.getElementById("compteur");
     const messageVide = document.getElementById("message-vide");
-    const corpus = document.getElementById("corpus");
+    const corpus      = document.getElementById("corpus");
 
     let textes = [];
 
+    /* =========================
+       1. Chargement des fichiers
+       ========================= */
+
     const files = await fetch("../data/index.json")
-    .then(r => {
-        if (!r.ok) throw new Error("index.json introuvable");
-        return r.json();
-    })
-    .catch(e => {
-        console.error(e);
-        return [];
-    });
+        .then(r => {
+            if (!r.ok) throw new Error("index.json introuvable");
+            return r.json();
+        })
+        .catch(e => {
+            console.error(e);
+            return [];
+        });
 
-for (const file of files.filter(f => f.startsWith("grc_"))) {
-    const html = await fetch(`../data/${file}`)
-        .then(r => r.ok ? r.text() : null);
+    for (const file of files.filter(f => f.startsWith("la_"))) {
+        const html = await fetch(`../data/${file}`)
+            .then(r => r.ok ? r.text() : null);
 
-    if (!html) continue;
+        if (!html) continue;
 
-    const temp = document.createElement("div");
-    temp.innerHTML = html;
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
 
-    const texte = temp.querySelector(".texte");
-    if (!texte) continue;
+        const texte = temp.querySelector(".texte");
+        if (!texte) continue;
 
-    texte.style.display = "none";
-    corpus.appendChild(texte);
-    textes.push(texte);
-}
-
+        texte.style.display = "none";
+        corpus.appendChild(texte);
+        textes.push(texte);
+    }
 
     /* =========================
-       3. Menus déroulants
+       2. Menus déroulants .ana
        ========================= */
 
     document.querySelectorAll("select.ana").forEach(select => {
         const cat = select.dataset.cat;
+        if (!ANA_LABELS[cat]) return;
         select.innerHTML = `<option value="">—</option>`;
-
         Object.entries(ANA_LABELS[cat]).forEach(([value, label]) => {
             const opt = document.createElement("option");
             opt.value = value;
@@ -111,38 +114,98 @@ for (const file of files.filter(f => f.startsWith("grc_"))) {
         });
     });
 
+    /* =========================
+       3. Écouteurs
+       ========================= */
+
     document.querySelectorAll("select")
         .forEach(s => s.addEventListener("change", appliquerFiltres));
 
     /* =========================
-       4. Filtres
+       4. Construction de la
+          séquence de tokens
+       ========================= */
+
+    /*
+     * buildSequence() lit le DOM une seule fois et construit
+     * une liste plate de tokens dans l'ordre d'apparition :
+     *
+     *   [
+     *     { type: "ana", cat: "conjugaison", el: <select> },
+     *     { type: "op",                      el: <select> },
+     *     { type: "ana", cat: "morphologie", el: <select> },
+     *     ...
+     *   ]
+     *
+     * La clé est d'utiliser un TreeWalker qui visite TOUS les
+     * éléments du DOM dans l'ordre du document. On retient
+     * uniquement les <select class="ana"> et <select class="op">.
+     * Leur ordre dans le DOM reflète exactement l'ordre visuel,
+     * indépendamment de leur catégorie ou de leur ligne.
+     *
+     * Structure HTML attendue par ligne :
+     *   [ana] [op] [ana] [op] [ana]
+     * Entre deux lignes, pas d'op supplémentaire : l'op qui
+     * relie la dernière ana d'une ligne à la première ana de
+     * la ligne suivante est le dernier op de la première ligne.
+     *
+     * Si ta maquette ne place pas d'op entre lignes, on
+     * considère que le passage d'une ligne à l'autre est un OU
+     * implicite (voir appliquerFiltres). Pour un ET ou SANS
+     * inter-lignes, il suffit d'ajouter un <select class="op">
+     * entre les deux <div class="ligne-filtre"> dans le HTML.
+     */
+    function buildSequence() {
+        const sequence = [];
+        const walker = document.createTreeWalker(
+            document.getElementById("filtres-ana") || document.body,
+            NodeFilter.SHOW_ELEMENT,
+            {
+                acceptNode(node) {
+                    if (node.tagName !== "SELECT") return NodeFilter.FILTER_SKIP;
+                    if (node.classList.contains("ana")) return NodeFilter.FILTER_ACCEPT;
+                    if (node.classList.contains("op"))  return NodeFilter.FILTER_ACCEPT;
+                    return NodeFilter.FILTER_SKIP;
+                }
+            }
+        );
+
+        let node;
+        while ((node = walker.nextNode())) {
+            if (node.classList.contains("ana")) {
+                sequence.push({ type: "ana", cat: node.dataset.cat, el: node });
+            } else {
+                sequence.push({ type: "op", el: node });
+            }
+        }
+        return sequence;
+    }
+
+    /* =========================
+       5. Filtres
        ========================= */
 
     function appliquerFiltres() {
-        const type = document.getElementById("type").value;
-        const genre = document.getElementById("genre").value;
+        const type   = document.getElementById("type").value;
+        const genre  = document.getElementById("genre").value;
         const niveau = document.getElementById("niveau").value;
 
-        let filtresActifs =
-            type || niveau ||
-            hasAnaSelection("conjugaison") ||
-            hasAnaSelection("morphologie") ||
-            hasAnaSelection("syntaxe") ||
-            hasAnaSelection("theme");
+        const sequence  = buildSequence();
+        const anaActive = sequence.some(t => t.type === "ana" && t.el.value);
+
+        const filtresActifs = type || genre || niveau || anaActive;
 
         let count = 0;
 
         textes.forEach(texte => {
             let visible = true;
 
-            if (!filtresActifs) visible = false;
-            if (type && texte.dataset.type !== type) visible = false;
+            if (!filtresActifs)                            visible = false;
+            if (type   && texte.dataset.type   !== type)  visible = false;
+            if (genre  && texte.dataset.genre  !== genre) visible = false;
             if (niveau && texte.dataset.niveau !== niveau) visible = false;
 
-            if (!testAnaCat("conjugaison", texte)) visible = false;
-            if (!testAnaCat("morphologie", texte)) visible = false;
-            if (!testAnaCat("syntaxe", texte)) visible = false;
-            if (!testAnaCat("theme", texte)) visible = false;
+            if (anaActive && !testAnaGlobal(texte, sequence)) visible = false;
 
             texte.style.display = visible ? "block" : "none";
             if (visible) count++;
@@ -156,31 +219,75 @@ for (const file of files.filter(f => f.startsWith("grc_"))) {
             filtresActifs && count === 0 ? "block" : "none";
     }
 
-    function hasAnaSelection(cat) {
-        return [...document.querySelectorAll(`.ana[data-cat="${cat}"]`)]
-            .some(s => s.value);
-    }
+    /* =========================
+       6. testAnaGlobal
+       ========================= */
 
-    function testAnaCat(cat, texte) {
-        const selects = [...document.querySelectorAll(`.ana[data-cat="${cat}"]`)];
-        const ops = [...document.querySelectorAll(`.op[data-cat="${cat}"]`)];
-        const anaSet = (texte.dataset[cat] || "").split(/\s+/).filter(Boolean);
+    /*
+     * Parcourt la séquence plate [ana, op, ana, op, ana, ana, op, ana…]
+     * et évalue si le texte passe le filtre.
+     *
+     * Règle de lecture de la séquence :
+     *
+     *  - Un token "ana" vide est ignoré.
+     *    → son op PRÉCÉDENT (s'il existe) est aussi ignoré.
+     *    → on cherche le prochain op valide en reculant ou avançant.
+     *
+     * Pour simplifier, on commence par extraire uniquement les
+     * tokens "ana" renseignés, et on résout l'opérateur entre
+     * deux tokens actifs consécutifs ainsi :
+     *
+     *   Entre ana[i] et ana[j] (i < j, tous deux actifs) :
+     *   → on regarde s'il existe un token "op" entre eux dans
+     *     la séquence. S'il en existe plusieurs, on prend le
+     *     dernier (le plus proche de ana[j]).
+     *   → s'il n'y en a pas, on utilise "or" par défaut.
+     *
+     * Ce comportement correspond à ce que l'utilisateur voit :
+     * l'op entre deux champs actifs est le dernier op visible
+     * entre eux dans l'interface.
+     */
+    function testAnaGlobal(texte, sequence) {
 
+        // 1. Repérer les index des tokens "ana" actifs
+        const activeAna = [];
+        sequence.forEach((token, idx) => {
+            if (token.type === "ana" && token.el.value) {
+                activeAna.push(idx);
+            }
+        });
+
+        if (activeAna.length === 0) return true;
+
+        // 2. Évaluer le résultat en chaîne
         let result = null;
 
-        for (let i = 0; i < selects.length; i++) {
-            const value = selects[i].value;
-            if (!value) continue;
+        for (let k = 0; k < activeAna.length; k++) {
+            const idx  = activeAna[k];
+            const token = sequence[idx];
 
-            const present = anaSet.includes(value);
-            const op = i > 0 ? ops[i - 1].value : "or";
+            // Ensemble des valeurs ana du texte pour cette catégorie
+            const anaSet = (texte.dataset[token.cat] || "").split(/\s+/).filter(Boolean);
+            const present = anaSet.includes(token.el.value);
 
             if (result === null) {
-                result = (op === "without") ? !present : present;
+                // Premier token actif : pas encore d'opérateur
+                result = present;
             } else {
-                if (op === "without") result = result && !present;
-                else if (op === "and") result = result && present;
-                else result = result || present;
+                // Trouver l'opérateur entre activeAna[k-1] et activeAna[k]
+                // = dernier token "op" entre ces deux index dans la séquence
+                const prevIdx = activeAna[k - 1];
+                let op = "or"; // valeur par défaut si aucun op trouvé
+
+                for (let j = prevIdx + 1; j < idx; j++) {
+                    if (sequence[j].type === "op") {
+                        op = sequence[j].el.value; // on écrase jusqu'au dernier
+                    }
+                }
+
+                if      (op === "without") result = result && !present;
+                else if (op === "and")     result = result && present;
+                else                       result = result || present;
             }
         }
 
@@ -188,5 +295,3 @@ for (const file of files.filter(f => f.startsWith("grc_"))) {
     }
 
 });
-
-
