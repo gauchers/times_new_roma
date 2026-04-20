@@ -33,7 +33,8 @@ const ANA_LABELS = {
     politique: "Politique et pouvoir",
     religion: "Religion et mythologie",
     societe: "Société",
-    voyage: "Voyage et exil"
+    voyage: "Voyage et exil",
+    violence: "Violence et luttes",
 }
 };
 
