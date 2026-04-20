@@ -17,7 +17,28 @@ const ANA_LABELS = {
         "relative": "Proposition relative",
         "infinitive": "Proposition infinitive",
     },
-  
+    
+    genre: {
+        comedie:               "Comédie",
+        didactique:            "Didactique",
+        discours:              "Discours",
+        elegie:                "Élégie",
+        epigramme:             "Épigramme",
+        epistolaire:           "Épistolaire",
+        epopee:                "Épopée",
+        fable:                 "Fable",
+        histoire:              "Histoire",
+        philosophie:           "Philosophie",
+        roman:                 "Roman",
+        satire:                "Satire",
+        theatre:               "Théâtre",
+        tragedie:              "Tragédie",
+        litterature_technique: "Littérature technique",
+        compilation:           "Compilation",
+        lyrique:               "Lyrique",
+        epyllion:              "Épyllion"
+    },  
+    
     theme: {
     agriculture: "Agriculture et vie rustique",
     amitie: "Amitié",
