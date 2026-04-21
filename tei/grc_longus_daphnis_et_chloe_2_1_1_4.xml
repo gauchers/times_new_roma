@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Scènes de vendanges</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Halima Benchikh-Lehocine</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Danielle Jouanna</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Longus</author>
+            <title type="oeuvre">Daphnis et Chloé</title>
+            <title type="fichier">grc_longus_daphnis_et_chloe_2_1_1_4.xml</title>
+            <biblScope>2.1.1-4</biblScope>
+
+            <term type="prose/poésie" subtype="prose"/>
+            <term type="mots" n="166"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_imparfait infinitif_present participe_present participe_parfait"/>
+            <term type="morphologie" ana="comparatif"/>
+            <term type="syntaxe" ana="complement_comparatif"/>
+            <term type="genre" ana="roman"/>
+            <term type="themes" ana="agriculture"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="grc"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_31">
+        <l>Ἤδη δὲ τῆς ὀπώρας ἀκμαζούσης καὶ ἐπείγοντος τοῦ τρυγητοῦ, πᾶς ἦν κατὰ τοὺς ἀγροὺς ἐν ἔργῳ· ὁ μὲν ληνοὺς ἐπεσκεύαζεν, ὁ δὲ πίθους ἐξεκάθαιρεν, ὁ δὲ ἀρρίχους ἔπλεκεν· ἔμελέ τινι δρεπάνης μικρᾶς ἐς βότρυος τομὴν καὶ ἑτέρῳ λίθου θλίβειν τὰ ἔνοινα τῶν βοτρύων δυναμένου [...]  Ἀμελοῦντες οὖν καὶ ὁ Δάφνις καὶ ἡ Χλόη τῶν αἰγῶν καὶ τῶν προβάτων, χειρὸς ὠφέλειαν ἄλλοις μετεδίδοσαν. Ὁ μὲν ἐβάσταζεν ἐν ἀρρίχοις βότρυς καὶ ἐπάτει ταῖς ληνοῖς ἐμβάλλων καὶ εἰς τοὺς πίθους ἔφερε τὸν οἶνον· ἡ δὲ τροφὴν παρεσκεύαζε τοῖς τρυγῶσι καὶ ἐνέχει ποτὸν αὐτοῖς πρεσβύτερον οἶνον καὶ τῶν ἀμπέλων δὲ τὰς ταπεινοτέρας ἀπετρύγα. Πᾶσα γὰρ κατὰ τὴν Λέσβον ἡ ἄμπελος ταπεινή καὶ παῖς ἂν ἐφίκοιτο βότρυος ἄρτι τὰς χεῖρας ἐκ σπαργάνων λελυμένος.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_31">
+        <l>L’automne en était déjà à son acmé et la récolte devenait pressante, tous travaillaient</l>
+        <l>dans les champs : l’un préparait les cuves du pressoir, l’autre nettoyait à fond les tonneaux, un autre encore tissait des paniers ; l’un s’occupait de sa serpe en vue de la coupe de la grappe tandis qu’un autre se souciait de la pierre capable de presser les parties remplies de vin des grappes et un autre encore s’occupait de l’osier sec qu’on avait raclé par des coups. Négligeant donc les chèvres et les moutons, Daphnis et Chloé prêtaient l’assistance de leurs mains aux autres. Lui portait les grappes dans les paniers et les foulait en le jetant dans les pressoirs et il apportait le vin dans les tonneaux. Elle, de son côté, préparait la nourriture pour ceux qui faisaient les vendanges, leur versait comme boisson le vin de la veille et vendangeait celles des vignes qui étaient assez basses. En effet, toute la vigne sur Lesbos était basse et un enfant, dont ont aurait récemment libéré les mains des langes, pourrait atteindre une grappe.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>
