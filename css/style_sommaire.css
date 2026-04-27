@@ -132,7 +132,7 @@ nav {
 }
 
 .som-header::before {
-    content: 'textxe2x9cx a6';
+    content: 'Sommaire';
     display: block;
     font-size: 1em;
     color: var(--gold);
