@@ -84,14 +84,6 @@ nav {
     background: transparent;
 }
 
-.nav-btn {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.88em; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    text-decoration: none; padding: 8px 20px;
-    border-radius: 2px; border: 1px solid transparent;
-    transition: all 0.25s; color: var(--ink);
-}
 .nav-btn.accueil { background: var(--blue); color: #fff; border-color: var(--blue); }
 .nav-btn.accueil:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
 
