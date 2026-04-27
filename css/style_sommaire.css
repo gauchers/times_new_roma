@@ -1,0 +1,365 @@
+/* =====================================================
+   SOMMAIRE DES TEXTES — style_sommaire.css
+   Accordé avec le style général du site
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+/* =====================================================
+   RESET & VARIABLES
+   ===================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --ink:       #1a1208;
+    --parch:     #f7f2e8;
+    --cream:     #ede7d3;
+    --gold:      #b8892a;
+    --gold-lt:   #d4a84b;
+    --grec:      #0e6e4a;
+    --grec-lt:   #13976a;
+    --latin:     #9e2035;
+    --latin-lt:  #c72b44;
+    --rule:      rgba(26, 18, 8, 0.18);
+    --shadow:    rgba(26, 18, 8, 0.08);
+    --ink-faded: #7a6a50;
+}
+
+html { scroll-behavior: smooth; }
+
+/* =====================================================
+   BODY & FOND
+   ===================================================== */
+
+body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background-color: var(--parch);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    opacity: 0.6;
+}
+
+/* =====================================================
+   LIGNE DOREE HAUTE
+   ===================================================== */
+
+.top-rule {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    border: none;
+    border-top: 3px double var(--gold);
+    margin: 0;
+}
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: transparent;
+}
+
+.nav-btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    color: var(--ink);
+}
+
+.nav-btn.accueil {
+    background: transparent;
+    border-color: var(--rule);
+}
+.nav-btn.accueil:hover {
+    background: var(--cream);
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* =====================================================
+   CONTENEUR PRINCIPAL
+   ===================================================== */
+
+.page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 60px 30px 100px;
+}
+
+/* =====================================================
+   EN-TETE
+   ===================================================== */
+
+.som-header {
+    text-align: center;
+    margin-bottom: 56px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--rule);
+}
+
+.som-header::before {
+    content: 'textxe2x9cx a6';
+    display: block;
+    font-size: 1em;
+    color: var(--gold);
+    letter-spacing: 12px;
+    margin-bottom: 20px;
+}
+
+.som-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2em, 5vw, 3.2em);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+
+.som-header .subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1em;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+}
+
+/* =====================================================
+   SEPARATEUR ORNEMENTAL
+   ===================================================== */
+
+.ornament {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 400px;
+    margin: 0 auto 48px;
+}
+
+.ornament::before,
+.ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.ornament span {
+    font-size: 1em;
+    color: var(--gold);
+    opacity: 0.7;
+}
+
+/* =====================================================
+   SECTIONS GREC / LATIN
+   ===================================================== */
+
+.som-section {
+    margin-bottom: 60px;
+}
+
+.som-section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.som-section-header::before,
+.som-section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--rule), transparent);
+}
+
+.som-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.som-section-title.grec  { color: var(--grec); }
+.som-section-title.latin { color: var(--latin); }
+
+.count-badge {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.6em;
+    font-weight: 400;
+    color: var(--ink-faded);
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+
+/* =====================================================
+   TABLEAU
+   ===================================================== */
+
+.table-container {
+    background: white;
+    border: 1px solid var(--cream);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 6px 30px var(--shadow), 0 1px 3px rgba(26, 18, 8, 0.05);
+}
+
+.table-container.grec  { border-top: 3px solid var(--grec); }
+.table-container.latin { border-top: 3px solid var(--latin); }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--ink);
+}
+
+thead th {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72em;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cream);
+    padding: 12px 18px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--cream);
+    transition: background 0.18s ease;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fdfaf4;
+}
+
+tbody tr:hover {
+    background-color: #f5efe0;
+}
+
+td {
+    padding: 11px 18px;
+    vertical-align: top;
+    line-height: 1.5;
+    font-size: 1em;
+    font-weight: 300;
+    color: #3a2e1e;
+}
+
+td.auteur {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+    width: 16%;
+}
+
+td.oeuvre {
+    font-style: italic;
+    font-weight: 300;
+    width: 26%;
+}
+
+td.ref {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88em;
+    font-weight: 600;
+    white-space: nowrap;
+    width: 12%;
+}
+
+.grec-table  td.ref { color: var(--grec); }
+.latin-table td.ref { color: var(--latin); }
+
+td.titre {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-faded);
+    width: 46%;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.som-footer {
+    margin-top: 60px;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+}
+
+.som-footer p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85em;
+    color: var(--ink-faded);
+    letter-spacing: 0.04em;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 600px) {
+    nav { padding: 14px 18px; flex-wrap: wrap; justify-content: center; }
+    .page-wrapper { padding: 40px 18px 60px; }
+    thead th { font-size: 0.65em; padding: 10px; }
+    td { padding: 9px 10px; font-size: 0.9em; }
+    td.auteur, td.ref { white-space: normal; }
+}
+
+/* =====================================================
+   IMPRESSION
+   ===================================================== */
+
+@media print {
+    body { background: white; }
+    body::before { display: none; }
+    .table-container { box-shadow: none; }
+    nav { display: none; }
+}
