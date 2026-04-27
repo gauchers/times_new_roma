@@ -70,8 +70,8 @@ def generate_html(rows):
     <div class="page-wrapper">
 
         <header class="som-header">
-            <h1>Sommaire des textes</h1>
-            <p class="subtitle">Textes grecs et latins — classement par auteur, œuvre et référence</p>
+            <h1>Times New Roma</h1>
+            <p class="subtitle">Textes grecs et latins référencés — classement par auteur, œuvre et référence</p>
         </header>
 
         <!-- Textes grecs -->
