@@ -39,24 +39,25 @@ const ANA_LABELS = {
         epyllion:              "Épyllion"
     },  
     
-    theme: {
-    agriculture: "Agriculture et vie rustique",
-    amitie: "Amitié",
-    amour: "Amour et érotisme",
-    education: "Éducation et pédagogie",
-    eloge: "Éloge et blâme",
-    famille: "Famille et ancêtres",
-    guerre: "Guerre",
-    litterature: "Littérature",
-    mort: "Mort",
-    nature: "Nature",
-    philosophie: "Philosophie et sagesse",
-    politique: "Politique et pouvoir",
-    religion: "Religion et mythologie",
-    societe: "Société",
-    voyage: "Voyage et exil",
-    violence: "Violence et luttes",
-}
+    themes: {
+        agriculture: "Agriculture et vie rustique",
+        amitie:      "Amitié",
+        amour:       "Amour et érotisme",
+        argent:      "Argent et commerce",
+        education:   "Éducation et pédagogie",
+        eloge:       "Éloge et blâme",
+        famille:     "Famille et ancêtres",
+        guerre:      "Guerre et paix",
+        litterature: "Littérature et arts",
+        mort:        "Mort",
+        nature:      "Nature et animaux",
+        philosophie: "Philosophie et sagesse",
+        politique:   "Politique et pouvoir",
+        religion:    "Religions et mythologie",
+        societe:     "Société",
+        voyage:      "Voyage et exil",
+        violence:      "Violence et luttes"
+    }
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
