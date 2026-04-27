@@ -241,7 +241,7 @@
                             </p>
                             
                             <p>
-                                <strong>Texte latin (<xsl:value-of select=".//tei:term[@type='mots']/@n"/> mots environ) :</strong><br/>
+                                <strong>Original (<xsl:value-of select=".//tei:term[@type='mots']/@n"/> mots environ) :</strong><br/>
                                 <xsl:apply-templates select=".//tei:ab[@type='orig']"/>
                             </p>
                             
