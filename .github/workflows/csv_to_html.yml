@@ -59,7 +59,9 @@ jobs:
 
       # 7️⃣ CSV → HTML sommaire
       - name: Generate HTML sommaire
-        run: python py/generate_sommaire.py
+        run: |
+          mkdir -p html
+          python py/generate_sommaire.py
 
       # 8️⃣ Génération de index.json
       - name: Generate index.json
@@ -70,14 +72,14 @@ jobs:
             | jq -R . \
             | jq -s . > data/index.json
 
-      # 9️⃣ Commit & push — tei/, data/, html/sommaire.html
+      # 9️⃣ Commit & push — tei/, data/, html/sommaire.html uniquement
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git config --global core.quotePath false
           git add tei/ data/ html/sommaire.html
-          if [ -z "$(git status --porcelain)" ]; then
+          if [ -z "$(git diff --cached --name-only)" ]; then
             echo "Aucune modification détectée."
           else
             git commit -m "Update TEI, HTML, index.json and sommaire [skip ci]"
