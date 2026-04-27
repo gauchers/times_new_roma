@@ -121,7 +121,7 @@ def generate_html(rows):
         </section>
 
         <footer class="som-footer">
-            <p>Généré automatiquement à partir du corpus de textes</p>
+            <p>Liste des textes référencés</p>
         </footer>
 
     </div>
