@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sommaire des textes</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --parchment: #f5f0e8;
+            --parchment-dark: #ede5d0;
+            --ink: #1a1208;
+            --ink-light: #3d2e0e;
+            --ink-faded: #6b5533;
+            --red-accent: #8b1a1a;
+            --gold: #b8860b;
+            --gold-light: #d4a017;
+            --border: #c8b888;
+            --border-light: #ddd0a8;
+            --shadow: rgba(26, 18, 8, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--parchment-dark);
+            background-image: 
+                radial-gradient(ellipse at 20% 50%, rgba(180,150,80,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(139,26,26,0.05) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            color: var(--ink);
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 16px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .page-wrapper {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 60px 40px 80px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 64px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .header::before {
+            content: '✦';
+            display: block;
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 12px;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: var(--ink);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--ink-faded);
+            letter-spacing: 0.05em;
+        }
+
+        .ornament {
+            text-align: center;
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 8px;
+            margin: 28px 0;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .section-header::before,
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+        }
+
+        .section-title {
+            font-family: 'Cormorant SC', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--red-accent);
+            letter-spacing: 0.12em;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .langue-badge {
+            display: inline-block;
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--ink-faded);
+            background: var(--parchment);
+            border: 1px solid var(--border-light);
+            padding: 2px 12px;
+            border-radius: 2px;
+            margin-left: 8px;
+        }
+
+        .count-badge {
+            font-family: 'Cormorant SC', serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--ink-faded);
+            letter-spacing: 0.05em;
+        }
+
+        /* Table */
+        .table-container {
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px var(--shadow), 0 1px 3px rgba(26,18,8,0.06);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--parchment);
+        }
+
+        thead {
+            background: var(--ink);
+        }
+
+        thead th {
+            font-family: 'Cormorant SC', serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--parchment-dark);
+            padding: 12px 18px;
+            text-align: left;
+        }
+
+        thead th:last-child {
+            color: rgba(245, 240, 232, 0.75);
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.15s ease;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: rgba(184, 134, 11, 0.06);
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(200, 184, 136, 0.08);
+        }
+
+        tbody tr:nth-child(even):hover {
+            background: rgba(184, 134, 11, 0.08);
+        }
+
+        td {
+            padding: 12px 18px;
+            vertical-align: top;
+            line-height: 1.45;
+        }
+
+        td.auteur {
+            font-family: 'Cormorant SC', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink-light);
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            width: 16%;
+        }
+
+        td.oeuvre {
+            font-size: 0.92rem;
+            color: var(--ink-light);
+            width: 26%;
+        }
+
+        td.oeuvre em {
+            font-style: italic;
+        }
+
+        td.ref {
+            font-family: 'Cormorant SC', serif;
+            font-size: 0.82rem;
+            color: var(--red-accent);
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            width: 12%;
+            font-weight: 500;
+        }
+
+        td.titre {
+            font-size: 0.9rem;
+            color: var(--ink-faded);
+            font-style: italic;
+            width: 46%;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 64px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.8rem;
+            color: var(--ink-faded);
+            font-style: italic;
+            letter-spacing: 0.04em;
+        }
+
+        /* Print */
+        @media print {
+            body { background: white; }
+            .table-container { box-shadow: none; border: 1px solid #999; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+
+        <header class="header">
+            <h1>Sommaire des textes</h1>
+            <p class="subtitle">Textes grecs et latins — classement par auteur, œuvre et référence</p>
+        </header>
+
+        <!-- Textes grecs -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Textes grecs <span class="count-badge">(4 textes)</span></h2>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Auteur</th>
+                            <th>Œuvre</th>
+                            <th>Référence</th>
+                            <th>Titre du texte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td class="auteur">Anacréon</td>
+                <td class="oeuvre"><em>Anacreontea</em></td>
+                <td class="ref">24</td>
+                <td class="titre">Sur les femmes</td>
+            </tr>
+            <tr>
+                <td class="auteur">Aristophane</td>
+                <td class="oeuvre"><em>Les Cavaliers</em></td>
+                <td class="ref">247-252</td>
+                <td class="titre">Le chœur contre le Paphlagonien</td>
+            </tr>
+            <tr>
+                <td class="auteur">Aristophane</td>
+                <td class="oeuvre"><em>Les Grenouilles</em></td>
+                <td class="ref">632-639</td>
+                <td class="titre">La torture de Dionysos et Xanthias</td>
+            </tr>
+            <tr>
+                <td class="auteur">Longus</td>
+                <td class="oeuvre"><em>Daphnis et Chloé</em></td>
+                <td class="ref">2.1.1-4</td>
+                <td class="titre">Scènes de vendanges</td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="ornament">— ✦ —</div>
+
+        <!-- Textes latins -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Textes latins <span class="count-badge">(27 textes)</span></h2>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Auteur</th>
+                            <th>Œuvre</th>
+                            <th>Référence</th>
+                            <th>Titre du texte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td class="auteur">Aulu-Gelle</td>
+                <td class="oeuvre"><em>Nuits Attiques</em></td>
+                <td class="ref">10.18</td>
+                <td class="titre">Amour d'Artémise pour son époux</td>
+            </tr>
+            <tr>
+                <td class="auteur">Cicéron</td>
+                <td class="oeuvre"><em>Pour Archias</em></td>
+                <td class="ref">10.22-24</td>
+                <td class="titre">Pouvoir(s) de la poésie</td>
+            </tr>
+            <tr>
+                <td class="auteur">César</td>
+                <td class="oeuvre"><em>Guerre des Gaules</em></td>
+                <td class="ref">3.1</td>
+                <td class="titre">Galba est envoyé par César pour sécuriser une route commerciale</td>
+            </tr>
+            <tr>
+                <td class="auteur">César</td>
+                <td class="oeuvre"><em>Guerre des Gaules</em></td>
+                <td class="ref">6.16-6.17</td>
+                <td class="titre">Superstitions et religion en Gaule</td>
+            </tr>
+            <tr>
+                <td class="auteur">César</td>
+                <td class="oeuvre"><em>Guerre des Gaules</em></td>
+                <td class="ref">6.17-6.18</td>
+                <td class="titre">Les divinités gauloises</td>
+            </tr>
+            <tr>
+                <td class="auteur">César</td>
+                <td class="oeuvre"><em>La guerre des Gaules</em></td>
+                <td class="ref">6.14</td>
+                <td class="titre">Coutumes gauloises</td>
+            </tr>
+            <tr>
+                <td class="auteur">Lucain</td>
+                <td class="oeuvre"><em>La Pharsale</em></td>
+                <td class="ref">9.1081-1108</td>
+                <td class="titre">Discours de César après la mort de Pompée</td>
+            </tr>
+            <tr>
+                <td class="auteur">Lucrèce</td>
+                <td class="oeuvre"><em>Sur la nature des choses</em></td>
+                <td class="ref">3.1024-1052</td>
+                <td class="titre">Même les grands hommes doivent mourir</td>
+            </tr>
+            <tr>
+                <td class="auteur">Ovide</td>
+                <td class="oeuvre"><em>Héroïdes</em></td>
+                <td class="ref">1.47-74</td>
+                <td class="titre">Pénélope déplore l'absence d'Ulysse</td>
+            </tr>
+            <tr>
+                <td class="auteur">Phèdre</td>
+                <td class="oeuvre"><em>Fables</em></td>
+                <td class="ref">1.1</td>
+                <td class="titre">Le loup et l'agneau</td>
+            </tr>
+            <tr>
+                <td class="auteur">Phèdre</td>
+                <td class="oeuvre"><em>Fables</em></td>
+                <td class="ref">1.5</td>
+                <td class="titre">La vache, la chèbre, la brebis et le lion</td>
+            </tr>
+            <tr>
+                <td class="auteur">Phèdre</td>
+                <td class="oeuvre"><em>Fables</em></td>
+                <td class="ref">1.5</td>
+                <td class="titre">La vache, la chèvre, la brebis et le lion</td>
+            </tr>
+            <tr>
+                <td class="auteur">Phèdre</td>
+                <td class="oeuvre"><em>Fables</em></td>
+                <td class="ref">1.7</td>
+                <td class="titre">Le chien qui porte un morceau de viande en traversant une rivière</td>
+            </tr>
+            <tr>
+                <td class="auteur">Phèdre</td>
+                <td class="oeuvre"><em>Fables</em></td>
+                <td class="ref">1.16</td>
+                <td class="titre">La brebis, le cerf et le loup</td>
+            </tr>
+            <tr>
+                <td class="auteur">Phèdre</td>
+                <td class="oeuvre"><em>Fables</em></td>
+                <td class="ref">1.25</td>
+                <td class="titre">Les chiens et les crocodiles</td>
+            </tr>
+            <tr>
+                <td class="auteur">Phèdre</td>
+                <td class="oeuvre"><em>Fables</em></td>
+                <td class="ref">2.7</td>
+                <td class="titre">Les deux mulets</td>
+            </tr>
+            <tr>
+                <td class="auteur">Pline le Jeune</td>
+                <td class="oeuvre"><em>Lettres</em></td>
+                <td class="ref">6.16.17-20</td>
+                <td class="titre">Mort de Pline l'Ancien</td>
+            </tr>
+            <tr>
+                <td class="auteur">Reposianus</td>
+                <td class="oeuvre"><em>L’union de Mars et de Vénus</em></td>
+                <td class="ref">96-137</td>
+                <td class="titre">Ebats de Mars et de Vénus</td>
+            </tr>
+            <tr>
+                <td class="auteur">Suétone</td>
+                <td class="oeuvre"><em>Vie de Caligula</em></td>
+                <td class="ref">3-6</td>
+                <td class="titre">Eloge de Germancus</td>
+            </tr>
+            <tr>
+                <td class="auteur">Suétone</td>
+                <td class="oeuvre"><em>Vie de César</em></td>
+                <td class="ref">37</td>
+                <td class="titre">Triomphes de César</td>
+            </tr>
+            <tr>
+                <td class="auteur">Sénèque</td>
+                <td class="oeuvre"><em>Lettres à Lucilius</em></td>
+                <td class="ref">70</td>
+                <td class="titre">Réflexions sur le suicide</td>
+            </tr>
+            <tr>
+                <td class="auteur">Tacite</td>
+                <td class="oeuvre"><em>Annales</em></td>
+                <td class="ref">13.16-17</td>
+                <td class="titre">Meurtre de Britannicus</td>
+            </tr>
+            <tr>
+                <td class="auteur">Tacite</td>
+                <td class="oeuvre"><em>Germanie</em></td>
+                <td class="ref">1</td>
+                <td class="titre">Frontières de la Germanie</td>
+            </tr>
+            <tr>
+                <td class="auteur">Tacite</td>
+                <td class="oeuvre"><em>Germanie</em></td>
+                <td class="ref">5</td>
+                <td class="titre">Les ressources de la Germanie</td>
+            </tr>
+            <tr>
+                <td class="auteur">Tite-Live</td>
+                <td class="oeuvre"><em>Histoire Romaine</em></td>
+                <td class="ref">26.43</td>
+                <td class="titre">Préparatifs de guerre et discours</td>
+            </tr>
+            <tr>
+                <td class="auteur">Valère Maxime</td>
+                <td class="oeuvre"><em>Des faits et dits mémorables</em></td>
+                <td class="ref">2.2-3</td>
+                <td class="titre">Rome et la langue grecque</td>
+            </tr>
+            <tr>
+                <td class="auteur">Virgile</td>
+                <td class="oeuvre"><em>Enéide</em></td>
+                <td class="ref">7.5-7.34</td>
+                <td class="titre">Enée découvre le rivage du Latium</td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer">
+            Généré automatiquement à partir du corpus de textes
+        </footer>
+
+    </div>
+</body>
+</html>
