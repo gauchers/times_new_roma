@@ -30,52 +30,57 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # 4️⃣ Détection des changements OU fichier de sortie manquant
-      - name: Detect source changes or missing output
-        id: sources
+      # 4️⃣ CSV → TEI
+      - name: CSV to TEI
+        run: python py/csv_to_xml.py
+
+      # 5️⃣ Télécharger Saxon
+      - name: Download Saxon HE
         run: |
-          NEED_REBUILD=false
+          wget https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-9/SaxonHE12-9J.zip -O saxon.zip
+          unzip -q saxon.zip -d saxon
 
-          # 🔍 Changements sur le CSV ou le script
-          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
-            -- 'csv/tableau.csv' 'py/generate_sommaire.py')
-          if [ -n "$CHANGED" ]; then
-            echo "Sources modifiées :"
-            echo "$CHANGED"
-            NEED_REBUILD=true
-          fi
+      # 6️⃣ TEI → HTML avec Saxon
+      - name: TEI to HTML with Saxon
+        run: |
+          mkdir -p data
+          for tei_file in tei/*.xml; do
+            [ -e "$tei_file" ] || continue
+            if [ ! -s "$tei_file" ]; then
+              echo "⚠️ TEI vide ignoré : $tei_file"
+              continue
+            fi
+            filename=$(basename "$tei_file" .xml)
+            java -cp "saxon/saxon-he-12.9.jar:saxon/lib/*" net.sf.saxon.Transform \
+              -s:"$tei_file" \
+              -xsl:xsl/xml_to_html.xsl \
+              -o:"data/${filename}.html"
+          done
 
-          # 🔍 Fichier HTML de sortie manquant
-          if [ ! -f html/sommaire.html ]; then
-            echo "⚠️ html/sommaire.html introuvable"
-            NEED_REBUILD=true
-          fi
-
-          if [ "$NEED_REBUILD" = true ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "➡️ Régénération nécessaire"
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "Aucune action nécessaire"
-          fi
-
-      # 5️⃣ CSV → HTML sommaire
+      # 7️⃣ CSV → HTML sommaire
       - name: Generate HTML sommaire
-        if: steps.sources.outputs.changed == 'true'
         run: python py/generate_sommaire.py
 
-      # 6️⃣ Commit & push
+      # 8️⃣ Génération de index.json
+      - name: Generate index.json
+        run: |
+          mkdir -p data
+          ls data/*.html 2>/dev/null \
+            | xargs -n 1 basename \
+            | jq -R . \
+            | jq -s . > data/index.json
+
+      # 9️⃣ Commit & push — tei/, data/, html/sommaire.html
       - name: Commit and push changes
-        if: steps.sources.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git config --global core.quotePath false
-          git add html/sommaire.html
+          git add tei/ data/ html/sommaire.html
           if [ -z "$(git status --porcelain)" ]; then
             echo "Aucune modification détectée."
           else
-            git commit -m "Update html/sommaire.html [skip ci]"
+            git commit -m "Update TEI, HTML, index.json and sommaire [skip ci]"
             git push origin main
           fi
         env:
