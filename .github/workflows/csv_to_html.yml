@@ -11,9 +11,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # 1️⃣ Checkout (historique complet requis)
+      # 1️⃣ Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -31,31 +30,24 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # 4️⃣ Détection des changements OU fichiers manquants
-      - name: Detect source changes or missing outputs
+      # 4️⃣ Détection des changements OU fichier de sortie manquant
+      - name: Detect source changes or missing output
         id: sources
         run: |
           NEED_REBUILD=false
 
-          # 🔍 Changements sources
+          # 🔍 Changements sur le CSV ou le script
           CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
-            -- '*.csv' 'py/*.py' 'xsl/*.xsl')
-
+            -- 'csv/tableau.csv' 'py/generate_sommaire.py')
           if [ -n "$CHANGED" ]; then
             echo "Sources modifiées :"
             echo "$CHANGED"
             NEED_REBUILD=true
           fi
 
-          # 🔍 TEI manquants
-          if ! ls tei/*.xml >/dev/null 2>&1; then
-            echo "⚠️ Aucun fichier TEI trouvé"
-            NEED_REBUILD=true
-          fi
-
-          # 🔍 HTML manquants
-          if ! ls data/*.html >/dev/null 2>&1; then
-            echo "⚠️ Aucun fichier HTML trouvé"
+          # 🔍 Fichier HTML de sortie manquant
+          if [ ! -f html/sommaire.html ]; then
+            echo "⚠️ html/sommaire.html introuvable"
             NEED_REBUILD=true
           fi
 
@@ -67,62 +59,23 @@ jobs:
             echo "Aucune action nécessaire"
           fi
 
-      # 5️⃣ CSV → TEI
-      - name: CSV to TEI
+      # 5️⃣ CSV → HTML sommaire
+      - name: Generate HTML sommaire
         if: steps.sources.outputs.changed == 'true'
-        run: python py/csv_to_xml.py
+        run: python py/generate_sommaire.py
 
-      # 6️⃣ Télécharger Saxon
-      - name: Download Saxon HE
-        if: steps.sources.outputs.changed == 'true'
-        run: |
-          wget https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-9/SaxonHE12-9J.zip -O saxon.zip
-          unzip -q saxon.zip -d saxon
-
-      # 7️⃣ TEI → HTML (sécurisé)
-      - name: TEI to HTML with Saxon
-        if: steps.sources.outputs.changed == 'true'
-        run: |
-          mkdir -p data
-          for tei_file in tei/*.xml; do
-            [ -e "$tei_file" ] || continue
-
-            # ⛔ ignorer fichiers vides
-            if [ ! -s "$tei_file" ]; then
-              echo "⚠️ TEI vide ignoré : $tei_file"
-              continue
-            fi
-
-            filename=$(basename "$tei_file" .xml)
-            java -cp "saxon/saxon-he-12.9.jar:saxon/lib/*" net.sf.saxon.Transform \
-              -s:"$tei_file" \
-              -xsl:xsl/xml_to_html.xsl \
-              -o:"data/${filename}.html"
-          done
-
-      # 8️⃣ Génération de index.json (toujours)
-      - name: Generate index.json
-        run: |
-          mkdir -p data
-          ls data/*.html 2>/dev/null \
-            | xargs -n 1 basename \
-            | jq -R . \
-            | jq -s . > data/index.json
-
-      # 9️⃣ Commit & push (robuste)
+      # 6️⃣ Commit & push
       - name: Commit and push changes
+        if: steps.sources.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git config --global core.quotePath false
-
-          git add data || true
-          git add tei || true
-
+          git add html/sommaire.html
           if [ -z "$(git status --porcelain)" ]; then
             echo "Aucune modification détectée."
           else
-            git commit -m "Update TEI, HTML and index.json [skip ci]"
+            git commit -m "Update html/sommaire.html [skip ci]"
             git push origin main
           fi
         env:
