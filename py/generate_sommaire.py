@@ -6,7 +6,6 @@ import sys
 def ref_sort_key(ref):
     """Sort references numerically, handling formats like '1.1', '3-6', '10.18', '1.47-74'"""
     import re
-    # Extract first number sequence
     parts = re.split(r'[-.]', ref)
     result = []
     for p in parts:
@@ -16,16 +15,7 @@ def ref_sort_key(ref):
             result.append(0)
     return result if result else [0]
 
-def parse_csv_from_document(text):
-    """Parse the CSV content from the document"""
-    reader = csv.DictReader(io.StringIO(text))
-    rows = []
-    for row in reader:
-        rows.append(row)
-    return rows
-
 def generate_html(rows):
-    # Separate by language
     grecs = [r for r in rows if r['Langue'].strip().lower() == 'grec']
     latins = [r for r in rows if r['Langue'].strip().lower() == 'latin']
 
@@ -67,6 +57,17 @@ def generate_html(rows):
     <nav>
         <a href="../index.html" class="nav-btn accueil">← Accueil</a>
     </nav>
+
+    <!-- Barre de recherche latérale -->
+    <aside class="search-panel" id="searchPanel">
+        <div class="search-panel-inner">
+            <label class="search-label" for="searchInput">Recherche</label>
+            <input type="text" id="searchInput" class="search-input" placeholder="Auteur, œuvre, titre…" autocomplete="off">
+            <div class="search-results" id="searchResults"></div>
+            <p class="search-hint" id="searchHint">Saisissez au moins 2 caractères</p>
+        </div>
+    </aside>
+
     <div class="page-wrapper">
 
         <header class="som-header">
@@ -76,10 +77,14 @@ def generate_html(rows):
 
         <!-- Textes grecs -->
         <section class="som-section">
-            <div class="som-section-header">
-                <h2 class="som-section-title grec">Textes grecs <span class="count-badge">({len(grecs_sorted)} textes)</span></h2>
+            <div class="som-section-header grec">
+                <button class="toggle-btn" aria-expanded="false" aria-controls="table-grec" data-target="table-grec">
+                    <span class="toggle-icon">▸</span>
+                    <span class="som-section-title grec">Textes grecs</span>
+                    <span class="count-badge">({len(grecs_sorted)} textes)</span>
+                </button>
             </div>
-            <div class="table-container grec grec-table">
+            <div class="table-container grec grec-table collapsed" id="table-grec">
                 <table>
                     <thead>
                         <tr>
@@ -100,10 +105,14 @@ def generate_html(rows):
 
         <!-- Textes latins -->
         <section class="som-section">
-            <div class="som-section-header">
-                <h2 class="som-section-title latin">Textes latins <span class="count-badge">({len(latins_sorted)} textes)</span></h2>
+            <div class="som-section-header latin">
+                <button class="toggle-btn" aria-expanded="false" aria-controls="table-latin" data-target="table-latin">
+                    <span class="toggle-icon">▸</span>
+                    <span class="som-section-title latin">Textes latins</span>
+                    <span class="count-badge">({len(latins_sorted)} textes)</span>
+                </button>
             </div>
-            <div class="table-container latin latin-table">
+            <div class="table-container latin latin-table collapsed" id="table-latin">
                 <table>
                     <thead>
                         <tr>
@@ -125,6 +134,81 @@ def generate_html(rows):
         </footer>
 
     </div>
+
+    <script>
+    // ── Toggle rétractable ──────────────────────────────────────────
+    document.querySelectorAll('.toggle-btn').forEach(btn => {{
+        btn.addEventListener('click', () => {{
+            const targetId = btn.dataset.target;
+            const target = document.getElementById(targetId);
+            const icon = btn.querySelector('.toggle-icon');
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+            btn.setAttribute('aria-expanded', !expanded);
+            target.classList.toggle('collapsed', expanded);
+            icon.style.transform = expanded ? '' : 'rotate(90deg)';
+        }});
+    }});
+
+    // ── Recherche plein texte ───────────────────────────────────────
+    const allRows = Array.from(document.querySelectorAll('tbody tr')).map(tr => ({{
+        el: tr,
+        text: tr.innerText.toLowerCase(),
+        auteur: tr.querySelector('.auteur')?.innerText || '',
+        oeuvre: tr.querySelector('.oeuvre')?.innerText || '',
+        ref:    tr.querySelector('.ref')?.innerText || '',
+        titre:  tr.querySelector('.titre')?.innerText || '',
+        langue: tr.closest('.grec-table') ? 'grec' : 'latin'
+    }}));
+
+    const input   = document.getElementById('searchInput');
+    const results = document.getElementById('searchResults');
+    const hint    = document.getElementById('searchHint');
+
+    input.addEventListener('input', () => {{
+        const q = input.value.trim().toLowerCase();
+        results.innerHTML = '';
+        hint.style.display = 'none';
+
+        if (q.length < 2) {{
+            hint.style.display = 'block';
+            return;
+        }}
+
+        const matches = allRows.filter(r => r.text.includes(q));
+
+        if (matches.length === 0) {{
+            results.innerHTML = '<p class="no-result">Aucun résultat</p>';
+            return;
+        }}
+
+        matches.forEach(r => {{
+            const item = document.createElement('div');
+            item.className = 'result-item ' + r.langue;
+            item.innerHTML = `
+                <span class="res-auteur">${{r.auteur}}</span>
+                <span class="res-oeuvre">${{r.oeuvre}}</span>
+                <span class="res-ref">${{r.ref}}</span>
+                <span class="res-titre">${{r.titre}}</span>`;
+            item.addEventListener('click', () => {{
+                // Ouvrir le tableau si rétracté
+                const tableId = r.langue === 'grec' ? 'table-grec' : 'table-latin';
+                const tableEl = document.getElementById(tableId);
+                const btn = document.querySelector(`[data-target="${{tableId}}"]`);
+                if (tableEl.classList.contains('collapsed')) {{
+                    tableEl.classList.remove('collapsed');
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.querySelector('.toggle-icon').style.transform = 'rotate(90deg)';
+                }}
+                // Mettre en surbrillance et scroller
+                document.querySelectorAll('tr.highlighted').forEach(el => el.classList.remove('highlighted'));
+                r.el.classList.add('highlighted');
+                r.el.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+            }});
+            results.appendChild(item);
+        }});
+    }});
+    </script>
 </body>
 </html>"""
 
@@ -132,7 +216,6 @@ def generate_html(rows):
 
 
 def main():
-    # Chemin fixe vers le fichier CSV source
     script_dir = os.path.dirname(os.path.abspath(__file__))
     csv_path = os.path.join(script_dir, '..', 'csv', 'tableau.csv')
 
