@@ -154,7 +154,6 @@
             <!-- ============ THEMES ============ -->
             <xsl:when test="$type = 'themes'">
                 <xsl:choose>
-                    <xsl:when test="$value = 'agriculture'">agriculture</xsl:when>
                     <xsl:when test="$value = 'amitie'">amitié</xsl:when>
                     <xsl:when test="$value = 'amour'">amour</xsl:when>
                     <xsl:when test="$value = 'education'">éducation</xsl:when>
@@ -166,11 +165,12 @@
                     <xsl:when test="$value = 'nature'">nature</xsl:when>
                     <xsl:when test="$value = 'philosophie'">philosophie</xsl:when>
                     <xsl:when test="$value = 'politique'">politique</xsl:when>
-                    <xsl:when test="$value = 'religion'">religion</xsl:when>
+                    <xsl:when test="$value = 'religions'">religions</xsl:when>
                     <xsl:when test="$value = 'societe'">société</xsl:when>
-                    <xsl:when test="$value = 'voyage'">voyage</xsl:when>
+                    <xsl:when test="$value = 'alterite'">altérité</xsl:when>
                     <xsl:when test="$value = 'argent'">argent</xsl:when>
                     <xsl:when test="$value = 'violence'">violence</xsl:when>
+                    <xsl:when test="$value = 'quotidien'">quotidien</xsl:when>
                 </xsl:choose>
             </xsl:when>
 
