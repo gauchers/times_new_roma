@@ -115,10 +115,11 @@ nav {
 
 .search-panel {
     position: fixed;
-    top: 400px;
-    right: 100px;
-    max-height: calc(100vh - 100px);
+    top: 260px;
+    right: 20px;
     width: var(--search-w);
+    /* Hauteur : du point de départ jusqu'en bas de la fenêtre */
+    height: calc(100vh - 280px);
     z-index: 100;
     display: flex;
     flex-direction: column;
@@ -127,15 +128,15 @@ nav {
 .search-panel-inner {
     background: white;
     border: 1px solid var(--cream);
-    border-right: none;
     border-top: 3px solid var(--gold);
-    border-radius: 4px 0 0 4px;
-    box-shadow: -4px 4px 24px var(--shadow);
+    border-radius: 4px;
+    box-shadow: 0 4px 24px var(--shadow);
     padding: 18px 16px 14px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: calc(100vh - 120px);
+    /* Occupe toute la hauteur du panel */
+    height: 100%;
     overflow: hidden;
 }
 
@@ -181,9 +182,12 @@ nav {
 
 .search-results {
     overflow-y: auto;
+    flex: 1 1 0;        /* prend tout l'espace restant */
+    min-height: 0;      /* essentiel pour que flex+overflow fonctionne */
     display: flex;
     flex-direction: column;
     gap: 6px;
+    padding-right: 4px; /* espace pour la scrollbar */
 }
 
 .search-results::-webkit-scrollbar { width: 4px; }
@@ -258,6 +262,8 @@ nav {
     max-width: 860px;
     margin: 0 auto;
     padding: 60px 30px 100px;
+    /* Laisser de la place pour le panneau de recherche */
+    margin-right: calc(var(--search-w) + 20px);
 }
 
 /* =====================================================
@@ -266,9 +272,13 @@ nav {
 
 .som-header {
     text-align: center;
+    margin-bottom: 56px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--rule);
 }
 
 .som-header::before {
+    content: 'Sommaire';
     display: block;
     font-size: 1em;
     color: var(--gold);
@@ -293,7 +303,6 @@ nav {
     font-size: 1em;
     color: var(--gold);
     letter-spacing: 0.04em;
-   margin-bottom:32px;
 }
 
 /* =====================================================
@@ -356,7 +365,7 @@ nav {
 }
 
 .toggle-icon {
-    font-size: 3em;
+    font-size: 0.75em;
     color: var(--gold);
     display: inline-block;
     transition: transform 0.25s ease;
@@ -365,7 +374,7 @@ nav {
 
 .som-section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2em;
+    font-size: 1.3em;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
