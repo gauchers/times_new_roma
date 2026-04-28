@@ -123,14 +123,14 @@ nav,
 }
 
 .nav-btn.equipe {
-    background: transparent;
-    color: var(--ink);
-    border-color: var(--rule);
+    background: chocolate;
+    color: var(--parch);
+    border-color: var(--lat_lt);
 }
 .nav-btn.equipe:hover {
-    background: var(--cream);
-    border-color: var(--gold);
-    color: var(--gold);
+    background: var(--lat-lt);
+    border-color: var(--lat-lt);
+    color: var(--parch);
 }
 
 .nav-btn.documentation {
