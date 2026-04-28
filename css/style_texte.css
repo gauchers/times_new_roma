@@ -138,7 +138,7 @@ body > div.texte,
 
 /* Barre de couleur haute selon la langue */
 .texte[data-langue="grc"] { border-top: 4px solid var(--grec); }
-.texte[data-langue="lat"] { border-top: 4px solid var(--latin); }
+.texte[data-langue="la"] { border-top: 4px solid var(--latin); }
 
 /* =====================================================
    BADGES (niveau, type)
@@ -166,7 +166,7 @@ body > div.texte,
     color: var(--grec);
     border-color: var(--grec);
 }
-.texte[data-langue="lat"] .badge.type {
+.texte[data-langue="la"] .badge.type {
     color: var(--latin);
     border-color: var(--latin);
 }
@@ -266,12 +266,14 @@ p.notice ~ p:first-of-type,
 .texte[data-langue="grc"] p:nth-of-type(2) {
     border-left-color: var(--grec);
     color: #0d2b1e;
+   font-family: auto;
 }
 
 /* Texte original en latin */
-.texte[data-langue="lat"] p:nth-of-type(2) {
+.texte[data-langue="la"] p:nth-of-type(2) {
     border-left-color: var(--latin);
     color: #2b0d10;
+    font-family: auto;   
 }
 
 /* Traduction : fond légèrement distinct */
