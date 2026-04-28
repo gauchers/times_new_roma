@@ -78,13 +78,13 @@ def generate_html(rows):
         <!-- Textes grecs -->
         <section class="som-section">
             <div class="som-section-header grec">
-                <button class="toggle-btn" aria-expanded="false" aria-controls="table-grec" data-target="table-grec">
+                <button class="toggle-btn" aria-expanded="true" aria-controls="table-grec" data-target="table-grec">
                     <span class="toggle-icon">▸</span>
                     <span class="som-section-title grec">Textes grecs</span>
                     <span class="count-badge">({len(grecs_sorted)} textes)</span>
                 </button>
             </div>
-            <div class="table-container grec grec-table collapsed" id="table-grec">
+            <div class="table-container grec grec-table" id="table-grec">
                 <table>
                     <thead>
                         <tr>
@@ -106,13 +106,13 @@ def generate_html(rows):
         <!-- Textes latins -->
         <section class="som-section">
             <div class="som-section-header latin">
-                <button class="toggle-btn" aria-expanded="false" aria-controls="table-latin" data-target="table-latin">
+                <button class="toggle-btn" aria-expanded="true" aria-controls="table-latin" data-target="table-latin">
                     <span class="toggle-icon">▸</span>
                     <span class="som-section-title latin">Textes latins</span>
                     <span class="count-badge">({len(latins_sorted)} textes)</span>
                 </button>
             </div>
-            <div class="table-container latin latin-table collapsed" id="table-latin">
+            <div class="table-container latin latin-table" id="table-latin">
                 <table>
                     <thead>
                         <tr>
