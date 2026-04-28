@@ -145,12 +145,12 @@ nav,
 
 
 .nav-btn.sommaire {
-    background: chocolate;
+    background: var(--latin-lt);
     color: var(--parch);
-    border-color: var(--lat_lt);
+    border-color: var(--latin);
 }
 .nav-btn.sommaire:hover {
-    background: var(--latin-lt);
+    background: var(--latin);
     border-color: var(--latin-lt);
     color: var(--parch);
 }
