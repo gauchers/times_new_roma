@@ -262,8 +262,7 @@ nav {
     max-width: 860px;
     margin: 0 auto;
     padding: 60px 30px 100px;
-    /* Laisser de la place pour le panneau de recherche */
-    margin-right: calc(var(--search-w) + 20px);
+    align-item: center;
 }
 
 /* =====================================================
