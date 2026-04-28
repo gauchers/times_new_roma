@@ -232,7 +232,6 @@ p.notice strong::first-line {
     color: var(--ink);
     font-size: 0.9em;
     letter-spacing: 0.03em;
-    display: block;
     margin-bottom: 10px;
     font-family: 'Cormorant Garamond', serif;
     text-transform: uppercase;
