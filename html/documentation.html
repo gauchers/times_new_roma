@@ -373,19 +373,26 @@ satisfaire l'ensemble des lignes pour être affiché.</li>
                             <span class="entry-toggle">▸</span>
                         </summary>
                         <div class="entry-body">
-                            <p>Le projet repose sur une architecture 
-statique (HTML / CSS / JavaScript). Les données sont stockées dans un 
+                            <p>Le projet repose sur une transformation de données csv en html via un format xml-tei (pour interrogation future du corpus). Les données sont stockées dans un 
 tableur Grist et exportées via un format csv. sur Github pour alimenter 
 les corpus.</p>
                             <ul>
-                                <li><strong>index.html</strong> — Page d'accueil avec choix de langue.</li>
+                                <li><strong>.github/workflows/</strong> — contient un fichier csv_to_html.yml qui gère l'intégration continue.</li>
+                                <li><strong>css/</strong> — contient les feuilles de style par page.</li>
+                                <li><strong>csv/</strong> — contient un unique fichier tableau.csv à modifier pour mettre à jour les données.</li>
+                                <li><strong>data/</strong> — contient un fichier html par texte du corpus.</li>
+                                <li><strong>html/</strong> — contient les fichiers html des différentes pages hors textes.</li>
                                 <li><strong>html/base_grec.html</strong> — Corpus grec avec filtres dynamiques.</li>
                                 <li><strong>html/base_latin.html</strong> — Corpus latin avec filtres dynamiques.</li>
                                 <li><strong>html/contribuer.html</strong> — Page de contribution.</li>
-                                <li><strong>html/equipe.html</strong> — Présentation de l'équipe.</li>
                                 <li><strong>html/documentation.html</strong> — Cette page.</li>
-                                <li><strong>css/</strong> — Feuilles de style par page.</li>
-                                <li><strong>js/</strong> — Scripts de filtrage du corpus.</li>
+                                <li><strong>html/equipe.html</strong> — Présentation de l'équipe.</li>
+                                <li><strong>html/sommaire.html</strong> — Page d'index des textes du corpus.</li>
+                                <li><strong>js/</strong> — contient les scripts de filtrage pour les bases latine et grecque.</li>
+                                <li><strong>py/</strong> — contient les scripts csv to xml et le script de création de la page html/sommmaire.html.</li>
+                                <li><strong>tei/</strong> — contient un fichier xml-tei par texte du corpus.</li>
+                                <li><strong>xsl/</strong> — contient une feuille de transformation xml to html.</li>
+                                <li><strong>index.html</strong> — Page d'accueil avec choix de langue.</li>
                             </ul>
                         </div>
                     </details></div>
