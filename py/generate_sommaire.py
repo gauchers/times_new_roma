@@ -1,11 +1,14 @@
 import csv
 import io
 import os
+import re
 import sys
+import unicodedata
+
+BASE_URL = "https://gauchers.github.io/times_new_roma/data/"
 
 def ref_sort_key(ref):
     """Sort references numerically, handling formats like '1.1', '3-6', '10.18', '1.47-74'"""
-    import re
     parts = re.split(r'[-.]', ref)
     result = []
     for p in parts:
@@ -15,14 +18,33 @@ def ref_sort_key(ref):
             result.append(0)
     return result if result else [0]
 
+def slugify(text):
+    """Normalize to lowercase ASCII, replacing spaces/dots/hyphens with underscores."""
+    text = unicodedata.normalize('NFD', text)
+    text = ''.join(c for c in text if unicodedata.category(c) != 'Mn')
+    text = text.lower()
+    text = re.sub(r'[\s.\-,/]+', '_', text)
+    text = re.sub(r'[^\w]', '', text)
+    text = re.sub(r'_+', '_', text)
+    return text.strip('_')
+
+def langue_code(langue):
+    l = langue.strip().lower()
+    return 'grc' if l == 'grec' else 'la'
+
+def build_url(langue, auteur, oeuvre, ref):
+    code = langue_code(langue)
+    filename = '_'.join([code, slugify(auteur), slugify(oeuvre), slugify(ref)]) + '.html'
+    return BASE_URL + filename
+
 def generate_html(rows):
-    grecs = [r for r in rows if r['Langue'].strip().lower() == 'grec']
+    grecs  = [r for r in rows if r['Langue'].strip().lower() == 'grec']
     latins = [r for r in rows if r['Langue'].strip().lower() == 'latin']
 
     def sort_key(r):
         return (r['Auteur'].strip().lower(), r['Oeuvre'].strip().lower(), ref_sort_key(r['Référence'].strip()))
 
-    grecs_sorted = sorted(grecs, key=sort_key)
+    grecs_sorted  = sorted(grecs,  key=sort_key)
     latins_sorted = sorted(latins, key=sort_key)
 
     def build_table(items):
@@ -30,18 +52,19 @@ def generate_html(rows):
         for r in items:
             auteur = r['Auteur'].strip()
             oeuvre = r['Oeuvre'].strip()
-            ref = r['Référence'].strip()
-            titre = r['Titre du texte'].strip()
+            ref    = r['Référence'].strip()
+            titre  = r['Titre du texte'].strip()
+            url    = build_url(r['Langue'], auteur, oeuvre, ref)
             rows_html += f"""
             <tr>
                 <td class="auteur">{auteur}</td>
                 <td class="oeuvre"><em>{oeuvre}</em></td>
                 <td class="ref">{ref}</td>
-                <td class="titre">{titre}</td>
+                <td class="titre"><a href="{url}">{titre}</a></td>
             </tr>"""
         return rows_html
 
-    grecs_rows = build_table(grecs_sorted)
+    grecs_rows  = build_table(grecs_sorted)
     latins_rows = build_table(latins_sorted)
 
     html = f"""<!DOCTYPE html>
@@ -159,6 +182,7 @@ def generate_html(rows):
         oeuvre: tr.querySelector('.oeuvre')?.innerText || '',
         ref:    tr.querySelector('.ref')?.innerText || '',
         titre:  tr.querySelector('.titre')?.innerText || '',
+        url:    tr.querySelector('.titre a')?.href || '',
         langue: tr.closest('.grec-table') ? 'grec' : 'latin'
     }}));
 
@@ -192,19 +216,22 @@ def generate_html(rows):
                 <span class="res-ref">${{r.ref}}</span>
                 <span class="res-titre">${{r.titre}}</span>`;
             item.addEventListener('click', () => {{
-                // Ouvrir le tableau si rétracté
-                const tableId = r.langue === 'grec' ? 'table-grec' : 'table-latin';
-                const tableEl = document.getElementById(tableId);
-                const btn = document.querySelector(`[data-target="${{tableId}}"]`);
-                if (tableEl.classList.contains('collapsed')) {{
-                    tableEl.classList.remove('collapsed');
-                    btn.setAttribute('aria-expanded', 'true');
-                    btn.querySelector('.toggle-icon').style.transform = 'rotate(90deg)';
+                if (r.url) {{
+                    window.location.href = r.url;
+                }} else {{
+                    // Fallback : scroll vers la ligne
+                    const tableId = r.langue === 'grec' ? 'table-grec' : 'table-latin';
+                    const tableEl = document.getElementById(tableId);
+                    const btn = document.querySelector(`[data-target="${{tableId}}"]`);
+                    if (tableEl.classList.contains('collapsed')) {{
+                        tableEl.classList.remove('collapsed');
+                        btn.setAttribute('aria-expanded', 'true');
+                        btn.querySelector('.toggle-icon').style.transform = 'rotate(90deg)';
+                    }}
+                    document.querySelectorAll('tr.highlighted').forEach(el => el.classList.remove('highlighted'));
+                    r.el.classList.add('highlighted');
+                    r.el.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
                 }}
-                // Mettre en surbrillance et scroller
-                document.querySelectorAll('tr.highlighted').forEach(el => el.classList.remove('highlighted'));
-                r.el.classList.add('highlighted');
-                r.el.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
             }});
             results.appendChild(item);
         }});
