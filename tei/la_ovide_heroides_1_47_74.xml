@@ -44,7 +44,7 @@
             <term type="morphologie" ana="comparatif comparatif_adverbe ille hic qui quis"/>
             <term type="syntaxe" ana="proposition_relative_indicatif interrogative_directe interrogative_indirecte circonstancielle_lieu_ubi comparative_indicatif ablatif_absolu omission_esse adjectif_verbal_attribut subjonctif_principale systeme_hypothetique_reel"/>
             <term type="genre" ana="elegie"/>
-            <term type="themes" ana="amour mort"/>
+            <term type="themes" ana="amour famille guerre mort"/>
           </bibl>
         </listBibl>
       </sourceDesc>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Faire cesser la guerre</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Emmanuelle Jégo</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Emmanuelle Jégo</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Aristophane</author>
+            <title type="oeuvre">Lysistrata</title>
+            <title type="fichier">grc_aristophane_lysistrata_45_53.xml</title>
+            <biblScope>45-53</biblScope>
+
+            <term type="prose/poésie" subtype="poesie"/>
+            <term type="mots" n="49"/>
+            <term type="niveau" n="3"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_futur infinitif_futur"/>
+            <term type="syntaxe" ana="interrogative_directe"/>
+            <term type="genre" ana="comedie"/>
+            <term type="themes" ana="guerre"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="grc"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_32">
+        <l>ΛΥ. Ταῦτ’ αὐτὰ γάρ τοι κἄσθ’ ἃ σώσειν προσδοκῶ,</l>
+        <l>τὰ κροκωτίδια καὶ τὰ μύρα χαἰ περιβαρίδες</l>
+        <l>χἤγχουσα καὶ τὰ διαφανῆ χιτώνια.</l>
+        <l>ΚΛ. Τίνα δὴ τρόπον ποθ’;</l>
+        <l>ΛΥ. Ὥστε τῶν νῦν μηδένας</l>
+        <l>ἀνδρῶν ἐπ’ ἀλλήλοισιν αἴρεσθαι δόρυ—</l>
+        <l>ΚΛ. Κροκωτὸν ἄρα νὴ τὼ θεὼ ’γὼ βάψομαι.</l>
+        <l>ΛΥ. μηδ’ ἀσπίδα λαβεῖν—</l>
+        <l>ΚΛ. Κιμβερικὸν ἐνδύσομαι.</l>
+        <l>ΛΥ. μηδὲ ξιφίδιον.</l>
+        <l>ΚΛ. Κτήσομαι περιβαρίδας.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_32">
+        <l>Lysistrata : C'est précisément ça qui nous sauvera, je l’espère,</l>
+        <l>les petites tuniques safranées, les parfums, les péribarides,</l>
+        <l>le rouge, les chemisettes transparentes.</l>
+        <l>Cléonice : Mais comment, à la fin ?</l>
+        <l>Lysistrata : De sorte qu’alors on ne verra</l>
+        <l>plus de gens porter de lance les uns contre les autres…</l>
+        <l>Cléonice : Alors là, par les deux déesses, je me fais teindre une crocote.</l>
+        <l>Lysistrata : Ni prendre de bouclier…</l>
+        <l>Cléonice : Je vais mettre une cimbérique.</l>
+        <l>Lysistrata : Ni de dague.</l>
+        <l>Cléonice : J'achèterai des péribarides.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>
