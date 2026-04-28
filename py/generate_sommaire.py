@@ -73,6 +73,7 @@ def generate_html(rows):
         <header class="som-header">
             <h1>Times New Roma</h1>
             <p class="subtitle">Textes grecs et latins référencés — classement par auteur, œuvre et référence</p>
+        <div class="ornament"><span>✦</span></div>
         </header>
 
         <!-- Textes grecs -->
