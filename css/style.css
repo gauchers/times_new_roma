@@ -128,8 +128,8 @@ nav,
     border-color: var(--lat_lt);
 }
 .nav-btn.equipe:hover {
-    background: var(--lat-lt);
-    border-color: var(--lat-lt);
+    background: var(--latin-lt);
+    border-color: var(--latin-lt);
     color: var(--parch);
 }
 
@@ -141,6 +141,18 @@ nav,
 .nav-btn.documentation:hover {
     background: var(--gold-lt);
     border-color: var(--gold-lt);
+}
+
+
+.nav-btn.sommaire {
+    background: chocolate;
+    color: var(--parch);
+    border-color: var(--lat_lt);
+}
+.nav-btn.sommaire:hover {
+    background: var(--latin-lt);
+    border-color: var(--latin-lt);
+    color: var(--parch);
 }
 
 /* =====================================================
