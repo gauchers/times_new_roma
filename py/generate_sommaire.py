@@ -49,7 +49,7 @@ def generate_html(rows):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sommaire des textes</title>
+    <title>Textes référencés – Times New Roma</title>
     <link rel="stylesheet" href="../css/style_sommaire.css">
 </head>
 <body>
