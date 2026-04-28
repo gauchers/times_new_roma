@@ -202,12 +202,11 @@
                 
                 <html lang="fr">
                     <head>
-                     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-                     <meta charset="UTF-8">
+                        <meta charset="UTF-8"/>
                         <title>
-                            <xsl:value-of select=".//tei:titleStmt/tei:title"/>
+                                <xsl:value-of select=".//tei:titleStmt/tei:title"/>
                         </title>
-                        <link rel="stylesheet" href="../css/style_texte.css">
+                        <link rel="stylesheet" type="text/css" href="../css/style_texte.css"/>
                     </head>
                     
                     <body>
