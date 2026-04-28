@@ -115,8 +115,8 @@ nav {
 
 .search-panel {
     position: fixed;
-    top: 80px;
-    right: 0;
+    top: 400px;
+    right: 100px;
     width: var(--search-w);
     max-height: calc(100vh - 100px);
     z-index: 100;
