@@ -266,8 +266,6 @@ nav {
 
 .som-header {
     text-align: center;
-    margin-bottom: 56px;
-    padding-bottom: 36px;
 }
 
 .som-header::before {
@@ -295,6 +293,7 @@ nav {
     font-size: 1em;
     color: var(--gold);
     letter-spacing: 0.04em;
+   margin-bottom:32px;
 }
 
 /* =====================================================
