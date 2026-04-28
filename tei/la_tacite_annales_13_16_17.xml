@@ -44,7 +44,7 @@
             <term type="morphologie" ana="is ille idem qui"/>
             <term type="syntaxe" ana="proposition_infinitive proposition_relative_indicatif proposition_relative_subjonctif discours_indirect circonstancielle_causale_indicatif circonstancielle_finale_subjonctif circonstancielle_consecutive_subjonctif circonstancielle_concessive_subjonctif ut_indicatif ablatif_absolu omission_esse"/>
             <term type="genre" ana="histoire"/>
-            <term type="themes" ana="famille mort"/>
+            <term type="themes" ana="mort"/>
           </bibl>
         </listBibl>
       </sourceDesc>
