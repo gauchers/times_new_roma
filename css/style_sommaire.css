@@ -512,6 +512,21 @@ td.titre {
     width: 46%;
 }
 
+
+/* =====================================================
+   LIENS DANS LES TITRES DE TEXTES
+   ===================================================== */
+
+td.titre a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.grec-table  td.titre a:hover { color: var(--grec);  border-bottom-color: var(--grec); }
+.latin-table td.titre a:hover { color: var(--latin); border-bottom-color: var(--latin); }
+
 /* =====================================================
    FOOTER
    ===================================================== */
