@@ -359,7 +359,7 @@ nav {
 }
 
 .toggle-icon {
-    font-size: 0.75em;
+    font-size: 3em;
     color: var(--gold);
     display: inline-block;
     transition: transform 0.25s ease;
@@ -368,7 +368,7 @@ nav {
 
 .som-section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.3em;
+    font-size: 2em;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
