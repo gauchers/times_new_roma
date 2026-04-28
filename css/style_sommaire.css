@@ -118,6 +118,7 @@ nav {
     top: 400px;
     right: 100px;
     max-height: calc(100vh - 100px);
+    width: var(--search-w);
     z-index: 100;
     display: flex;
     flex-direction: column;
