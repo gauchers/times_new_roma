@@ -123,7 +123,6 @@ const ANA_LABELS = {
     },
 
     themes: {
-        agriculture: "Agriculture et vie rustique",
         amitie:      "Amitié",
         amour:       "Amour et érotisme",
         argent:      "Argent et commerce",
@@ -131,14 +130,15 @@ const ANA_LABELS = {
         eloge:       "Éloge et blâme",
         famille:     "Famille et ancêtres",
         guerre:      "Guerre et paix",
-        litterature: "Littérature et arts",
+        alterite:    "Identité et altérité",
+        litterature: "Littérature, rhétorique et arts",
         mort:        "Mort",
-        nature:      "Nature et animaux",
+        nature:      "Nature",
         philosophie: "Philosophie et sagesse",
         politique:   "Politique et pouvoir",
-        religion:    "Religions et mythologie",
+        religions:   "Religions et mythologie",
         societe:     "Société",
-        voyage:      "Voyage et exil",
+        quotidien:    "Vie quotidienne et realia",
         violence:      "Violence et luttes"
     }
 };
