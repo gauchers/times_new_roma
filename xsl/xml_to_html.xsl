@@ -206,7 +206,7 @@
                         <title>
                             <xsl:value-of select=".//tei:titleStmt/tei:title"/>
                         </title>
-                        <link rel="stylesheet" href="../css/style_textes.css">
+                        <link rel="stylesheet" href="../css/style_texte.css">
                     </head>
                     
                     <body>
