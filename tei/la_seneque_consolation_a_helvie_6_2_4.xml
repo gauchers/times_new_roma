@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Rome du point de vue d'un exilé</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Orsini</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Sarah Orsini</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Sénèque</author>
+            <title type="oeuvre">Consolation à Helvie</title>
+            <title type="fichier">la_seneque_consolation_a_helvie_6_2_4.xml</title>
+            <biblScope>6.2-4</biblScope>
+
+            <term type="prose/poésie" subtype="prose"/>
+            <term type="mots" n="101"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="imperatif_present infinitif_present infinitif_present_passif"/>
+            <term type="morphologie" ana="comparatif superlatif"/>
+            <term type="syntaxe" ana="proposition_infinitive proposition_relative_indicatif ablatif_absolu"/>
+            <term type="genre" ana="epistolaire philosophie"/>
+            <term type="themes" ana="philosophie societe quotidien"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_33">
+        <l>Aspice agedum hanc frequentiam, cui uix urbis inmensae tecta sufficiunt: maxima pars istius turbae patria caret. Ex municipiis et coloniis suis, ex toto denique orbe terrarum confluxerunt: alios adduxit ambitio, alios necessitas officii publici, alios inposita legatio, alios luxuria opportunum et opulentum uitiis locum quaerens, alios liberalium studiorum cupiditas, alios spectacula. [...] Iube istos omnes ad nomen citari et 'unde domo' quisque sit quaere: uidebis maiorem partem esse quae relictis sedibus suis uenerit in maximam quidem ac pulcherrimam urbem, non tamen suam.  Deinde ab hac ciuitate discede, quae ueluti communis potest dici, omnes urbes circumi: nulla non magnam partem peregrinae multitudinis habet.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_33">
+        <l>Allez, regarde cette cohue, pour qui les toits de l’immense ville suffisent difficilement :</l>
+        <l>la plus grande partie de cette foule est privée de patrie. Depuis les municipes et les colonies, et enfin depuis tout le globe terrestre ces personnes ont afflué. Les uns, l’ambition les a conduits ici, d’autres l’obligation d’une fonction publique, d’autres des ambassades imposées, d’autres le goût du luxe qui cherche un lieu opportun et abondant en vices, d’autres le désir des nobles études, d’autres les spectacles. […] Ordonne que tous ces gens soient appelés par leur nom et demande-leur « de quel endroit » chacun est originaire : tu verras qu’il y a une plus grande partie de cette foule qui, après avoir quitté son pays natal, est venue dans une ville qui est certes la plus grande et la plus belle, mais qui n’est pas la sienne. Ensuite, éloigne-toi de cette cité qui, pour ainsi dire, peut être qualifiée de commune au genre humain, et va dans  toutes les autres villes alentour : il n’en est pas une qui n’ait une grande partie de foule étrangère.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>
