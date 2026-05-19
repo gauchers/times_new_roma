@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Anchise prophétise l'arrivée d'Auguste au pouvoir</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Sarah Orsini</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Sarah Orsini</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Virgile</author>
+            <title type="oeuvre">Enéide</title>
+            <title type="fichier">la_virgile_eneide_6_788_795.xml</title>
+            <biblScope>6.788-795</biblScope>
+
+            <term type="prose/poésie" subtype="poesie"/>
+            <term type="mots" n="52"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_futur imperatif_present infinitif_present infinitif_present_passif"/>
+            <term type="syntaxe" ana="proposition_infinitive proposition_relative_indicatif"/>
+            <term type="genre" ana="epopee"/>
+            <term type="themes" ana="famille guerre politique"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_34">
+        <l>Huc geminas nunc flecte acies, hanc aspice gentem</l>
+        <l>Romanosque tuos. Hic Caesar et omnis Iuli</l>
+        <l>progenies magnum caeli uentura sub axem.</l>
+        <l>Hic uir, hic est, tibi quem promitti saepius audis,</l>
+        <l>Augustus Caesar, Diui genus, aurea condet</l>
+        <l>saecula qui rursus Latio regnata per arua</l>
+        <l>Saturno quondam, super et Garamantes et Indos</l>
+        <l>proferet imperium. [...]</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_34">
+        <l>Maintenant, tourne les yeux de ce côté, vois cette nation,</l>
+        <l>ce sont tes Romains. Voici César, et toute la descendance de Iule,</l>
+        <l>eux qui un jour monteront sous l'immense voûte du ciel.</l>
+        <l>Voici l’homme, le voici, celui dont tu entends particulièrement souvent qu’il t’est promis,</l>
+        <l>Auguste César, descendant d’un Dieu, qui fondera</l>
+        <l>de nouveau les siècles d’or pour le Latium à travers les champs gouvernés</l>
+        <l>autrefois par Saturne, et qui portera l’empire par-delà les Garamantes</l>
+        <l>et les Indiens. [...]</l>
+      </ab>
+    </body>
+  </text>
+</TEI>

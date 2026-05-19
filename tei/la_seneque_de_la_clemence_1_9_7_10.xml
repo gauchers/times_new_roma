@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>La clémence d'Auguste</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Clémence Pelletier</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">Clémence Pelletier</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Sénèque</author>
+            <title type="oeuvre">De la clémence</title>
+            <title type="fichier">la_seneque_de_la_clemence_1_9_7_10.xml</title>
+            <biblScope>1.9.7-10</biblScope>
+
+            <term type="prose/poésie" subtype="prose"/>
+            <term type="mots" n="210"/>
+            <term type="niveau" n="4"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_present indicatif_parfait indicatif_plus_que_parfait indicatif_futur subjonctif_present subjonctif_imparfait subjonctif_parfait subjonctif_plus_que_parfait infinitif_present infinitif_present_actif participe_present participe_parfait gerondif deponent"/>
+            <term type="morphologie" ana="comparatif ipse is hic qui quis"/>
+            <term type="syntaxe" ana="proposition_infinitive proposition_relative_indicatif proposition_relative_subjonctif completive_ne_subjonctif interrogative_directe interrogative_indirecte discours_indirect circonstancielle_finale_subjonctif circonstancielle_consecutive_subjonctif cum_subjonctif ablatif_absolu systeme_hypothetique_reel"/>
+            <term type="genre" ana="philosophie"/>
+            <term type="themes" ana="politique violence"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="la"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_35">
+        <l>« Hoc » inquit « primum a te peto ne me loquentem interpelles, ne medio sermone meo proclames ; dabitur tibi loquendi liberum tempus. Ego te, Cinna, cum in hostium castris inuenissem, non factum tantum mihi inimicum sed natum, seruaui, patrimonium tibi omne concessi. Hodie tam felix et tam diues es ut uicto uictores inuideant. Sacerdotium tibi petenti praeteritis conpluribus quorum parentes mecum militauerant dedi ; cum sic de te meruerim, occidere me constituisti. » Cum ad hanc uocem exclamasset procul hanc ab se abesse dementiam : « Non praestas » inquit « fidem, Cinna ; conuenerat ne interloquereris. Occidere, inquam, me paras » ; adiecit locum, socios, diem, ordinem insidiarum, cui commissum esset ferrum. Et cum defixum uideret nec ex conuentione iam sed ex conscientia tacentem : « Quo » inquit « hoc animo facis ? Vt ipse sis princeps ? Male mehercules cum populo Romano agitur, si tibi ad inperandum nihil praeter me obstat. Domum tueri tuam non potes, nuper libertini hominis gratia in priuato iudicio superatus es ; adeo nihil facilius potes quam contra Caesarem aduocare. Cedo, si spes tuas solus inpedio : Paulusne te et Fabius Maximus et Cossi et Seruilii ferent tantumque agmen nobilium non inania nomina praeferentium, sed eorum qui imaginibus suis decori sint ? »</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_35">
+        <l>« Je te demande, dit-il, ceci en premier lieu, de ne pas m’interrompre tant que je parle, de ne pas protester au milieu de mon propos ; un temps libre pour parler te sera donné. Moi, alors que je t’avais trouvé, Cinna, dans le camp des ennemis, toi qui étais non seulement devenu mon ennemi mais qui étais né tel, je t’ai sauvé, je t’ai laissé tout ton patrimoine. Aujourd’hui tu es si prospère et riche que les vainqueurs envient le vaincu. Je t’ai donné un sacerdoce quand tu le demandais, après avoir laissé de côté bon nombre de candidats dont les parents avaient fait leur service militaire avec moi ; alors que je me suis comporté ainsi à ton égard, tu as pris la résolution de me tuer. » Comme à ce mot il s’était exclamé que cette folie était bien loin de lui, Auguste dit : « Tu ne tiens pas ta parole, Cinna ; il avait été convenu que tu n’interviendrais pas. Tu t’apprêtes à me tuer, dis-je. » Il ajouta le lieu, ses associés, la date, l’enchaînement du guet-apens, à qui le fer avait été confié. Et comme il le voyait figé et muet non plus du fait de leur pacte, mais du fait de sa mauvaise conscience, il lui dit : « Dans quelle intention fais-tu cela ? Pour être toi-même empereur ? Par Hercule, le peuple romain est bien mal en point, si rien à part moi ne te fait obstacle pour accéder au pouvoir. Tu ne peux pas protéger ta propre maison, récemment tu as été vaincu dans un procès privé par l’influence d’un affranchi ; Bien sûr, rien de plus facile pour toi que d’appeler à l’aide contre César. Je me retire si je suis le seul à entraver tes espérances : est-ce que Paulus, Fabius Maximus, les Cossus et les Servilius te soutiendront, et cette immense armée de nobles, non ceux  qui étalent de vains noms, mais ceux tels qu’ils font honneur aux portraits de leurs ancêtres ? »</l>
+      </ab>
+    </body>
+  </text>
+</TEI>
