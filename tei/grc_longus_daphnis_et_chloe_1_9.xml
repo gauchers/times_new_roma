@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Le printemps</title>
+
+        <respStmt>
+          <resp>Contributeur</resp>
+          <name role="contributeur">Christophe Cusset</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Traducteur</resp>
+          <name role="traducteur">méditerranée.net</name>
+        </respStmt>
+
+        <respStmt>
+          <resp>Encodage</resp>
+          <name>Sarah GAUCHER</name>
+        </respStmt>
+
+        <principal>Sarah GAUCHER</principal>
+      </titleStmt>
+
+      <publicationStmt>
+        <p>Publication interne</p>
+      </publicationStmt>
+
+      <sourceDesc>
+        <listBibl>
+          <bibl>
+            <author>Longus</author>
+            <title type="oeuvre">Daphnis et Chloé</title>
+            <title type="fichier">grc_longus_daphnis_et_chloe_1_9.xml</title>
+            <biblScope>1.9</biblScope>
+
+            <term type="prose/poésie" subtype="prose"/>
+            <term type="mots" n="90"/>
+            <term type="niveau" n="2"/>
+            <term type="coupe" subtype="non"/>
+
+            <term type="conjugaison" ana="indicatif_imparfait participe_present"/>
+            <term type="syntaxe" ana="proposition_relative_indicatif"/>
+            <term type="genre" ana="roman"/>
+            <term type="themes" ana="amitie amour nature"/>
+          </bibl>
+        </listBibl>
+      </sourceDesc>
+    </fileDesc>
+
+    <profileDesc>
+      <langUsage>
+        <language ident="grc"/>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body>
+      <ab type="orig" xml:id="texte_36">
+        <l>Ἦρος ἦν ἀρχὴ καὶ πάντα ἤκμαζεν ἄνθη, τὰ ἐν δρυμοῖς, τὰ ἐν λειμῶσι καὶ ὅσα ὄρεια· βόμβος ἦν ἤδη μελιττῶν, ἦχος ὀρνίθων μουσικῶν, σκιρτήματα ποιμνίων ἀρτιγεννήτων·</l>
+        <l>ἄρνες ἐσκίρτων ἐν τοῖς ὄρεσιν, ἐβόμβουν ἐν τοῖς λειμῶσιν αἱ μέλιτται, τὰς λόχμας κατῇδον ὄρνιθες. Τοσαύτης δὴ πάντα κατεχούσης εὐωρίας οἷ´ ἁπαλοὶ  καὶ νέοι μιμηταὶ τῶν ἀκουομένων ἐγίνοντο καὶ βλεπομένων· ἀκούοντες μὲν τῶν ὀρνίθων ᾀδόντων ᾖδον, βλέποντες δὲ σκιρτῶντας τοὺς ἄρνας ἥλλοντο κοῦφα, καὶ τὰς μελίττας δὲ μιμούμενοι τὰ ἄνθη συνέλεγον· καὶ τὰ μὲν εἰς τοὺς κόλπους ἔβαλλον, τὰ δὲ στεφανίσκους πλέκοντες ταῖς Νύμφαις ἐπέφερον.</l>
+      </ab>
+
+      <ab type="trad" corresp="#texte_36">
+        <l>C'était le début du printemps, et toutes les fleurs étaient épanouies, [les unes] dans les bois, [les autres] dans les prairies, et autant [de montagne] sur les collines ; c'était déjà le bourdonnement des abeilles, le son des oiseaux chanteurs, les bondissements des troupeaux nouveau-nés; les agneaux bondissaient dans les collines, [et] bourdonnaient dans les prairies les abeilles, [et] les oiseaux remplissaient les bosquets de leurs chants. &lt;Une telle euphorie remplissant tout&gt; Devant cette joie de toute la nature, &lt;les tendres et naïfs devenaient imitateurs des choses entendues et vues&gt; naïfs et jeunes qu'ils étaient, ils imitaient ce qu'ils voyaient et entendaient : en entendant les oiseaux [chantant] chanter, ils chantaient, en voyant les agneaux [bondissant] bondir, ils s'élançaient légèrement, et imitant les abeilles, ils recueillaient les fleurs : et ils jetaient les unes dans le pli de leur vêtement, et tressant les autres, ils les portaient en offrande aux Nymphes.</l>
+      </ab>
+    </body>
+  </text>
+</TEI>
