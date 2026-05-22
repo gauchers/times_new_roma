@@ -204,9 +204,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (!filtresActifs)                            visible = false;
             if (type   && texte.dataset.type   !== type)  visible = false;
-            if (genre  && texte.dataset.genre  !== genre) visible = false;
+            if (genre  && !texte.dataset.genre.split(/\s+/).includes(genre)) visible = false;
             if (niveau && texte.dataset.niveau !== niveau) visible = false;
-
             if (anaActive && !testAnaGlobal(texte, sequence)) visible = false;
 
             texte.style.display = visible ? "block" : "none";
