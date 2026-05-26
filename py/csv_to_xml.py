@@ -288,7 +288,7 @@ with open(CSV_FILE, newline="", encoding="utf-8") as f:
         term_syn    = f'<term type="syntaxe" ana="{ana_syn}"/>' if ana_syn else ""
         term_genre  = f'<term type="genre" ana="{ana_genre}"/>' if ana_genre else ""
         term_themes = f'<term type="themes" ana="{ana_themes}"/>' if ana_themes else ""
-        term_themes = f'<term type="programme" ana="{ana_programme}"/>' if ana_programme else ""
+        term_programme = f'<term type="programme" ana="{ana_programme}"/>' if ana_programme else ""
 
         # Filtrage des lignes vides pour un XML propre
         optional_terms = "\n            ".join(
