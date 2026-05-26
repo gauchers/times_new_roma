@@ -148,6 +148,33 @@ ANA_LABELS = {
         "epyllion":              "Épyllion",
     },
 
+    "programme": {
+    "de_la_legende_du_mythe_a_l_histoire":   "De la légende/du mythe à l'histoire",
+    "vie_privee_et_vie_publique":           "Vie privée et vie publique",
+    "le_monde_mediterraneen":                "Le monde méditerranéen",
+    "l_empire_romain":                       "L'empire romain",
+    "de_la_republique_au_principat":         "De la république au principat",
+    "vie_familiale_sociale_et_intellectuelle": "Vie familiale, sociale et intellectuelle",
+    "la_grece_dans_son_unite_et_sa_diversite": "La Grèce dans son unité et sa diversité",
+    "l_homme_et_l_animal":                   "L'Homme et l'animal",
+    "l_homme_et_le_divin":                   "L'Homme et le divin",
+    "soi_meme_et_l_autre":                   "Soi-même et l'autre",
+    "vivre_dans_la_cite":                    "Vivre dans la cité",
+    "les_dieux_dans_la_cite":                "Les dieux dans la cité",
+    "masculin_feminin":                      "Masculin, Féminin",
+    "mediterranee_voyager_explorer_decouvrir": "Méditerranée : voyager, explorer, découvrir",
+    "mediterranee_conflit_influences_et_echanges": "Méditerranée : conflit, influences et échanges",
+    "lecons_de_sagesse_antique":             "Leçons de sagesse antique",
+    "comprendre_le_monde":                   "Comprendre le monde",
+    "inventer_creer_fabriquer_produire":     "Inventer, créer, fabriquer, produire",
+    "mediterranee_presence_des_mondes_antiques": "Méditerranée : présence des mondes antiques",
+    "la_cite_entre_realites_et_utopies":     "La cité entre réalités et utopies",
+    "justice_des_dieux_justice_des_hommes":   "Justice des dieux, justice des hommes",
+    "amour_amours":                          "Amour, amours",
+    "l_homme_le_monde_le_destin":            "L'homme, le monde, le destin",
+    "croire_savoir_douter":                  "Croire, savoir, douter"
+},
+
     "themes": {
         "alterite": "Identité et altérité",
         "amitie":      "Amitié",
@@ -253,6 +280,7 @@ with open(CSV_FILE, newline="", encoding="utf-8") as f:
         ana_syn    = build_ana(row.get("Syntaxe"),     "syntaxe")
         ana_genre  = build_ana(row.get("Genre"),       "genre")
         ana_themes = build_ana(row.get("Themes"),      "themes")
+        ana_programme = build_ana(row.get("Programme"),      "programme")
 
         # Construction des lignes <term> optionnelles
         term_conj   = f'<term type="conjugaison" ana="{ana_conj}"/>' if ana_conj else ""
@@ -260,10 +288,11 @@ with open(CSV_FILE, newline="", encoding="utf-8") as f:
         term_syn    = f'<term type="syntaxe" ana="{ana_syn}"/>' if ana_syn else ""
         term_genre  = f'<term type="genre" ana="{ana_genre}"/>' if ana_genre else ""
         term_themes = f'<term type="themes" ana="{ana_themes}"/>' if ana_themes else ""
+        term_themes = f'<term type="programme" ana="{ana_programme}"/>' if ana_programme else ""
 
         # Filtrage des lignes vides pour un XML propre
         optional_terms = "\n            ".join(
-            t for t in [term_conj, term_morph, term_syn, term_genre, term_themes] if t
+            t for t in [term_conj, term_morph, term_syn, term_genre, term_themes, term_programme] if t
         )
 
         tei = f"""<?xml version="1.0" encoding="UTF-8"?>
