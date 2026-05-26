@@ -174,6 +174,35 @@
                 </xsl:choose>
             </xsl:when>
 
+            <xsl:when test="$type = 'programme'">
+    <xsl:choose>
+        <xsl:when test="$value = 'de_la_legende_du_mythe_a_l_histoire'">De la légende/du mythe à l'histoire</xsl:when>
+        <xsl:when test="$value = 'vie_privee_et_vie_publique'">Vie privée et vie publique</xsl:when>
+        <xsl:when test="$value = 'le_monde_mediterraneen'">Le monde méditerranéen</xsl:when>
+        <xsl:when test="$value = 'l_empire_romain'">L'empire romain</xsl:when>
+        <xsl:when test="$value = 'de_la_republique_au_principat'">De la république au principat</xsl:when>
+        <xsl:when test="$value = 'vie_familiale_sociale_et_intellectuelle'">Vie familiale, sociale et intellectuelle</xsl:when>
+        <xsl:when test="$value = 'la_grece_dans_son_unite_et_sa_diversite'">La Grèce dans son unité et sa diversité</xsl:when>
+        <xsl:when test="$value = 'l_homme_et_l_animal'">L'Homme et l'animal</xsl:when>
+        <xsl:when test="$value = 'l_homme_et_le_divin'">L'Homme et le divin</xsl:when>
+        <xsl:when test="$value = 'soi_meme_et_l_autre'">Soi-même et l'autre</xsl:when>
+        <xsl:when test="$value = 'vivre_dans_la_cite'">Vivre dans la cité</xsl:when>
+        <xsl:when test="$value = 'les_dieux_dans_la_cite'">Les dieux dans la cité</xsl:when>
+        <xsl:when test="$value = 'masculin_feminin'">Masculin, Féminin</xsl:when>
+        <xsl:when test="$value = 'mediterranee_voyager_explorer_decouvrir'">Méditerranée : voyager, explorer, découvrir</xsl:when>
+        <xsl:when test="$value = 'mediterranee_conflit_influences_et_echanges'">Méditerranée : conflit, influences et échanges</xsl:when>
+        <xsl:when test="$value = 'lecons_de_sagesse_antique'">Leçons de sagesse antique</xsl:when>
+        <xsl:when test="$value = 'comprendre_le_monde'">Comprendre le monde</xsl:when>
+        <xsl:when test="$value = 'inventer_creer_fabriquer_produire'">Inventer, créer, fabriquer, produire</xsl:when>
+        <xsl:when test="$value = 'mediterranee_presence_des_mondes_antiques'">Méditerranée : présence des mondes antiques</xsl:when>
+        <xsl:when test="$value = 'la_cite_entre_realites_et_utopies'">La cité entre réalités et utopies</xsl:when>
+        <xsl:when test="$value = 'justice_des_dieux_justice_des_hommes'">Justice des dieux, justice des hommes</xsl:when>
+        <xsl:when test="$value = 'amour_amours'">Amour, amours</xsl:when>
+        <xsl:when test="$value = 'l_homme_le_monde_le_destin'">L'homme, le monde, le destin</xsl:when>
+        <xsl:when test="$value = 'croire_savoir_douter'">Croire, savoir, douter</xsl:when>
+    </xsl:choose>
+</xsl:when>
+
             <xsl:otherwise>
                 <xsl:value-of select="$value"/>
             </xsl:otherwise>
@@ -216,6 +245,7 @@
                             data-niveau="{.//tei:term[@type='niveau']/@n}"
                             data-genre="{.//tei:term[@type='genre']/@ana}"
                             data-themes="{.//tei:term[@type='themes']/@ana}"
+                            data-programme="{.//tei:term[@type='programme']/@ana}"
                             data-conjugaison="{.//tei:term[@type='conjugaison']/@ana}"
                             data-morphologie="{.//tei:term[@type='morphologie']/@ana}"
                             data-syntaxe="{.//tei:term[@type='syntaxe']/@ana}">
